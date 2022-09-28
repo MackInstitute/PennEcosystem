@@ -1,4 +1,1 @@
 # PennEcosystem
-
-Milestones:
-

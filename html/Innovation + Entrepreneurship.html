@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>  Innovation + Entrepreneurship			
+</title>
+<meta name="description" content="  Innovation + Entrepreneurship" />
+<!-- favicon -->
+<link rel="icon" href="https://research.seas.upenn.edu/wp-content/uploads/2017/10/cropped-penn-engineering-favicon.png" type="image/png">
+<!-- favicon -->
+
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Research and Innovation &raquo; Feed" href="https://research.seas.upenn.edu/feed/" />
+		<!-- This site uses the Google Analytics by ExactMetrics plugin v7.9.0 - Using Analytics tracking - https://www.exactmetrics.com/ -->
+							<script
+				src="//www.googletagmanager.com/gtag/js?id=UA-1517333-31"  data-cfasync="false" data-wpfc-render="false" type="text/javascript" async></script>
+			<script data-cfasync="false" data-wpfc-render="false" type="text/javascript">
+				var em_version = '7.9.0';
+				var em_track_user = true;
+				var em_no_track_reason = '';
+				
+								var disableStrs = [
+															'ga-disable-UA-1517333-31',
+									];
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						if (document.cookie.indexOf(disableStrs[index] + '=true') > -1) {
+							return true;
+						}
+					}
+
+					return false;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if (__gtagTrackerIsOptedOut()) {
+					for (var index = 0; index < disableStrs.length; index++) {
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					for (var index = 0; index < disableStrs.length; index++) {
+						document.cookie = disableStrs[index] + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+						window[disableStrs[index]] = true;
+					}
+				}
+
+				if ('undefined' === typeof gaOptout) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+
+				window.ExactMetricsDualTracker = {
+					helpers: {},
+					trackers: {},
+				};
+				if (em_track_user) {
+					function __gtagDataLayer() {
+						dataLayer.push(arguments);
+					}
+
+					function __gtagTracker(type, name, parameters) {
+						if (!parameters) {
+							parameters = {};
+						}
+
+						if (parameters.send_to) {
+							__gtagDataLayer.apply(null, arguments);
+							return;
+						}
+
+						if (type === 'event') {
+							
+														parameters.send_to = exactmetrics_frontend.ua;
+							__gtagDataLayer(type, name, parameters);
+													} else {
+							__gtagDataLayer.apply(null, arguments);
+						}
+					}
+
+					__gtagTracker('js', new Date());
+					__gtagTracker('set', {
+						'developer_id.dNDMyYj': true,
+											});
+															__gtagTracker('config', 'UA-1517333-31', {"forceSSL":"true"} );
+										window.gtag = __gtagTracker;										(function () {
+						/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+						/* ga and __gaTracker compatibility shim. */
+						var noopfn = function () {
+							return null;
+						};
+						var newtracker = function () {
+							return new Tracker();
+						};
+						var Tracker = function () {
+							return null;
+						};
+						var p = Tracker.prototype;
+						p.get = noopfn;
+						p.set = noopfn;
+						p.send = function () {
+							var args = Array.prototype.slice.call(arguments);
+							args.unshift('send');
+							__gaTracker.apply(null, args);
+						};
+						var __gaTracker = function () {
+							var len = arguments.length;
+							if (len === 0) {
+								return;
+							}
+							var f = arguments[len - 1];
+							if (typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function') {
+								if ('send' === arguments[0]) {
+									var hitConverted, hitObject = false, action;
+									if ('event' === arguments[1]) {
+										if ('undefined' !== typeof arguments[3]) {
+											hitObject = {
+												'eventAction': arguments[3],
+												'eventCategory': arguments[2],
+												'eventLabel': arguments[4],
+												'value': arguments[5] ? arguments[5] : 1,
+											}
+										}
+									}
+									if ('pageview' === arguments[1]) {
+										if ('undefined' !== typeof arguments[2]) {
+											hitObject = {
+												'eventAction': 'page_view',
+												'page_path': arguments[2],
+											}
+										}
+									}
+									if (typeof arguments[2] === 'object') {
+										hitObject = arguments[2];
+									}
+									if (typeof arguments[5] === 'object') {
+										Object.assign(hitObject, arguments[5]);
+									}
+									if ('undefined' !== typeof arguments[1].hitType) {
+										hitObject = arguments[1];
+										if ('pageview' === hitObject.hitType) {
+											hitObject.eventAction = 'page_view';
+										}
+									}
+									if (hitObject) {
+										action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+										hitConverted = mapArgs(hitObject);
+										__gtagTracker('event', action, hitConverted);
+									}
+								}
+								return;
+							}
+
+							function mapArgs(args) {
+								var arg, hit = {};
+								var gaMap = {
+									'eventCategory': 'event_category',
+									'eventAction': 'event_action',
+									'eventLabel': 'event_label',
+									'eventValue': 'event_value',
+									'nonInteraction': 'non_interaction',
+									'timingCategory': 'event_category',
+									'timingVar': 'name',
+									'timingValue': 'value',
+									'timingLabel': 'event_label',
+									'page': 'page_path',
+									'location': 'page_location',
+									'title': 'page_title',
+								};
+								for (arg in args) {
+																		if (!(!args.hasOwnProperty(arg) || !gaMap.hasOwnProperty(arg))) {
+										hit[gaMap[arg]] = args[arg];
+									} else {
+										hit[arg] = args[arg];
+									}
+								}
+								return hit;
+							}
+
+							try {
+								f.hitCallback();
+							} catch (ex) {
+							}
+						};
+						__gaTracker.create = newtracker;
+						__gaTracker.getByName = newtracker;
+						__gaTracker.getAll = function () {
+							return [];
+						};
+						__gaTracker.remove = noopfn;
+						__gaTracker.loaded = true;
+						window['__gaTracker'] = __gaTracker;
+					})();
+									} else {
+										console.log("");
+					(function () {
+						function __gtagTracker() {
+							return null;
+						}
+
+						window['__gtagTracker'] = __gtagTracker;
+						window['gtag'] = __gtagTracker;
+					})();
+									}
+			</script>
+				<!-- / Google Analytics by ExactMetrics -->
+		<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/research.seas.upenn.edu\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.0.2"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://research.seas.upenn.edu/wp-includes/css/dist/block-library/style.min.css?ver=6.0.2' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='page-list-style-css'  href='https://research.seas.upenn.edu/wp-content/plugins/page-list/css/page-list.css?ver=5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-columnfilterwidgets-css-css'  href='https://research.seas.upenn.edu/wp-content/plugins/tablepress-datatables-column-filter-widgets/css/ColumnFilterWidgets.min.css?ver=1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='normalize-css'  href='https://research.seas.upenn.edu/wp-content/themes/Penn/_/css/normalize.min.css?ver=3.0.3' type='text/css' media='' />
+<link rel='stylesheet' id='bootstrap-css'  href='https://research.seas.upenn.edu/wp-content/themes/Penn/_/css/bootstrap.css?ver=1.0' type='text/css' media='' />
+<link rel='stylesheet' id='font-awesome-css'  href='https://research.seas.upenn.edu/wp-content/themes/Penn/_/css/font-awesome.min.css?ver=6.0.2' type='text/css' media='' />
+<link rel='stylesheet' id='owl-css'  href='https://research.seas.upenn.edu/wp-content/themes/Penn/_/js/owl.carousel.css?ver=6.0.2' type='text/css' media='' />
+<link rel='stylesheet' id='build-css'  href='https://research.seas.upenn.edu/wp-content/themes/Penn/_/css/build.css?ver=6.0.2' type='text/css' media='' />
+<link rel='stylesheet' id='styles-css'  href='https://research.seas.upenn.edu/wp-content/themes/Penn/style.css?ver=6.0.2' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://research.seas.upenn.edu/wp-content/tablepress-combined.min.css?ver=9' type='text/css' media='all' />
+<link rel='stylesheet' id='tmm-css'  href='https://research.seas.upenn.edu/wp-content/plugins/team-members/inc/css/tmm_style.css?ver=6.0.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/plugins/google-analytics-dashboard-for-wp/assets/js/frontend-gtag.min.js?ver=7.9.0' id='exactmetrics-frontend-script-js'></script>
+<script data-cfasync="false" data-wpfc-render="false" type="text/javascript" id='exactmetrics-frontend-script-js-extra'>/* <![CDATA[ */
+var exactmetrics_frontend = {"js_events_tracking":"true","download_extensions":"zip,mp3,mpeg,pdf,docx,pptx,xlsx,rar","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/research.seas.upenn.edu","hash_tracking":"false","ua":"UA-1517333-31","v4_id":""};/* ]]> */
+</script>
+<script type='text/javascript' id='wpm-6310-ajax-script-js-extra'>
+/* <![CDATA[ */
+var my_ajax_object = {"ajax_url":"https:\/\/research.seas.upenn.edu\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/plugins/team-showcase-supreme/assets/js/ajaxdata.js?ver=6.0.2' id='wpm-6310-ajax-script-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<link rel="https://api.w.org/" href="https://research.seas.upenn.edu/wp-json/" /><link rel="alternate" type="application/json" href="https://research.seas.upenn.edu/wp-json/wp/v2/pages/917" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://research.seas.upenn.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://research.seas.upenn.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 6.0.2" />
+<link rel="canonical" href="https://research.seas.upenn.edu/innovation-entrepreneurship/" />
+<link rel='shortlink' href='https://research.seas.upenn.edu/?p=917' />
+<link rel="alternate" type="application/json+oembed" href="https://research.seas.upenn.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fresearch.seas.upenn.edu%2Finnovation-entrepreneurship%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://research.seas.upenn.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fresearch.seas.upenn.edu%2Finnovation-entrepreneurship%2F&#038;format=xml" />
+<link rel="icon" href="https://research.seas.upenn.edu/wp-content/uploads/2017/10/cropped-penn-engineering-favicon-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://research.seas.upenn.edu/wp-content/uploads/2017/10/cropped-penn-engineering-favicon-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://research.seas.upenn.edu/wp-content/uploads/2017/10/cropped-penn-engineering-favicon-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://research.seas.upenn.edu/wp-content/uploads/2017/10/cropped-penn-engineering-favicon-1-270x270.png" />
+<link rel="stylesheet" type="text/css" href="https://research.seas.upenn.edu/wp-content/themes/Penn/style.css" />
+<!-- Type Kit Start -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+<!-- Type Kit End -->
+
+
+</head>
+<body class="page-template page-template-template-fluidcontent page-template-template-fluidcontent-php page page-id-917">
+	<style type="text/css">
+		html { margin-top: 0px !important; }
+		* html body { margin-top: 0px !important; }
+		@media screen and ( max-width: 782px ) {
+			html { margin-top: 0px !important; }
+			* html body { margin-top: 0px !important; }
+		}
+	</style>
+	<div id="main_wrapper">
+		<header id="header" class="inside-page">
+			<div id="push_nav">
+												<div id="mobile-nav">
+					<div id="mobile-logo">
+						<a href="https://www.seas.upenn.edu/">
+							<img src="https://research.seas.upenn.edu/wp-content/uploads/2017/08/penn_logo.png" alt="Logo" id="mobile_logo">
+						</a>
+					</div>
+					<div id="mobile_search_toggle" class="search_toggle">
+						<i class="fa fa-search"></i>
+					</div>
+					<div id="mobile-toggle">
+						<span></span>
+					</div>
+
+				</div>
+								<div id="mobile--title">
+												<a href="https://research.seas.upenn.edu" class="nocolor">
+								Research and Innovation							</a>
+									</div>
+								<div id="mobile--nav" class="nav">
+					<ul id="menu-main-nav" class="menu"><li id="menu-item-912" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-912"><a href="#">Overview</a>
+<ul class="sub-menu">
+	<li id="menu-item-906" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-906"><a href="https://research.seas.upenn.edu/philosophy-mission/">Philosophy + Mission</a></li>
+	<li id="menu-item-905" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-905"><a href="https://research.seas.upenn.edu/by-the-numbers/">By the Numbers</a></li>
+	<li id="menu-item-904" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-904"><a href="https://research.seas.upenn.edu/contact/">Research Contacts</a></li>
+</ul>
+</li>
+<li id="menu-item-913" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-913"><a href="#">Priorities</a>
+<ul class="sub-menu">
+	<li id="menu-item-2382" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2382"><a href="https://research.seas.upenn.edu/initiatives/">Signature Initiatives</a></li>
+	<li id="menu-item-922" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-917 current_page_item menu-item-922"><a href="https://research.seas.upenn.edu/innovation-entrepreneurship/" aria-current="page">Innovation + Entrepreneurship</a></li>
+	<li id="menu-item-921" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-921"><a href="https://research.seas.upenn.edu/commercialization/">Commercialization</a></li>
+	<li id="menu-item-908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-908"><a href="https://research.seas.upenn.edu/collaboration/">Collaboration</a></li>
+	<li id="menu-item-911" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-911"><a href="https://research.seas.upenn.edu/undergraduate-research/">Undergraduate Research</a></li>
+</ul>
+</li>
+<li id="menu-item-914" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-914"><a href="#">Infrastructure</a>
+<ul class="sub-menu">
+	<li id="menu-item-909" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-909"><a href="https://research.seas.upenn.edu/centers-institutes/">Centers + Institutes</a></li>
+	<li id="menu-item-903" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-903"><a href="https://research.seas.upenn.edu/laboratories-core-facilities/">Laboratories + Core Facilities</a></li>
+	<li id="menu-item-902" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-902"><a href="https://research.seas.upenn.edu/university-infrastructure/">University Infrastructure</a></li>
+</ul>
+</li>
+<li id="menu-item-915" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-915"><a href="#">Resources</a>
+<ul class="sub-menu">
+	<li id="menu-item-916" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-916"><a href="http://www.seas.upenn.edu/directory/departments.php">Faculty Directory</a></li>
+	<li id="menu-item-901" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-901"><a href="https://research.seas.upenn.edu/research-policies/">Research Policies</a></li>
+	<li id="menu-item-2442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2442"><a href="https://research.seas.upenn.edu/research-ip-resources/">Research + Intellectual Property Resources</a></li>
+	<li id="menu-item-900" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-900"><a href="https://research.seas.upenn.edu/new-faculty-resources/">New Faculty Resources</a></li>
+	<li id="menu-item-1058" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1058"><a href="https://research.seas.upenn.edu/bridge-funding/">Bridge Funding</a></li>
+	<li id="menu-item-899" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-899"><a href="https://research.seas.upenn.edu/helpful-links/">Helpful Links</a></li>
+</ul>
+</li>
+</ul>					<div class="aux_right">
+					<ul id="menu-aux-right" class="menu"><li id="menu-item-859" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-859"><a href="https://www.seas.upenn.edu/admissions/">Apply</a></li>
+<li id="menu-item-860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-860"><a href="https://giving.aws.cloud.upenn.edu/?program=ENG">Make a Gift</a></li>
+<li id="menu-item-7" class="search_toggle menu-item menu-item-type-custom menu-item-object-custom menu-item-7"><a href="#">Search <i class="fa fa-search"></i></a></li>
+</ul>					</div>
+					<div class="aux_left">
+					<ul id="menu-aux-left" class="menu"><li id="menu-item-855" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-855"><a href="https://ras.seas.upenn.edu">Current Students</a></li>
+<li id="menu-item-856" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-856"><a href="https://facultyaffairs.seas.upenn.edu">Faculty</a></li>
+<li id="menu-item-857" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-857"><a href="https://hr.seas.upenn.edu/">Staff</a></li>
+<li id="menu-item-858" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-858"><a href="https://dar.seas.upenn.edu">Alumni</a></li>
+</ul>					</div>
+				</div>
+				<div id="search-bar">
+					<div class="container">
+						<div class="row">
+							<script>
+ (function() {
+	 var cx = '013858703957139678513:03bertgvh3k';
+	 var gcse = document.createElement('script');
+	 gcse.type = 'text/javascript';
+	 gcse.async = true;
+	 gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	 var s = document.getElementsByTagName('script')[0];
+	 s.parentNode.insertBefore(gcse, s);
+ })();
+</script>
+<gcse:search></gcse:search>	
+							<div class="search_toggle" id="search-close"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="aux_nav">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 nav aux_left">
+							<ul id="menu-aux-left-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-855"><a href="https://ras.seas.upenn.edu">Current Students</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-856"><a href="https://facultyaffairs.seas.upenn.edu">Faculty</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-857"><a href="https://hr.seas.upenn.edu/">Staff</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-858"><a href="https://dar.seas.upenn.edu">Alumni</a></li>
+</ul>						</div>
+						<div class="col-sm-12 nav aux_right">
+							<ul id="menu-aux-right-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-859"><a href="https://www.seas.upenn.edu/admissions/">Apply</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-860"><a href="https://giving.aws.cloud.upenn.edu/?program=ENG">Make a Gift</a></li>
+<li class="search_toggle menu-item menu-item-type-custom menu-item-object-custom menu-item-7"><a href="#">Search <i class="fa fa-search"></i></a></li>
+</ul>						</div>
+					</div>
+				</div>
+			</div>
+			<div id="main_nav">
+				<div class="container">
+					<div class="row">
+						<div id="main_logo">
+							<a href="https://www.seas.upenn.edu/">
+								<img src="https://research.seas.upenn.edu/wp-content/uploads/2017/08/penn_logo.png" alt="Logo">
+							</a>		
+						</div>
+													<div id="header_site_title">
+																		<a href="https://research.seas.upenn.edu" class="nocolor">
+											Research and Innovation										</a>
+																<div id="header_site_tagline">
+																	</div>
+							</div>
+											</div>
+											<div class="row">
+							<div id="main_nav_2" class="nav">
+								<ul id="menu-main-nav-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-912"><a href="#">Overview</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-906"><a href="https://research.seas.upenn.edu/philosophy-mission/">Philosophy + Mission</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-905"><a href="https://research.seas.upenn.edu/by-the-numbers/">By the Numbers</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-904"><a href="https://research.seas.upenn.edu/contact/">Research Contacts</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-913"><a href="#">Priorities</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2382"><a href="https://research.seas.upenn.edu/initiatives/">Signature Initiatives</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-917 current_page_item menu-item-922"><a href="https://research.seas.upenn.edu/innovation-entrepreneurship/" aria-current="page">Innovation + Entrepreneurship</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-921"><a href="https://research.seas.upenn.edu/commercialization/">Commercialization</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-908"><a href="https://research.seas.upenn.edu/collaboration/">Collaboration</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-911"><a href="https://research.seas.upenn.edu/undergraduate-research/">Undergraduate Research</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-914"><a href="#">Infrastructure</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-909"><a href="https://research.seas.upenn.edu/centers-institutes/">Centers + Institutes</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-903"><a href="https://research.seas.upenn.edu/laboratories-core-facilities/">Laboratories + Core Facilities</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-902"><a href="https://research.seas.upenn.edu/university-infrastructure/">University Infrastructure</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-915"><a href="#">Resources</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-916"><a href="http://www.seas.upenn.edu/directory/departments.php">Faculty Directory</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-901"><a href="https://research.seas.upenn.edu/research-policies/">Research Policies</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2442"><a href="https://research.seas.upenn.edu/research-ip-resources/">Research + Intellectual Property Resources</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-900"><a href="https://research.seas.upenn.edu/new-faculty-resources/">New Faculty Resources</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1058"><a href="https://research.seas.upenn.edu/bridge-funding/">Bridge Funding</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-899"><a href="https://research.seas.upenn.edu/helpful-links/">Helpful Links</a></li>
+</ul>
+</li>
+</ul>							</div>
+						</div>
+						
+				</div>
+			</div>
+		</header>
+		<div id="header_clear"></div>
+		<div id="content_wrapper">
+
+	
+
+<div id="single-page">
+	<div id="single-page-content">
+		<div class="content-holder" id="fluid_content_page">
+																
+			<div class="fluid_content_row " style="padding:0px 0px 25px 0px;">
+				<div class="container">
+											<div class="row ">
+								<div class="col-md-16 col-sm-24">
+																			<h2>Innovation + Entrepreneurship</h2>
+																		<p>The innovation community at Penn is flourishing.</p>
+<p>Innovation is one of the three main thrusts of the <em>Penn Compact 2020</em>, and strong collaborations across Engineering, Wharton and Medicine at Penn are the driving force in these efforts. Add to this Penn Engineering’s access to outstanding mentors, a broad network of alumni, the extensive hands-on curriculum, and the growing number of cutting-edge technologies available to members of our community and it comes as no surprise that the amount of technologies conceived at Penn Engineering is increasing rapidly.</p>
+																	</div>
+							</div>
+				
+
+				</div>			</div>
+										
+			<div class="fluid_content_row " style="padding:25px 0px 25px 0px;">
+				<div class="container">
+											<div class="row equalflx">
+																<div class="col-md-10 col-sm-11 align-fcimg-top">
+									<img src="https://research.seas.upenn.edu/wp-content/uploads/2017/08/Penn_Engineering_brg_2.jpg">	
+								</div>
+								<div class="col-md-13 col-md-offset-1 col-sm-13">
+																		<h3><strong>The Pennovation Center</strong></h3>
+<p>The <a href="http://www.pci.upenn.edu/pennovation-works/" target="_blank" rel="noopener">Pennovation Center</a>, the hub for Penn’s innovation, entrepreneurship and technology transfer efforts, is 58,000-square-feet of space that has been completely transformed to foster new connections between Penn researchers and industry members by putting wet labs, co-working desks, meeting spaces and corporate offices in close proximity. New companies born from these interactions can rent “startup garages” on the first floor as they grow their nascent businesses.</p>
+<p>The <a href="https://www.pennovation.upenn.edu/the-community/innovators/penn-engineering-research-and-collaboration-hub" target="_blank" rel="noopener">Penn Engineering Research and Collaboration Hub</a>, or PERCH, is one of the Pennovation Center’s first occupants. Organized under inaugural director Daniel Koditschek, Alfred Fitler Moore Professor in Electrical and Systems Engineering, PERCH brings together three core research groups from Penn Engineering’s General Robotics, Automation, Sensing and Perception (GRASP) Lab. Together, the Kod*Lab, the ModLab and the Multi-Robot Systems Lab, as well as researchers working in embedded systems and the Internet of Things (IoT), are situated above an incubator for spin-off companies, with an eye toward advancing new academic developments into the public pipeline.</p>
+																	</div>
+							</div>
+				
+
+				</div>			</div>
+										
+			<div class="fluid_content_row " style="padding:25px 0px 0px 0px;">
+				<div class="container">
+											<div class="row ">
+								<div class="col-md-16 col-sm-24">
+																		<h3><strong>See also:</strong></h3>
+<ul>
+<li><a href="https://yprize.upenn.edu/" target="_blank" rel="noopener">Y-Prize Competition</a></li>
+<li><a href="http://pennapps.com/" target="_blank" rel="noopener">PennApps Competition</a></li>
+<li><a href="http://pennvention.io/" target="_blank" rel="noopener">Pennvention Competition</a></li>
+<li><a href="https://eent.seas.upenn.edu">Engineering Entrepreneurship Program</a></li>
+<li><a href="http://pci.upenn.edu/icorps/" target="_blank" rel="noopener">I-Corps Site summer startup accelerator program</a></li>
+<li><a href="https://pennpep.upenn.edu/" target="_blank" rel="noopener">President’s Engagement Prizes</a></li>
+<li><a href="https://pennpip.upenn.edu/" target="_blank" rel="noopener">President’s Innovation Prize</a></li>
+</ul>
+																	</div>
+							</div>
+				
+
+				</div>			</div>
+							
+		</div>	
+	</div>
+</div>
+
+
+		</div><!-- end of #content_wrapper -->
+		<footer class="inside-page-footer">
+			<div id="footer">
+				<div class="container">
+					<div class="row" id="footer_top">
+						<div class="col-md-7 col-xs-24 col-sm-24 pull-right pe_quick_actions">
+							<div class="dd_menu_holder dd_menu_above">
+								<div class="quick_actions pe_f_qa btn dd_menu" data-target=".pe_f_qa">
+									Quick Actions
+								</div>
+								<div class="dd_menu_pop pe_f_qa text-center">
+									<ul id="menu-quick-actions" class="menu"><li id="menu-item-805" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-805"><a target="_blank" rel="noopener" href="https://directory.apps.upenn.edu/directory/jsp/fast.do">Find a Person</a></li>
+<li id="menu-item-806" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-806"><a href="https://www.facilities.upenn.edu/maps?location_type=School+of+Engineering+and+Applied+Science&#038;search=&#038;glid=">Find a building</a></li>
+<li id="menu-item-807" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-807"><a href="https://www.seas.upenn.edu/about/visit-penn-engineering/">Visit Penn Engineering</a></li>
+<li id="menu-item-808" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-808"><a href="https://cets.seas.upenn.edu">Report computing issues (CETS)</a></li>
+<li id="menu-item-809" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-809"><a href="https://eos.seas.upenn.edu">Report facilities issues (EOS)</a></li>
+<li id="menu-item-810" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-810"><a href="https://ras.seas.upenn.edu/student-wellness/">Student health and safety concerns</a></li>
+<li id="menu-item-811" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-811"><a href="https://www.publicsafety.upenn.edu/contact/">Contact Penn Public Safety (DPS)</a></li>
+</ul>								</div>
+							</div>
+						</div>
+						<div class="pe_social col-md-11 col-xs-24 col-sm-24 pull-right">
+							<a href="https://www.facebook.com/PennEngineering" target="_blank" aria-label="Facebook"><span class="footer_social" id="footer_fb"><i class="fa fa-facebook"></i></span></a>							<a href="https://twitter.com/PennEngineers" target="_blank" aria-label="Twitter"><span class="footer_social" id="footer_twitter"><i class="fa fa-twitter"></i></span></a>							<a href="https://www.youtube.com/user/pennengineering" target="_blank" aria-label="Youtube"><span class="footer_social" id="footer_youtube"><i class="fa fa-youtube"></i></span></a>							<a href="https://www.linkedin.com/school/penn-engineering/" target="_blank" aria-label="LinkedIn"><span class="footer_social" id="footer_linkedin"><i class="fa fa-linkedin-square"></i></span></a>							<a href="https://www.instagram.com/pennengineering/" target="_blank" aria-label="Instagram"><span class="footer_social" id="footer_instagram"><i class="fa fa-instagram"></i></span></a>						</div>
+						<div class="pe_footer_logo col-md-6 col-xs-24 col-sm-24 pull-right">
+							<a href="https://www.seas.upenn.edu/"><img src="https://research.seas.upenn.edu/wp-content/uploads/2017/08/penn_footer_logo.png" alt="Penn Engineering"></a>
+						</div>
+					</div>
+					<div class="row" id="footer_bottom">
+						<div class="col-md-20 col-md-offset-2 text-center">
+							<div class="nomobile">
+								<p style="text-align: center;"><a href="https://www.seas.upenn.edu/"><strong>PENN ENGINEERING </strong></a>©2017 |<a href="http://www.upenn.edu/" target="_blank" rel="noopener"><strong> UNIVERSITY OF PENNSYLVANIA </strong></a>|<strong> <a href="https://www.seas.upenn.edu/">SCHOOL OF ENGINEERING AND APPLIED SCIENCE</a><br />
+</strong> 220 South 33rd Street | 107 Towne Building | Philadelphia, PA 19104-6391 | 215-898-7246<br />
+<a href="mailto:ras@seas.upenn.edu"><strong>Contact us</strong></a> with questions about admissions or academic programs | For website issues, <a href="mailto:webmaster@seas.upenn.edu"><strong>email</strong></a> the webmaster<br />
+<a href="https://accessibility.web-resources.upenn.edu/get-help" target="_blank" rel="noopener"><strong>Report accessibility issues and get help</strong></a></p>
+	
+							</div>
+							<div class="mobileonly">
+								<p style="text-align: center;"><strong><a href="https://www.seas.upenn.edu/">PENN ENGINEERING </a>©2017</strong></p>
+<p style="text-align: center;"><strong><a href="http://www.upenn.edu/" target="_blank" rel="noopener"> UNIVERSITY OF PENNSYLVANIA </a></strong></p>
+<p style="text-align: center;"><strong> <a href="https://www.seas.upenn.edu/">SCHOOL OF ENGINEERING AND APPLIED SCIENCE</a></strong></p>
+<p style="text-align: center;">220 South 33rd Street | 107 Towne Building | Philadelphia, PA 19104-6391 | 215-898-7246</p>
+<p style="text-align: center;"><a href="mailto:ras@seas.upenn.edu"><strong>Contact us </strong></a>with questions about admissions or academic programs | For website issues, <a href="mailto:webmaster@seas.upenn.edu"><strong>email</strong></a> the webmaster</p>
+<p style="text-align: center;"><a href="https://accessibility.web-resources.upenn.edu/get-help" target="_blank" rel="noopener"><strong>Report accessibility issues and get help</strong></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div id="footer-clear" class=""></div>
+	</div> 	
+<script type='text/javascript' id='filter_scripts-js-extra'>
+/* <![CDATA[ */
+var screenReaderText = {"ajaxurl":"https:\/\/research.seas.upenn.edu\/wp-admin\/admin-ajax.php","expand":"expand child menu","collapse":"collapse child menu","noposts":"No More Resources","loadmore":"Load more Resources <i class=\"chevron-down-em-icon\"><\/i>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/themes/Penn/_/functions/filter/pefilter.js?ver=1.0' id='filter_scripts-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/themes/Penn/_/js/matchHeight.js?ver=6.0' id='matchHeight-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/themes/Penn/_/js/z5_base.js?ver=1.0' id='z5_base-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/themes/Penn/_/js/bootstrap.min.js?ver=3.0' id='bootstrap-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/themes/Penn/_/js/owl.carousel.min.js?ver=1.0' id='owl_slider-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/themes/Penn/_/js/parallax.min.js?ver=1.0' id='parallax-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/themes/Penn/_/js/scripts.js?ver=1.0' id='custom_scripts-js'></script>
+<script type='text/javascript' src='https://research.seas.upenn.edu/wp-content/plugins/page-links-to/dist/new-tab.js?ver=3.3.6' id='page-links-to-js'></script>
+</body>
+</html>

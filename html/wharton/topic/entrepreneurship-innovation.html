@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+	<html class="no-js ie8" lang="en-US">
+<![endif]-->
+<!--[if IE 9 ]>
+	<html class="no-js ie9" lang="en-US">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en-US"><!--<![endif]-->
+	<head>
+		   <!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-Q7KH');</script>
+	<!-- End Google Tag Manager -->
+  		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"a7b20e3c4c",applicationID:"12886422"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(9),c=t(10),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(11);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(8),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],7:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],8:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],9:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],10:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],11:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(9),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!M++){var t=T.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(x,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+T.offset],null,"api"),c("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){c("mark",["domContent",a()+T.offset],null,"api")}var a=t(5),c=t("handle"),f=t(9),u=t("ee"),s=t(7),d=t(2),p=t(3),l=d.getConfiguration("ssl")===!1?"http":"https",v=window,m=v.document,g="addEventListener",y="attachEvent",h=v.XMLHttpRequest,w=h&&h.prototype,b=!1;NREUM.o={ST:setTimeout,SI:v.setImmediate,CT:clearTimeout,XHR:h,REQ:v.Request,EV:v.Event,PR:v.Promise,MO:v.MutationObserver};var E=""+location,x={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},O=h&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(6),m[g]?(m[g]("DOMContentLoaded",o,p(!1)),v[g]("load",r,p(!1))):(m[y]("onreadystatechange",i),v[y]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var M=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(10),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="https://www.wharton.upenn.edu/xmlrpc.php">
+		<link rel="icon" type="image/x-icon" href="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/favicon.ico" /><link rel="apple-touch-icon" sizes="180x180" href="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/apple-touch-icon.png" /><link rel="mask-icon" color="#004785" href="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/penn-logo-mask.svg" /><script type="text/javascript">window.ajaxurl = "https://www.wharton.upenn.edu/wp-admin/admin-ajax.php"</script>
+		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+		
+	<!-- This site is optimized with the Yoast SEO Premium plugin v19.3 (Yoast SEO v19.7.1) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Entrepreneurship &amp; Innovation &#8211; The Wharton School</title>
+	<link rel="canonical" href="https://www.wharton.upenn.edu/topic/entrepreneurship-innovation/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://www.wharton.upenn.edu/story/alexis-ohanian-supporting-business-rebels-through-venture-capital/" />
+	<meta property="og:site_name" content="The Wharton School" />
+	<meta property="og:image" content="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/social.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/social.png" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":null,"url":"","name":"","isPartOf":{"@id":"https://www.wharton.upenn.edu/#website"},"breadcrumb":{"@id":"#breadcrumb"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Wharton Stories","item":"https://www.wharton.upenn.edu/stories/"},{"@type":"ListItem","position":2,"name":"Entrepreneurship & Innovation"}]},{"@type":"WebSite","@id":"https://www.wharton.upenn.edu/#website","url":"https://www.wharton.upenn.edu/","name":"The Wharton School","description":"The Wharton School at the University of Pennsylvania","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.wharton.upenn.edu/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//www.wharton.upenn.edu' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="The Wharton School &raquo; Feed" href="https://www.wharton.upenn.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Wharton School &raquo; Comments Feed" href="https://www.wharton.upenn.edu/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Wharton School &raquo; Entrepreneurship &amp; Innovation Topic Feed" href="" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.wharton.upenn.edu\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.0.2"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://www.wharton.upenn.edu/wp-includes/css/dist/block-library/style.min.css?ver=6.0.2' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='responsive-lightbox-swipebox-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/responsive-lightbox/assets/swipebox/swipebox.min.css?ver=2.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-mobile-style-css'  href='https://www.wharton.upenn.edu/wp-content/themes/responsive-mobile/css/style.css?ver=0.0.10' type='text/css' media='all' />
+<link rel='stylesheet' id='vc_plugin_table_style_css-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/easy-tables-vc/assets/css/style.min.css?ver=2.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='vc_plugin_themes_css-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/easy-tables-vc/assets/css/themes.min.css?ver=2.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_custom_css-css'  href='//www.wharton.upenn.edu/wp-content/uploads/js_composer/custom.css?ver=6.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='martech-chupacabra-style-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/css/style-v2.css?ver=3.41.12' type='text/css' media='all' />
+<link rel='stylesheet' id='martech-chupacabra-style-v3-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/css/style.css?ver=3.41.12' type='text/css' media='all' />
+<link rel='stylesheet' id='martech-chupacabra-style-print-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/css/print.css?ver=3.41.12' type='text/css' media='print' />
+<link rel='stylesheet' id='responsive-mobile-child-style-css'  href='https://www.wharton.upenn.edu/wp-content/themes/whartonedu/style.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='fullcalendar-style-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/lib/fullcalendar/packages/core/main.css?ver=3.41.12' type='text/css' media='all' />
+<link rel='stylesheet' id='fullcalendar-daygrid-style-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/lib/fullcalendar/packages/daygrid/main.css?ver=3.41.12' type='text/css' media='all' />
+<link rel='stylesheet' id='wdp_styles-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/wharton-department-platform/includes/css/style.css?ver=1.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wdp_jsgrid-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/wharton-department-platform/includes/css/jsgrid.min.css?ver=1.5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wdp_jsgrid_theme-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/wharton-department-platform/includes/css/jsgrid-theme.min.css?ver=1.5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='bsf-Defaults-css'  href='https://www.wharton.upenn.edu/wp-content/uploads/smile_fonts/Defaults/Defaults.css?ver=3.19.12' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/responsive-lightbox/assets/swipebox/jquery.swipebox.min.js?ver=2.4.1' id='responsive-lightbox-swipebox-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-includes/js/underscore.min.js?ver=1.13.3' id='underscore-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/responsive-lightbox/assets/infinitescroll/infinite-scroll.pkgd.min.js?ver=6.0.2' id='responsive-lightbox-infinite-scroll-js'></script>
+<script type='text/javascript' id='responsive-lightbox-js-extra'>
+/* <![CDATA[ */
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0","ajaxurl":"https:\/\/www.wharton.upenn.edu\/wp-admin\/admin-ajax.php","nonce":"488bc61c77","preview":"false","postId":"1013115","scriptExtension":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/responsive-lightbox/js/front.js?ver=2.4.1' id='responsive-lightbox-js'></script>
+<link rel="https://api.w.org/" href="https://www.wharton.upenn.edu/wp-json/" /><link rel="alternate" type="application/json" href="https://www.wharton.upenn.edu/wp-json/wp/v2/wdca_topic/1000020" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.wharton.upenn.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.wharton.upenn.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 6.0.2" />
+<link rel='shortlink' href='https://www.wharton.upenn.edu/?p=1013115&#038;post_type=story' />
+    <script type="text/javascript">
+        var MTIProjectId='9c101523-c9e9-4e52-b751-a5b16576f638';
+        (function() {
+            var mtiTracking = document.createElement('script');
+            mtiTracking.type='text/javascript';
+            mtiTracking.async='true';
+             mtiTracking.src='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/fonts/mtiFontTrackingCode.js';
+            (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+        })();
+    </script><meta name="martech:page-title" content="Topic: <span>Entrepreneurship &amp; Innovation</span>"><meta name="martech:site-title" content="The Wharton School"><meta name="martech:site-pname" content="wharton-www"><meta name="martech:site-penv" content="live"><meta name="martech:site-hostname" content="www.wharton.upenn.edu"><meta name="martech:archive" content="true"><meta name="martech:home" content="false"><meta name="martech:content-type" content="archive"><meta name="martech:tag" content="Career Interest;Community Interest;Content Type;Entrepreneurship;Entrepreneurship &amp; Innovation;Industry;Podcast;Spotlight;Venture Capital/Private Equity"><meta name="martech:category" content="Business Radio"><meta name="martech:thumbnail" content="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/social.png">
+        <script type="text/javascript">
+            var jQueryMigrateHelperHasSentDowngrade = false;
+
+			window.onerror = function( msg, url, line, col, error ) {
+				// Break out early, do not processing if a downgrade reqeust was already sent.
+				if ( jQueryMigrateHelperHasSentDowngrade ) {
+					return true;
+                }
+
+				var xhr = new XMLHttpRequest();
+				var nonce = '3a3aa5a3b8';
+				var jQueryFunctions = [
+					'andSelf',
+					'browser',
+					'live',
+					'boxModel',
+					'support.boxModel',
+					'size',
+					'swap',
+					'clean',
+					'sub',
+                ];
+				var match_pattern = /\)\.(.+?) is not a function/;
+                var erroredFunction = msg.match( match_pattern );
+
+                // If there was no matching functions, do not try to downgrade.
+                if ( typeof erroredFunction !== 'object' || typeof erroredFunction[1] === "undefined" || -1 === jQueryFunctions.indexOf( erroredFunction[1] ) ) {
+                    return true;
+                }
+
+                // Set that we've now attempted a downgrade request.
+                jQueryMigrateHelperHasSentDowngrade = true;
+
+				xhr.open( 'POST', 'https://www.wharton.upenn.edu/wp-admin/admin-ajax.php' );
+				xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+				xhr.onload = function () {
+					var response,
+                        reload = false;
+
+					if ( 200 === xhr.status ) {
+                        try {
+                        	response = JSON.parse( xhr.response );
+
+                        	reload = response.data.reload;
+                        } catch ( e ) {
+                        	reload = false;
+                        }
+                    }
+
+					// Automatically reload the page if a deprecation caused an automatic downgrade, ensure visitors get the best possible experience.
+					if ( reload ) {
+						location.reload();
+                    }
+				};
+
+				xhr.send( encodeURI( 'action=jquery-migrate-downgrade-version&_wpnonce=' + nonce ) );
+
+				// Suppress error alerts in older browsers
+				return true;
+			}
+        </script>
+
+		<meta name="martech:intranet" content="false"><meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>	</head>
+
+<body class="archive tax-wdca_topic term-entrepreneurship-innovation term-1000020 default-site-header wharton-www martech-menu--dropdown group-blog wpb-js-composer js-comp-ver-6.9.0 vc_responsive wharton-cms" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-Q7KH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager -->
+        <div id="container" class="site">
+	<nav id="jump-links" aria-label="Jump links">
+		<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+		<a class="skip-link screen-reader-text" href="#main-navigation">Skip to main menu</a>
+	</nav>
+	<header id="header" class="container-full-width site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+		<div id="top-menu-container" class="group header--container">
+			<a href="https://www.wharton.upenn.edu" class="global-brand" title="Wharton Home"><img src="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/wharton-logo.svg" alt="Wharton" class="screen"/><img class="print"  style="display:none;" alt="Logo for The Wharton School" src="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/Wharton-Logo-RGB.png" /></a>	<ul class="global-nav">
+				<li class="martech-nav-faculty-and-research"><a href="https://www.wharton.upenn.edu/faculty-research-publications/">Faculty</a></li>
+				<li class="martech-nav-youth-program"><a href="https://globalyouth.wharton.upenn.edu">Youth Program</a></li>
+				<li class="martech-nav-undergrad"><a href="https://undergrad.wharton.upenn.edu">Undergrad</a></li>
+				<li class="martech-nav-mba"><a href="https://mba.wharton.upenn.edu">MBA</a></li>
+				<li class="martech-nav-emba"><a href="https://executivemba.wharton.upenn.edu">EMBA</a></li>
+				<li class="martech-nav-phd"><a href="https://doctoral.wharton.upenn.edu">PhD</a></li>
+				<li class="martech-nav-executive-education"><a href="http://executiveeducation.wharton.upenn.edu">Exec Ed</a></li>
+				<li class="martech-nav-wharton-online"><a href="https://online.wharton.upenn.edu">Wharton Online</a></li>
+				<li class="martech-nav-alumni"><a href="https://alumni.wharton.upenn.edu">Alumni</a></li>
+				<li class="martech-nav-kw"><a href="https://knowledge.wharton.upenn.edu"><img src="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/kw-logo.svg" alt="Knowledge at Wharton" class="kw-header-logo"/></a></li>
+			</ul>        <a href="/search/" class="search-button search--closed">
+        <span class="accessible-label">Search Wharton</span>
+    </a>
+    <button id="mobile-nav-button" aria-label="Mobile menu toggle">
+        <span class="accessible-label">Mobile menu toggle</span>
+    </button>
+		</div>
+		<div class="main-navigation header--container main-navigation--dropdown">
+			<div class="header-row">
+				<div id="martech-site-branding">
+					<div class="martech-site-branding-container group">
+						    <div id="department" class="department department--text">
+        <a class="dept-container" title="The Wharton School" href="https://www.wharton.upenn.edu/">
+			            <span class="brand-text">The Wharton School</span>
+        </a>
+    </div>
+    											</div>
+				</div>
+				<!-- main menu -->
+				<div id="main-menu-container" class="container-full-width">
+					<nav id="main-navigation" class="site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Primary navigation links">
+						<div id="mobile-current-item">Menu</div>
+												<div class="main-nav group"><ul id="menu-header-navigation" class="menu-header-navigation"><li id="menu-item-6443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6443"><a href="https://www.wharton.upenn.edu/about-wharton/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-6444" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6444"><a href="https://www.wharton.upenn.edu/history/">History</a></li>
+	<li id="menu-item-2441" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2441"><a href="https://www.wharton.upenn.edu/senior-leadership/">Senior Leadership</a></li>
+	<li id="menu-item-6448" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6448"><a href="https://www.wharton.upenn.edu/about-the-dean/">About the Dean</a></li>
+	<li id="menu-item-1935" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1935"><a href="https://giving.aws.cloud.upenn.edu/fund?program=WHA&#038;fund=342105&#038;appeal=WHAWEB%20">Giving to Wharton</a></li>
+	<li id="menu-item-11101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11101"><a href="https://www.wharton.upenn.edu/diversity/">Diversity</a></li>
+	<li id="menu-item-5599" class="hide-from-menu menu-item menu-item-type-post_type menu-item-object-page menu-item-5599"><a href="https://www.wharton.upenn.edu/wharton-wellness/">Wellness at Wharton</a></li>
+	<li id="menu-item-13735" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13735"><a href="https://catalog.upenn.edu/undergraduate/wharton/wharton.pdf">Accreditation Information</a></li>
+	<li id="menu-item-3410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3410"><a href="https://www.wharton.upenn.edu/contact-wharton/">Contact</a></li>
+</ul>
+</li>
+<li id="menu-item-1543" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1543"><a href="https://www.wharton.upenn.edu/academic-programs/">Academics</a></li>
+<li id="menu-item-1951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1951"><a href="https://www.wharton.upenn.edu/faculty-research/">Faculty &#038; Research</a>
+<ul class="sub-menu">
+	<li id="menu-item-1552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1552"><a href="https://www.wharton.upenn.edu/faculty-research-publications/">Research, Directory &#038; Publications</a></li>
+	<li id="menu-item-1550" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1550"><a href="https://www.wharton.upenn.edu/departments/">Academic Departments</a></li>
+	<li id="menu-item-6446" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6446"><a href="https://www.wharton.upenn.edu/research-centers/">Research Centers</a></li>
+</ul>
+</li>
+<li id="menu-item-1939" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1939"><a href="http://news.wharton.upenn.edu">News</a></li>
+<li id="menu-item-1940" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1940"><a href="http://recruiters-corp.wharton.upenn.edu">Recruiters &#038; Corporations</a></li>
+<li id="menu-item-1945" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1945"><a href="https://www.wharton.upenn.edu/locations/">Locations</a>
+<ul class="sub-menu">
+	<li id="menu-item-1556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1556"><a href="https://www.wharton.upenn.edu/philadelphia-campus/">Philadelphia</a></li>
+	<li id="menu-item-1954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1954"><a href="http://sf.wharton.upenn.edu">San Francisco</a></li>
+	<li id="menu-item-1953" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1953"><a href="https://pwcc.upenn.edu/en/">Beijing</a></li>
+</ul>
+</li>
+<li id="menu-item-3535" class="wdca-home menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-3535"><a href="https://www.wharton.upenn.edu/stories/">Wharton Stories</a>
+<ul class="sub-menu">
+	<li id="menu-item-4938" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4938"><a href="https://www.wharton.upenn.edu/topic/analytics/">Analytics</a></li>
+	<li id="menu-item-4103" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4103"><a href="https://www.wharton.upenn.edu/topic/business-education-evolution/">Business Education &#038; Evolution</a></li>
+	<li id="menu-item-4104" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4104"><a href="https://www.wharton.upenn.edu/topic/business-policy/">Business Policy</a></li>
+	<li id="menu-item-4105" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-4105"><a href="https://www.wharton.upenn.edu/topic/entrepreneurship-innovation/" aria-current="page">Entrepreneurship &#038; Innovation</a></li>
+	<li id="menu-item-4106" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4106"><a href="https://www.wharton.upenn.edu/topic/global/">Global</a></li>
+	<li id="menu-item-4107" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4107"><a href="https://www.wharton.upenn.edu/topic/community/">Community</a></li>
+</ul>
+</li>
+</ul></div>					</nav><!-- #site-navigation -->
+									</div><!-- #main-menu-container -->
+				<div id="sub-menu-container" class="container-full-width">
+					<div id="sub-menu" class="container">
+						<nav id="sub-navigation" class="site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Secondary navigation links">
+												</nav><!-- #site-navigation -->
+					</div><!-- #sub-menu -->
+				</div><!-- #sub-menu-container -->
+			</div>
+		</div>
+
+			</header><!-- #header -->
+
+
+<div id="breadcrumbs" role="navigation" aria-label="Breadcrumbs"><div class="breadcrumbs--inner"><span><span><a href="https://www.wharton.upenn.edu/stories/">Wharton Stories</a> » <span class="breadcrumb_last" aria-current="page">Entrepreneurship & Innovation</span></span></span></div></div>	<div id="wrapper" class="site-content container-full-width">
+	<div id="content-full" class="content-area content-area--topic content-area--tax ">
+		<main id="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+		
+				<header class="story-archive-header">
+		<div class="vc_row wpb_row vc_row-fluid None vc_row-has-fill martech-row-background martech-hero-header-hide-bg-image  martech-hero-header-simple-mobile-bg" style="None"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="martech-header-hero martech-header-hero-row martech-header-hero--container-bg martech-header-hero--dark martech-header-hero--extra-short">
+                    <div class="martech-header-hero-copy-container"><h1>Wharton Stories: <span class="header-story-topics">Entrepreneurship &amp; Innovation</span></h1>
+</div></div></div></div></div></div><!-- Row Backgrounds --><div class="upb_color" data-bg-override="full" data-bg-color="#edeff2" data-fadeout="" data-fadeout-percentage="30" data-parallax-content="" data-parallax-content-sense="30" data-row-effect-mobile-disable="true" data-img-parallax-mobile-disable="true" data-rtl="false"  data-custom-vc-row=""  data-vc="6.9.0"  data-is_old_vc=""  data-theme-support="disable"   data-overlay="false" data-overlay-color="" data-overlay-pattern="" data-overlay-pattern-opacity="" data-overlay-pattern-size=""    ></div><!-- Row Backgrounds --><div class="upb_bg_img" data-ultimate-bg="url()" data-image-id="id^|url^|caption^null|alt^null|title^null|description^null" data-ultimate-bg-style="vcpb-default" data-bg-img-repeat="repeat" data-bg-img-size="cover" data-bg-img-position="" data-parallx_sense="30" data-bg-override="full" data-bg_img_attach="scroll" data-upb-overlay-color="" data-upb-bg-animation="" data-fadeout="" data-bg-animation="left-animation" data-bg-animation-type="h" data-animation-repeat="repeat" data-fadeout-percentage="30" data-parallax-content="" data-parallax-content-sense="30" data-row-effect-mobile-disable="true" data-img-parallax-mobile-disable="true" data-rtl="false"  data-custom-vc-row=""  data-vc="6.9.0"  data-is_old_vc=""  data-theme-support="disable"   data-overlay="false" data-overlay-color="" data-overlay-pattern="" data-overlay-pattern-opacity="" data-overlay-pattern-size=""    ></div>	</header>
+
+									<div id="martech-top-stories" class="martech-top-stories"><div class="story-group"><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/how-wiva-students-are-advocating-for-youth-mental-health-with-a-startup/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2022/08/mental-health-hero_-600x230.png"/><div class="story-pull-quote"><span>“I was fortunate to grow up playing competitive sports, which helped me build a sense of belief that I could bounce back from any setback. I firmly believe that SuperBetter can develop those same capacities.” &#8211; Jan Jaro, WG&#8217;23</span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/how-wiva-students-are-advocating-for-youth-mental-health-with-a-startup/">How WIVA Students Are Advocating For Youth Mental Health With A Startup</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/md-ceo-how-the-wharton-emba-program-helped-this-er-doctor-launch-an-award-winning-luxury-sake-brand/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2022/07/paul-story-600x230.png"/><div class="story-pull-quote"><span>“I left Wharton a CEO, and I’m not the only one. We’ve been brought into these positions because we now have the confidence to embrace our identities as leaders.”</span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/md-ceo-how-the-wharton-emba-program-helped-this-er-doctor-launch-an-award-winning-luxury-sake-brand/">MD &amp; CEO: How the Wharton EMBA Program Helped This ER Doctor Launch an Award-Winning Luxury Sake Brand</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/in-the-classroom-technology-innovation-and-entrepreneurship-in-the-new-space-era/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2022/06/inside-the-classroom-space-era-kapoor-hero-600x230.jpg"/><div class="story-pull-quote"><span>Prof. Rahul Kapoor and MBA student Arie Kouandjio, WG&#8217;23, give a quick overview of this Wharton course on the emerging space sector.</span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/in-the-classroom-technology-innovation-and-entrepreneurship-in-the-new-space-era/">In the Classroom: Technology, Innovation, and Entrepreneurship in the New Space Era</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/prof-tyler-wry-on-teaching-innovation-to-high-school-students/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2022/03/hero-image-2-1-600x230.png"/><div class="story-pull-quote"><span>Wharton Management Prof. Tyler Wry offers a sneak peek into the nuances of innovative thinking and how he designed the &#8216;Essentials of Innovation&#8217; program.</span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/prof-tyler-wry-on-teaching-innovation-to-high-school-students/">Prof. Tyler Wry on Teaching Innovation to High School Students</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/how-wharton-is-helping-these-classmates-grow-a-healthcare-fintech-business/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2022/03/dan-dave-steveheader-600x230.jpg"/><div class="story-pull-quote"><span>Steve Truong, WG’21, David Latshaw, WG’21, and Dr. Dan Sciubba, WG’21, teamed up in Wharton’s EMBA program to “fight cancer with finance.” </span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/how-wharton-is-helping-these-classmates-grow-a-healthcare-fintech-business/">How Wharton is Helping These Classmates Grow a Healthcare Fintech Business</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/diversity-and-racial-equity-in-investing-conversations-with-industry-leaders-and-researchers/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2021/02/stefanie-thomas-hero-edit-600x230.png"/><div class="story-pull-quote"><span>Through a series of conversations on the Dollars and Change podcast, Vice Dean Katherine Klein explores the topics of racial equity in investing and diversity in the workplace with leaders in the field.</span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/diversity-and-racial-equity-in-investing-conversations-with-industry-leaders-and-researchers/">Diversity and Racial Equity in Investing: Conversations with Industry Leaders and Researchers</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/alexis-ohanian-supporting-business-rebels-through-venture-capital/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2021/07/ohanian-hero-edited-2-600x230.jpg"/><div class="story-pull-quote"><span>&#8220;I’m most interested in the rebels always having a fighting chance, not just because it&#8217;s my business and my livelihood, but also because I think it&#8217;s better for innovation.&#8221;</span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/alexis-ohanian-supporting-business-rebels-through-venture-capital/">Alexis Ohanian: Supporting Business Rebels Through Venture Capital</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/how-wharton-customer-analytics-connects-alumni-students-and-companies/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2020/05/Abishek-header-600x230.jpg"/><div class="story-pull-quote"><span>Senior Fellows Patrizio Cernetti, WG’16, and Jon Soberg, WG’09, mentor students working on real-world data projects. </span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/how-wharton-customer-analytics-connects-alumni-students-and-companies/">How Wharton Customer Analytics Connects Alumni, Students, and Companies</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/4-startup-challenge-finalists-share-what-inspired-their-ventures/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2021/05/startup-challenge-2021-hero-600x230.jpg"/><div class="story-pull-quote"><span>This year&#8217;s finalists tackled firefighter cancer, frontline medical devices, maternal nutrition, global healthcare access, and more.</span></div></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/4-startup-challenge-finalists-share-what-inspired-their-ventures/">4 Startup Challenge Finalists Share What Inspired Their Ventures</a></h3></div></div><div class="story-container"><div class="story-container-inner"><div class="story-image-wrap"><a href="https://www.wharton.upenn.edu/story/celebrating-international-womens-day-2021/"><img class="attachment-story-thumb wp-post-image" src="https://dca.wharton.upenn.edu/wp-content/uploads/2021/03/international-womens-day-2021-hero-600x230.jpg"/></a></div><h3 class="story-title"><a href="https://www.wharton.upenn.edu/story/celebrating-international-womens-day-2021/">Celebrating International Women’s Day: 2021</a></h3></div></div></div></div><div id="wdca-load-more" class="vc_button-2-wrapper martech_button-2-wrapper vc_button-2-align-center"data-total_pages="18" data-posts_per_page="10" data-max_pages="0" data-field="term_id" data-post_type="story" data-taxonomy="wdca_topic" data-terms="1000020" data-operator="AND" data-exclude="" data-show_terms="" data-layout="default" data-sf_embed=""><a class="vc_btn vc_btn_red vc_btn_md vc_btn-md">Load More Stories</a></div>
+
+		
+		</main><!-- #main -->
+		<div class="sidebar sidebar--expanded sidebar--flyout">
+	<div class="sidebar-inner sidebar-inner--menu">
+		<aside>
+			<ul id="menu-wharton-stories" class="leftNav menu-sidebar-navigation"><li id="menu-item-4098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4098"><a href="https://www.wharton.upenn.edu/topic/business-education-evolution/">Business Education &#038; Evolution</a></li>
+<li id="menu-item-4099" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4099"><a href="https://www.wharton.upenn.edu/topic/business-policy/">Business Policy</a></li>
+<li id="menu-item-4100" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-4100"><a href="https://www.wharton.upenn.edu/topic/entrepreneurship-innovation/" aria-current="page">Entrepreneurship &#038; Innovation</a></li>
+<li id="menu-item-4101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4101"><a href="https://www.wharton.upenn.edu/topic/global/">Global</a></li>
+<li id="menu-item-4102" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4102"><a href="https://www.wharton.upenn.edu/topic/community/">Community</a></li>
+</ul>		</aside>
+	</div>
+	<div id="widgets" class="widget-area sidebar-inner sidebar-inner--widgets"  role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+
+					</div><!-- end of #widgets -->
+</div>
+	</div><!-- #content-blog -->
+
+
+</div><!-- end of #wrapper -->
+</div><!-- end of #container -->
+
+<footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter">
+	<div id="martech-footer-wrapper" class="wrapper footer-row">
+		<div class="footer-primary"> 		<a href="#" title="Additional Links" class="footer-primary-toggle">Additional Links <i class="icon-arrow-down3"></i></a>
+				<nav class="masonry additional-links" aria-label="Footer navigation links">
+						<ul class="footer-menu masonry-brick">
+				<div class="list-title">The Wharton School</div>				<div class="menu-header-navigation-container"><ul id="martech-footer-menu" class="masonry-menu"><li id="footer-menu-item-6443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-6443"><a href="https://www.wharton.upenn.edu/about-wharton/">About</a></li>
+<li id="footer-menu-item-1543" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1543"><a href="https://www.wharton.upenn.edu/academic-programs/">Academics</a></li>
+<li id="footer-menu-item-1951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1951"><a href="https://www.wharton.upenn.edu/faculty-research/">Faculty &#038; Research</a></li>
+<li id="footer-menu-item-1939" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1939"><a href="http://news.wharton.upenn.edu">News</a></li>
+<li id="footer-menu-item-1940" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1940"><a href="http://recruiters-corp.wharton.upenn.edu">Recruiters &#038; Corporations</a></li>
+<li id="footer-menu-item-1945" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1945"><a href="https://www.wharton.upenn.edu/locations/">Locations</a></li>
+<li id="footer-menu-item-3535" class="wdca-home menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3535"><a href="https://www.wharton.upenn.edu/stories/">Wharton Stories</a></li>
+</ul></div>
+			</ul>
+									<ul class="footer-menu masonry-brick grid-sizer">
+				<li class="list-title">Programs</li>
+				<li><a href="https://undergrad.wharton.upenn.edu/">Undergraduate</a></li>
+				<li><a href="https://mba.wharton.upenn.edu">MBA</a></li>
+				<li><a href="https://executivemba.wharton.upenn.edu">EMBA</a></li>
+				<li><a href="https://doctoral.wharton.upenn.edu/">Doctorate</a></li>
+				<li><a href="https://executiveeducation.wharton.upenn.edu/">Executive Education</a></li>
+				<li><a href="https://online.wharton.upenn.edu/">Wharton Online</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick grid-sizer">
+				<li class="list-title">Locations</li>
+				<li><a href="https://www.wharton.upenn.edu/philadelphia-campus/">Philadelphia</a></li>
+				<li><a href="https://sf.wharton.upenn.edu/">San Francisco</a></li>
+				<li><a href="https://pwcc.upenn.edu/">Beijing</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">The Power of Wharton</li>
+				<li><a href="https://global.wharton.upenn.edu/">Global Influence</a></li>
+				<li><a href="https://wcai.wharton.upenn.edu/">Analytics</a></li>
+				<li><a href="https://entrepreneurship.wharton.upenn.edu//">Entrepreneurship & Innovation</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">Featured</li>
+				<li><a href="https://giving.aws.cloud.upenn.edu/fund?program=WHA&fund=342105&appeal=WHAWEB">Give to Wharton</a></li>
+				<li><a href="https://alumni.wharton.upenn.edu/">Alumni</a></li>
+				<li><a href="https://knowledge.wharton.upenn.edu/">Knowledge@Wharton</a></li>
+				<li><a href="https://recruiters-corp.wharton.upenn.edu/">Recruiters & Corporations</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">Wharton</li>
+				<li><a href="https://www.wharton.upenn.edu/faculty-directory/">Faculty</a></li>
+				<li><a href="https://www.wharton.upenn.edu/about-wharton/">About Us</a></li>
+				<li><a href="https://www.wharton.upenn.edu/research-centers/">Research Centers</a></li>
+				<li><a href="https://www.wharton.upenn.edu/departments/">Departments</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">Resources</li>
+				<li><a href="https://www.wharton.upenn.edu/contact-wharton">Contact Us</a></li>
+				<li><a href="https://news.wharton.upenn.edu/">News</a></li>
+				<li><a href="https://inside.wharton.upenn.edu/">Faculty &amp; Staff</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="footer-secondary">
+
+		<div class="copyright">
+			<a class="footer-logo hide-650" href="https://www.upenn.edu"><img src="https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/penn-logo-white.svg" class="martech-footer-logo" alt="The University of Pennsylvania" ></a><div class="btn-wrap"><ul class="social-icons"><li class="twitter-icon"><a href="https://twitter.com/wharton" target="_blank"><span class="accessible-label">Twitter</span></a></li><li class="facebook-icon"><a href="https://www.facebook.com/WhartonSchool" target="_blank"><span class="accessible-label">Facebook</span></a></li><li class="linkedin-icon"><a href="https://www.linkedin.com/school/5290?pathWildcard=5290" target="_blank"><span class="accessible-label">LinkedIn</span></a></li><li class="youtube-icon"><a href="https://www.youtube.com/user/thewhartonschool" target="_blank"><span class="accessible-label">YouTube</span></a></li><li class="instagram-icon"><a href="https://instagram.com/whartonschool" target="_blank"><span class="accessible-label">Instagram</span></a></li></ul><!-- .social-icons --><span class="give"><a href="https://giving.aws.cloud.upenn.edu/fund?program=WHA&fund=342105&appeal=WHAWEB" class="btn--secondary vc_btn vc_btn_red vc_btn-sm" target="_blank" title="Give to Wharton">Support Wharton</a></span></div><a href="https://apps.wharton.upenn.edu/authentication?service=wordpress&returnURL=https://www.wharton.upenn.edu/cms-login">&copy;</a>2022&nbsp;<a href="https://www.wharton.upenn.edu/">The Wharton School,</a> &nbsp;<a href="https://www.upenn.edu/">The University of Pennsylvania</a> &nbsp;<span>| &nbsp;<a href="https://www.wharton.upenn.edu" title="The Wharton School">The Wharton School</a>&nbsp; </span>| &nbsp;<a href="https://www.wharton.upenn.edu/privacy-policy/">Privacy&nbsp;Policy</a>&nbsp; | &nbsp;<a href="https://accessibility.web-resources.upenn.edu/get-help" target="_blank">Report&nbsp;Accessibility&nbsp;Issues&nbsp;and&nbsp;Get&nbsp;Help</a>		</div>
+
+	</div>
+</div><!--/#martech-footer-wrapper-->
+	</footer><!-- #footer -->
+<script type="text/html" id="wpb-modifications"></script>      <script type="text/javascript">
+      (function ($) {
+        $(window).load(function(){
+          $('#footer-2-col').masonry({
+            columnWidth:  '.grid-sizer',
+            itemSelector: '.menu-item'
+          });
+        });
+        })(jQuery);
+      </script>
+    <link rel='stylesheet' id='js_composer_front-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=6.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='ultimate-vc-addons-style-min-css'  href='https://www.wharton.upenn.edu/wp-content/plugins/Ultimate_VC_Addons/assets/min-css/ultimate.min.css?ver=3.19.12' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-includes/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-includes/js/masonry.min.js?ver=4.2.2' id='masonry-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2b' id='jquery-masonry-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/themes/responsive-mobile/js/responsive-scripts.min.js?ver=1.2.5' id='responsive-scripts-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-includes/js/hoverIntent.min.js?ver=1.10.2' id='hoverIntent-js'></script>
+<script type='text/javascript' id='martech-v3-script-js-extra'>
+/* <![CDATA[ */
+var ajax_object = {"ajaxurl":"https:\/\/www.wharton.upenn.edu\/wp-admin\/admin-ajax.php","ajaxnonce":"ce444e3772"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/js/scripts.min.js?ver=3.41.12' id='martech-v3-script-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/js/iframeResizer.min.js?ver=3.41.12' id='iframe-resizer-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/js/iframeResizer.contentWindow.min.js?ver=3.41.12' id='iframe-resizer-content-window-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/lib/fullcalendar/packages/core/main.js?ver=3.41.12' id='fullcalendar-js-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/lib/fullcalendar/packages/daygrid/main.js?ver=3.41.12' id='fullcalendar-daygrid-js-js'></script>
+<script type='text/javascript' id='wpb_composer_front_js-js-extra'>
+/* <![CDATA[ */
+var vcData = {"currentTheme":{"slug":"responsive-mobile"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=6.9.0' id='wpb_composer_front_js-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/Ultimate_VC_Addons/assets/min-js/jquery-appear.min.js?ver=3.19.12' id='ultimate-vc-addons-appear-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/Ultimate_VC_Addons/assets/min-js/ultimate_bg.min.js?ver=3.19.12' id='ultimate-vc-addons-row-bg-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/Ultimate_VC_Addons/assets/min-js/custom.min.js?ver=3.19.12' id='ultimate-vc-addons-custom-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/wharton-department-platform/includes/js/jsgrid.min.js?ver=1.5.2' id='wdp_jsgrid-js'></script>
+<script type='text/javascript' src='https://www.wharton.upenn.edu/wp-content/plugins/wharton-department-platform/includes/js/scripts.min.js?ver=1.8.1' id='wdp_scripts-js'></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"a7b20e3c4c","applicationID":"12886422","transactionName":"NQYANxRSXEEEBRVZDQxMIwASWl1cShIASA0MDA8aS0RWUQQ5FV8SCwA=","queueTime":0,"applicationTime":1569,"atts":"GUEDQVxIT08=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

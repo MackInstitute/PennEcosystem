@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"
+  >
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+      <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-1aa00bfcf66dd80d478",applicationID:"217948986"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(9),c=t(10),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(11);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(8),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],7:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],8:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],9:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],10:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],11:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(9),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!M++){var t=T.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(x,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+T.offset],null,"api"),c("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){c("mark",["domContent",a()+T.offset],null,"api")}var a=t(5),c=t("handle"),f=t(9),u=t("ee"),s=t(7),d=t(2),p=t(3),l=d.getConfiguration("ssl")===!1?"http":"https",v=window,m=v.document,g="addEventListener",y="attachEvent",h=v.XMLHttpRequest,w=h&&h.prototype,b=!1;NREUM.o={ST:setTimeout,SI:v.setImmediate,CT:clearTimeout,XHR:h,REQ:v.Request,EV:v.Event,PR:v.Promise,MO:v.MutationObserver};var E=""+location,x={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},O=h&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(6),m[g]?(m[g]("DOMContentLoaded",o,p(!1)),v[g]("load",r,p(!1))):(m[y]("onreadystatechange",i),v[y]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var M=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(10),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5S984M');</script>
+  <!-- End Google Tag Manager -->
+        <title>
+                  Education Innovation & Entrepreneurship | Penn GSE  </title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Penn GSE is a pioneer in innovation and entrepreneurship in education. " />
+<meta name="keywords" content="Education, Innovation, Entreprenuership" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="https://www.gse.upenn.edu/explore-by-topic/education-innovation-entrepreneurship" />
+<link rel="shortlink" href="https://www.gse.upenn.edu/node/7404" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@PennGSE" />
+<meta name="twitter:url" content="https://www.gse.upenn.edu/explore-by-topic/education-innovation-entrepreneurship" />
+<meta name="twitter:title" content="Education Innovation &amp; Entrepreneurship" />
+<meta name="twitter:description" content="Penn GSE is a pioneer in innovation and entrepreneurship in education. We are passionate about developing new approaches to address pressing problems in education and to shape the future of education" />
+    <!-- Start Stylesheets -->
+<style type="text/css" media="all">
+@import url("https://www.gse.upenn.edu/modules/system/system.base.css?r84lzz");
+@import url("https://www.gse.upenn.edu/modules/system/system.menus.css?r84lzz");
+@import url("https://www.gse.upenn.edu/modules/system/system.messages.css?r84lzz");
+@import url("https://www.gse.upenn.edu/modules/system/system.theme.css?r84lzz");
+</style>
+<style type="text/css" media="all">
+@import url("https://www.gse.upenn.edu/modules/aggregator/aggregator.css?r84lzz");
+@import url("https://www.gse.upenn.edu/sites/all/modules/date/date_api/date.css?r84lzz");
+@import url("https://www.gse.upenn.edu/sites/all/modules/date/date_popup/themes/datepicker.1.7.css?r84lzz");
+@import url("https://www.gse.upenn.edu/modules/field/theme/field.css?r84lzz");
+@import url("https://www.gse.upenn.edu/modules/node/node.css?r84lzz");
+@import url("https://www.gse.upenn.edu/modules/search/search.css?r84lzz");
+@import url("https://www.gse.upenn.edu/modules/user/user.css?r84lzz");
+@import url("https://www.gse.upenn.edu/sites/all/modules/calendar%202/css/calendar_multiday.css?r84lzz");
+@import url("https://www.gse.upenn.edu/sites/all/modules/views/css/views.css?r84lzz");
+</style>
+<style type="text/css" media="all">
+@import url("https://www.gse.upenn.edu/sites/all/modules/ctools/css/ctools.css?r84lzz");
+@import url("https://www.gse.upenn.edu/sites/all/libraries/superfish/css/superfish.css?r84lzz");
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="/sites/gse.upenn.edu/themes/gse_2019/newSass/stylesheets/screen.css?192ff9b" rel="stylesheet">
+    <link href="/sites/gse.upenn.edu/themes/gse_2019/stylesheets/tabletStylesInner.css?192ff9a" rel="stylesheet">
+<link href="/sites/gse.upenn.edu/themes/gse_2019/stylesheets/videoDisplay.css?192ff9a" rel="stylesheet">
+<link href="/sites/gse.upenn.edu/themes/gse_2019/stylesheets/overrides.css?192ff9a" rel="stylesheet">
+<link href="/sites/gse.upenn.edu/themes/gse_2019/stylesheets/darViewStyles.css?192ff9a" rel="stylesheet">
+<link href="/sites/gse.upenn.edu/themes/gse_2019/stylesheets/responsive_overrides.css?192ff9a" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700,900" rel="stylesheet">
+<link rel="stylesheet" href="/sites/gse.upenn.edu/themes/gse_2019/stylesheets/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+<!-- End Stylesheets -->       <script type="text/javascript"> </script>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+     <!-- jQuery UI and Files -->
+       <!-- End jQuery UI and Files -->
+   <script type="text/javascript" src="/sites/gse.upenn.edu/themes/gse_2019/js/jquery-migrate-1.2.1.min.js"></script>
+   <script type="text/javascript">
+      //jQuery = $.noConflict(true);
+      //jQuery.ui = (typeof $ != 'undefined') ? $.ui : null;
+      //jQuery.datepicker = (typeof $ != 'undefined') ? $.datepicker : null;
+      jQ1102 = jQuery.noConflict();
+      jQ1102.ui = (typeof jQuery != 'undefined' ? jQuery.ui : null);
+      jQ1102.datepicker = (typeof jQuery != 'undefined' ? jQuery.datepicker : null);
+   </script>
+   <!-- Bootstrap JS -->
+    <script src="/sites/gse.upenn.edu/themes/gse_2019/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/sites/gse.upenn.edu/themes/gse_2019/js/general.js?192ff9b"></script>
+                <script src="/sites/gse.upenn.edu/themes/gse_2019/js/flipThrough.js?192ff9a"></script>
+        <script src="/sites/gse.upenn.edu/themes/gse_2019/js/css_browser_selector.js"></script>
+    <script type="text/javascript" src="https://www.gse.upenn.edu/misc/jquery.js?v=1.4.4"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/jquery-extend-3.4.0.js?v=1.4.4"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/jquery-html-prefilter-3.5.0-backport.js?v=1.4.4"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/jquery.once.js?v=1.2"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/drupal.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/jquery.cookie.js?v=1.0"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/jquery.form.js?v=2.52"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/jquery-ajaxsubmit.js?v=2.52"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/ajax.js?v=7.81"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function($){ $(document).ready(function() {
+	    $(".toggler").next().hide();
+
+	    /* Required otherwise Double-Binds! */
+	    $(".toggler").unbind();
+
+	    /* Bind SHOW/HIDE to Clicking toggler */
+	    $(".toggler").click(function(){
+	      /* Create & Indent DIV for visual purposes */
+	      if(!($(this).next().children().hasClass("indent"))){
+            if ($(this).next().is("table")) { // assume this is a one cell table
+                var tableCell = $(this).next().find("td").eq(0);
+                if (!tableCell.children(0).hasClass("indent")) {
+                    tableCell.wrapInner("<div class='indent'></div>")
+                }
+            } else {
+    	        newHTML = "<div class='indent'>";
+    	        newHTML += $(this).next().html();
+    	        newHTML += "</div>";
+                $(this).next().html( newHTML );
+            }
+	      }
+              if ($(this).html().indexOf(" view") != -1) {
+                $(this).html($(this).html().replace(" view", " hide"));
+              } else {
+                $(this).html($(this).html().replace(" hide", " view"));
+              }
+	      if(($(this).next().css("display")) != "none"){
+	         $(this).next().css("display","none");
+	      } else {
+	         $(this).next().css("display","block");
+	      }
+	      $(this).toggleClass("opened");
+	      $(this).attr("aria-expanded", function(_, attr) { return !(attr == "true") });
+	  }).next;
+	  })
+    })(jQuery)
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/modules/views/js/base.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/misc/progress.js?v=7.81"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/modules/views/js/ajax_view.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/modules/field_group/field_group.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/libraries/superfish/jquery.hoverIntent.minified.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/libraries/superfish/supposition.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/libraries/superfish/superfish.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/libraries/superfish/supersubs.js?r84lzz"></script>
+<script type="text/javascript" src="https://www.gse.upenn.edu/sites/all/modules/superfish/superfish.js?r84lzz"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"gse_2019","theme_token":"qFQRiHDyBooKXVI6gTSUuK8atUmOPrL2LLOUh4onXPw","js":{"misc\/jquery.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"misc\/jquery.cookie.js":1,"misc\/jquery.form.js":1,"misc\/jquery-ajaxsubmit.js":1,"misc\/ajax.js":1,"0":1,"sites\/all\/modules\/views\/js\/base.js":1,"misc\/progress.js":1,"sites\/all\/modules\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/field_group\/field_group.js":1,"sites\/all\/libraries\/superfish\/jquery.hoverIntent.minified.js":1,"sites\/all\/libraries\/superfish\/supposition.js":1,"sites\/all\/libraries\/superfish\/superfish.js":1,"sites\/all\/libraries\/superfish\/supersubs.js":1,"sites\/all\/modules\/superfish\/superfish.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/aggregator\/aggregator.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/calendar 2\/css\/calendar_multiday.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/libraries\/superfish\/css\/superfish.css":1}},"better_exposed_filters":{"views":{"gse_topic_related_news_content":{"displays":{"attachment_1":{"filters":[]},"block":{"filters":[]}}},"topic_related_faculty":{"displays":{"block":{"filters":[]}}},"homepage_news_grid":{"displays":{"block_1":{"filters":[]}}},"homepage_events_block":{"displays":{"block_1":{"filters":[]}}},"magazine_features_backlink":{"displays":{"block":{"filters":[]}}}}},"field_group":{"div":"full","html-element":"teaser"},"views":{"ajax_path":"\/views\/ajax","ajaxViews":{"views_dom_id:d89b20bee946b6bca4f6b8e1671d1cc5":{"view_name":"homepage_events_block","view_display_id":"block_1","view_args":"","view_path":"node\/7404","view_base_path":null,"view_dom_id":"d89b20bee946b6bca4f6b8e1671d1cc5","pager_element":0}}},"urlIsAjaxTrusted":{"\/views\/ajax":true,"\/explore-by-topic\/education-innovation-entrepreneurship":true},"superfish":[{"id":"1","sf":{"animation":{"opacity":"show","height":"show"},"speed":"fast","autoArrows":false,"dropShadows":false},"plugins":{"supposition":true,"supersubs":true}},{"id":"3","sf":{"animation":{"opacity":"show","height":"show"},"speed":"fast","autoArrows":false,"dropShadows":false},"plugins":{"supposition":true,"supersubs":true}}]});
+//--><!]]>
+</script>
+   <script type="text/javascript">
+        $ = jQ1102;
+   </script>
+   <script src="/sites/gse.upenn.edu/themes/gse_2019/js/videoDisplay.js"></script>
+   <script src="/sites/gse.upenn.edu/themes/gse_2019/js/base/modernizr.js"></script>
+   <script src="/sites/gse.upenn.edu/themes/gse_2019/js/base/backstretch_stellar_scrollr.js"></script>
+   <!-- End Bootstrap JS -->
+   <!-- Twitter -->
+    <script>window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));</script>
+   <!-- Custom jQuery Scripts -->
+
+   <!-- Webform CSS/Scripts -->
+      <!-- / Webform CSS/Scripts -->
+
+   <!-- // <script type="text/javascript" src="https://use.fortawesome.com/349cfdf6.js"></script> --></head>
+      <body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-7404 node-type-gse-topic is-not-dar-landing-page  node-type-landing-page  no-banner-for-page short-banner">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5S984M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->        <style type="text/css">
+        @media (max-width:992px) {
+     h1.title {
+          word-break: break-word;
+          hyphens: manual;
+          -moz-hyphens: manual;
+          -ms-hyphens: manual;
+          -webkit-hyphens: manual;
+     }
+}            </style><!--[if lt IE 9]>
+    <div id="warning-wrapper" style="position:fixed;background-image: url('/sites/gse.upenn.edu/themes/gse_2019/img/videoAssets/video_dimmer.png'); height: 200%; width: 100%; top: 0px; z-index:9999999999999999999">
+    <div class="alert alert-warning error" style="padding: 40px 60px; position: fixed; left: 50%; margin-left: -250px; top: 30%; z-index: 99999999999; border-color: red; width: 500px;">
+      <div style="font-family: Arial; font-size: 22px; font-weight: bold; margin-top: -30px; text-align: right; margin-right: -30px"><a href="#" style="color: #000" onclick="$('#warning-wrapper').fadeOut(1200); return false;">x</a></div>
+      <p style="font-family: Georgia; serif">You are using an outdated browser. This website is best viewed in IE 9 and above. You may continue using the site in this browser. However, the site may not display properly and some features may not be supported. For a better experience using this site, we recommend upgrading your version of Internet Explorer or using another browser to view this website.</p>
+      <p style="margin-left: 80px; margin-top:10px; font-family: Georgia; font-size: 16px; line-height: 18px;"><a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">- Download the latest Internet Explorer</a><br><a href="#" onclick="$('#warning-wrapper').fadeOut(1200); return false;">- No thanks (close this window)</a></p>
+    </div>
+</div>
+<![endif]-->
+<!-- START WRAP FOR STICKY FOOTER -->
+<div id="wrap">
+	<div class="banner-wrap" role="banner">
+	    <div class="frame">
+	<a id="skippy" class="sr-only sr-only-focusable" href="#main-content" aria-label="Skip to main content">
+	  <div class="container">
+	    <span class="skiplink-text">Skip to main content</span>
+	  </div>
+	</a>
+	<div id="video_dimmer"><div class="video_container"></div></div><!-- video_dimmer container, hidden by default-->
+	<div id="navbar" class="navbar navbar">
+        <button aria-label="Toggle Mobile Navigation" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-wrap" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div id="navbar-wrap" class="navbar-wrap">
+            <div class='logo-well'>
+            	<a href="/"><span class="sr-only">University of Pennsylvania Graduate School of Education</span><img id="main-logo" width="350" src="/sites/gse.upenn.edu/themes/gse_2019/img/PennGSE_UPenn_Logo.svg" alt="Penn GSE Logo" /></a>
+            </div>
+			<div role="navigation" aria-label="Main Menu" class="navbar-collapse collapse">
+	            <div id="main-menu">
+	                <div class="region region-primarymenu">
+    <div id="block-superfish-1" class="block block-superfish">
+
+    
+  <div class="content">
+    <ul  id="superfish-1" class="menu sf-menu sf-main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-7 sf-single-items-0"><li id="menu-82395-1" class="first odd sf-item-1 sf-depth-1 sf-total-children-6 sf-parent-children-2 sf-single-children-4 menuparent"><a href="/about-penn-gse" class="sf-depth-1 menuparent">About Penn GSE &amp; Our Impact</a><ul><li id="menu-82402-1" class="first odd sf-item-1 sf-depth-2"><a href="/about-penn-gse/philadelphia-impact" title="Penn GSE in Philadelphia" class="sf-depth-2">Philadelphia Impact</a></li><li id="menu-82401-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/about-penn-gse/global-initiatives" title="Penn GSE&#039;s Global Initiatives" class="sf-depth-2">Global Initiatives</a></li><li id="menu-133147-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="/about-penn-gse/diversity-inclusion" class="sf-depth-2">Diversity &amp; Inclusion</a></li><li id="menu-133182-1" class="middle even sf-item-4 sf-depth-2"><a href="/about-penn-gse/catalyst" class="sf-depth-2">Catalyst @ Penn GSE</a></li><li id="menu-85027-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="/about-penn-gse/leadership" class="sf-depth-2">Penn GSE Leadership</a></li><li id="menu-82405-1" class="last even sf-item-6 sf-depth-2 sf-no-children"><a href="/about-penn-gse/contact-us" class="sf-depth-2">Contact Us</a></li></ul></li><li id="menu-82396-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-12 sf-parent-children-5 sf-single-children-7 menuparent"><a href="/academics" class="sf-depth-1 menuparent">Academics &amp; Research</a><ul><li id="menu-133181-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/academics/program-finder" class="sf-depth-2">Program Finder</a></li><li id="menu-133156-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/academics/programs" class="sf-depth-2">Academic Divisions &amp; Programs</a></li><li id="menu-133289-1" class="middle odd sf-item-3 sf-depth-2"><a href="/academics/professional-development-continuing-education" class="sf-depth-2">Professional Development &amp; Continuing Education</a></li><li id="menu-133288-1" class="middle even sf-item-4 sf-depth-2"><a href="/academics/center-professional-learning" class="sf-depth-2">Center for Professional Learning</a></li><li id="menu-133164-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="/academics/teacher-education-programs-certification" class="sf-depth-2">Teacher Programs &amp; Certifications</a></li><li id="menu-133188-1" class="middle even sf-item-6 sf-depth-2 sf-no-children"><a href="/academics/undergraduates" class="sf-depth-2">Undergraduates</a></li><li id="menu-133161-1" class="middle odd sf-item-7 sf-depth-2 sf-no-children"><a href="/academics/dual-joint-degrees" class="sf-depth-2">Dual and Joint Degrees</a></li><li id="menu-133116-1" class="middle even sf-item-8 sf-depth-2"><a href="/academics/faculty-directory" class="sf-depth-2">Faculty Directory</a></li><li id="menu-133162-1" class="middle odd sf-item-9 sf-depth-2"><a href="/academics/research" class="sf-depth-2">Research Centers, Projects &amp; Initiatives</a></li><li id="menu-133137-1" class="middle even sf-item-10 sf-depth-2"><a href="/academics/lectures-colloquia" class="sf-depth-2">Lectures &amp; Colloquia</a></li><li id="menu-133206-1" class="middle odd sf-item-11 sf-depth-2 sf-no-children"><a href="/academics/publications" class="sf-depth-2">Books &amp; Publications</a></li><li id="menu-133158-1" class="last even sf-item-12 sf-depth-2 sf-no-children"><a href="/academics/journals" class="sf-depth-2">Academic Journals</a></li></ul></li><li id="menu-82397-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-7 sf-parent-children-3 sf-single-children-4 menuparent"><a href="/admissions" class="sf-depth-1 menuparent">Admissions &amp; Financial Aid</a><ul><li id="menu-133165-1" class="first odd sf-item-1 sf-depth-2"><a href="/admissions/application-requirements-deadlines" class="sf-depth-2">Application Requirements &amp; Deadlines</a></li><li id="menu-82447-1" class="middle even sf-item-2 sf-depth-2"><a href="/admissions/financial-aid" class="sf-depth-2">Tuition &amp; Financial Aid</a></li><li id="menu-131487-1" class="middle odd sf-item-3 sf-depth-2"><a href="/admissions/visits" class="sf-depth-2">Campus Visits &amp; Events</a></li><li id="menu-132793-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="/admissions/international-students" class="sf-depth-2">International Students</a></li><li id="menu-133234-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="/admissions/penn-undergraduates" class="sf-depth-2">Penn Undergraduates</a></li><li id="menu-133235-1" class="middle even sf-item-6 sf-depth-2 sf-no-children"><a href="/admissions/non-degree" class="sf-depth-2">Non-Degree Studies</a></li><li id="menu-133236-1" class="last odd sf-item-7 sf-depth-2 sf-no-children"><a href="/admissions/information" class="sf-depth-2">Contact Admissions / Request Information</a></li></ul></li><li id="menu-82398-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-7 sf-parent-children-1 sf-single-children-6 menuparent"><a href="/student" class="sf-depth-1 menuparent">Student Experience</a><ul><li id="menu-133202-1" class="first odd sf-item-1 sf-depth-2"><a href="/student/life-at-penn-gse" class="sf-depth-2">Life at Penn GSE</a></li><li id="menu-133154-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/student/career-paths" class="sf-depth-2">Penn GSE Career Paths</a></li><li id="menu-133150-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="/student/living-in-philadelphia" class="sf-depth-2">Living in Philadelphia</a></li><li id="menu-133316-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="/student/dei-resources-for-students" class="sf-depth-2">DE&amp;I Resources for Students</a></li><li id="menu-133226-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="/student/organizations" class="sf-depth-2">Student Organizations</a></li><li id="menu-82429-1" class="middle even sf-item-6 sf-depth-2 sf-no-children"><a href="/student/student-blogs" class="sf-depth-2">Student Blogs</a></li><li id="menu-133196-1" class="last odd sf-item-7 sf-depth-2 sf-no-children"><a href="/student/career-professional-development" class="sf-depth-2">Career &amp; Professional Development</a></li></ul></li><li id="menu-82399-1" class="middle odd sf-item-5 sf-depth-1 sf-total-children-4 sf-parent-children-1 sf-single-children-3 menuparent"><a href="/news" class="sf-depth-1 menuparent">News &amp; Events</a><ul><li id="menu-133197-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/news/archive" class="sf-depth-2">News</a></li><li id="menu-133198-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/news/events-calendar" class="sf-depth-2">Events Calendar</a></li><li id="menu-133230-1" class="middle odd sf-item-3 sf-depth-2"><a href="/news/educators-playbook" class="sf-depth-2">The Educator&#039;s Playbook</a></li><li id="menu-133200-1" class="last even sf-item-4 sf-depth-2 sf-no-children"><a href="/news/find-an-expert" class="sf-depth-2">Find an Expert</a></li></ul></li><li id="menu-133168-1" class="active-trail middle even sf-item-6 sf-depth-1 sf-total-children-11 sf-parent-children-0 sf-single-children-11 menuparent"><a href="/explore-by-topic" class="sf-depth-1 menuparent">Explore by Topic</a><ul><li id="menu-133174-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/explore-by-topic/philadelphia-impact" title="Topic: Philadelphia Impact" class="sf-depth-2">Philadelphia Impact</a></li><li id="menu-133173-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/explore-by-topic/global-initiatives" title="Topic: Global Initiatives" class="sf-depth-2">Global Initiatives</a></li><li id="menu-133172-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="/explore-by-topic/race-equity-inclusion" title="Topic: Race, Equity, &amp; Inclusion" class="sf-depth-2">Race, Equity &amp; Inclusion</a></li><li id="menu-133177-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="/explore-by-topic/counseling-psychology" title="Topic: Counseling &amp; Psychology" class="sf-depth-2">Counseling &amp; Psychology</a></li><li id="menu-133175-1" class="active-trail middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="/explore-by-topic/education-innovation-entrepreneurship" title="Topic: Education Innovation &amp; Entrepreneurship" class="sf-depth-2 active">Education Innovation &amp; Entrepreneurship</a></li><li id="menu-133169-1" class="middle even sf-item-6 sf-depth-2 sf-no-children"><a href="/explore-by-topic/education-policy-analysis" title="Topic: Education Policy" class="sf-depth-2">Education Policy &amp; Analysis</a></li><li id="menu-133178-1" class="middle odd sf-item-7 sf-depth-2 sf-no-children"><a href="/explore-by-topic/higher-education" title="Topic: Higher Education" class="sf-depth-2">Higher Education</a></li><li id="menu-133170-1" class="middle even sf-item-8 sf-depth-2 sf-no-children"><a href="/explore-by-topic/language-literacy-culture" title="Topic: Language &amp; Literacy" class="sf-depth-2">Language, Literacy &amp; Culture</a></li><li id="menu-133171-1" class="middle odd sf-item-9 sf-depth-2 sf-no-children"><a href="/explore-by-topic/leadership" title="Topic: Leadership" class="sf-depth-2">Leadership</a></li><li id="menu-133176-1" class="middle even sf-item-10 sf-depth-2 sf-no-children"><a href="/explore-by-topic/teaching-learning" title="Topic: Teaching &amp; Learning" class="sf-depth-2">Teaching &amp; Learning</a></li><li id="menu-133263-1" class="last odd sf-item-11 sf-depth-2 sf-no-children"><a href="/explore-by-topic/covid-19" class="sf-depth-2">Special Topic: COVID-19</a></li></ul></li><li id="menu-82437-1" class="last odd sf-item-7 sf-depth-1 sf-total-children-5 sf-parent-children-2 sf-single-children-3 menuparent"><a href="/support" class="sf-depth-1 menuparent">Support Penn GSE</a><ul><li id="menu-130129-1" class="first odd sf-item-1 sf-depth-2"><a href="/support/future-education" class="sf-depth-2">The Future of Education</a></li><li id="menu-130130-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/support/our-impact" class="sf-depth-2">Our Impact</a></li><li id="menu-130131-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="/support/power-of-possibility" class="sf-depth-2">The Power of Possibility</a></li><li id="menu-82457-1" class="middle even sf-item-4 sf-depth-2"><a href="/support/ways-to-give" class="sf-depth-2">Ways to Give</a></li><li id="menu-130138-1" class="last odd sf-item-5 sf-depth-2 sf-no-children"><a href="/support/contact" class="sf-depth-2">Contact Development &amp; Alumni Relations</a></li></ul></li></ul>  </div>
+</div>
+  </div>
+	            </div>
+			</div><!--/.navbar-collapse -->
+			<div class="utility-nav-bar">
+	            <div role="navigation" aria-label="Secondary Menu" class="navbar-form navbar-right">
+	                <!-- Utility Menu -->
+	                <ul id="resources-menu" class="nav navbar-nav">
+		                <div class="region region-resourcesmenu">
+    <div id="block-superfish-3" class="block block-superfish">
+
+    
+  <div class="content">
+    <ul  id="superfish-3" class="menu sf-menu sf-menu-utility-menu sf-horizontal sf-style-none sf-total-items-5 sf-parent-items-1 sf-single-items-4"><li id="menu-132920-3" class="first odd sf-item-1 sf-depth-1 sf-no-children"><a href="/academics/program-finder" class="sf-depth-1">Find a Program</a></li><li id="menu-132926-3" class="middle even sf-item-2 sf-depth-1 sf-no-children"><a href="https://www.gse.upenn.edu/request-information" target="_blank" class="sf-depth-1">Request Info</a></li><li id="menu-133205-3" class="middle odd sf-item-3 sf-depth-1 sf-no-children"><a href="/admissions/application-requirements-deadlines" class="sf-depth-1">Apply</a></li><li id="menu-133261-3" class="middle even sf-item-4 sf-depth-1 sf-no-children"><a href="https://giving.apps.upenn.edu/fund?program=GSE&amp;fund=342117&amp;bhcp=1" class="sf-depth-1">Make a Gift</a></li><li id="menu-132921-3" class="last odd sf-item-5 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 menuparent"><a href="/" class="sf-depth-1 menuparent">Info For</a><ul><li id="menu-132927-3" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/alumni" class="sf-depth-2">Alumni</a></li><li id="menu-133212-3" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="http://onepenn.gse.upenn.edu/student-services" class="sf-depth-2">Current Students</a></li><li id="menu-133213-3" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="http://onepenn.gse.upenn.edu" class="sf-depth-2">Staff &amp; Faculty</a></li><li id="menu-132923-3" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="/support/ways-to-give" class="sf-depth-2">Donors</a></li><li id="menu-132924-3" class="last odd sf-item-5 sf-depth-2 sf-no-children"><a href="/student/career-professional-development" class="sf-depth-2">Employers</a></li></ul></li></ul>  </div>
+</div>
+  </div>
+	                </ul>
+	                <!-- Search Bar -->
+	                <div class="search-header" role="search" style="display:none">
+	                       <div class="region region-search">
+    <div id="block-search-form" class="block block-search">
+
+    
+  <div class="content">
+    <form action="/explore-by-topic/education-innovation-entrepreneurship" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-EHDErgen97N-dRMtyzZQUNSKPpEk_TNwZT3oq84TLx0" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+</div>
+  </div>
+	                </div>
+	            </div>
+			</div>
+        </div>
+	</div>
+</div>
+	      <div id="breadcrumb-wrapper"> 
+<div id="breadcrumbs" role="navigation" aria-label="Breadcrumbs">
+    <h2 class="element-invisible">You are here</h2><div class="breadcrumb"><span class="inline odd first"><a href="/">Home</a></span> <span class="delimiter">&gt;</span> <span class="inline even"><a href="/explore-by-topic">Explore by Topic</a></span> <span class="delimiter">&gt;</span> <span class="inline odd last">Education Innovation &amp; Entrepreneurship</span></div></div>
+</div><!-- end banner -->
+	</div><!-- end banner-wrap -->
+          <div id="main-content-row" class="row">
+      					                                            <div id="main-content" role="main" class="col-md-12">
+                                                                                            <div class="region region-content">
+    <div id="block-block-118" class="block block-block">
+
+    
+  <div class="content">
+    <style type="text/css">
+.alert-info {
+    color: #00277F;
+    background-color: #efefef;
+    border-color: #ccc;
+    border-radius: 0;
+    padding: 20px;
+}
+
+.alert-info p {
+    margin: 15px 0;
+}
+
+.alert-info p+p {
+    margin-bottom: 10px;
+}
+.alert.alert-info.show-info-icon:before {
+    content: "\f05a";
+    display: inline-block;
+    float: left;
+    height: 80px;
+    width: 40px;
+    font-family: "Font Awesome 5 Pro";
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.page-node-8583 .alert.alert-info {
+    overflow-wrap: break-word;
+}
+
+.page-node-8583 #news-stories figcaption {
+    padding: 10px 15px 0;
+}
+
+.page-node-8583 #news-stories figcaption a {
+    color: #222 !important;
+    font-family: Lato, Arial, sans-serif !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+}
+
+.page-node-8583 .alert.alert-info {
+    overflow-wrap: break-word;
+}
+
+.page-node-8583 #news-stories figure {
+    border: 1px solid #dedede;
+    border-bottom: 5px solid #1e9ebb;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	function updateCancelledEventTitleHtml(el) {
+		var eventTitle = el.html().substr(10)
+		var titleWithCancelledWrapped = '<span style="color: #b90036">Cancelled:</span>' + eventTitle;
+		el.html(titleWithCancelledWrapped);
+	}
+
+	function updatePostponedEventTitleHtml(el) {
+		var eventTitle = el.html().substr(10)
+		var titleWithCancelledWrapped = '<span style="color: #b90036">Postponed:</span>' + eventTitle;
+		el.html(titleWithCancelledWrapped);
+	}
+
+	var title = $('.node-type-event h1.news-title');
+	if (title.length && title.eq(0).html().indexOf('Cancelled:') == 0) {
+		updateCancelledEventTitleHtml(title.eq(0));
+	}
+
+	var title = $('.node-type-event h1.news-title');
+	if (title.length && title.eq(0).html().indexOf('Postponed:') == 0) {
+		updatePostponedEventTitleHtml(title.eq(0));
+	}
+
+	var allEventTitles = $('.feed-panel .node-event .field-name-title a, .view-id-calendar_of_events.view-display-id-page_4 .views-field-title h2, .view-id-homepage_events_block .field-name-title a');
+	for (var i = 0; i < allEventTitles.length; i++) {
+	    if (allEventTitles.eq(i).html().indexOf('Cancelled:') == 0) {
+		    updateCancelledEventTitleHtml(allEventTitles.eq(i));
+	    }
+	    if (allEventTitles.eq(i).html().indexOf('Postponed:') == 0) {
+		    updatePostponedEventTitleHtml(allEventTitles.eq(i));
+	    }
+	}
+})
+</script>  </div>
+</div>
+<div id="block-block-104" class="block block-block">
+
+    
+  <div class="content">
+    <style type="text/css">
+td.table-highlight {
+    background: #90bac7;
+}
+
+td.table-highlight a {
+    color: #044053;
+}
+
+td.table-highlight a:hover {
+    color: #357c92;
+}
+</style>  </div>
+</div>
+<div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    
+
+<div  class="node node-gse-topic node-promoted view-mode-full ">
+
+
+<div class="container intro-content-container">
+  <div class="row">
+    <h1 class="title">Education Innovation & Entrepreneurship</h1>
+  <div class="intro-content">
+    <div class="intro-content-wrap">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><span>Penn GSE is a pioneer in innovation and entrepreneurship in education. We are passionate about developing new approaches to address pressing problems in education and to shape the future of education across preK–12, higher education, and learning for working professionals.</span></p></div></div></div>    </div>
+  </div>
+  </div><!-- end row -->
+</div><!-- end container -->
+<div class="row gse-topic-featured-news">
+  <div class="container">
+  <div class="col-sm-12 ">
+    <div class="below_intro-content-wrap">
+    <div class="field field-name-topic-node-related-news-with-fea field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div id="block-views-c96ef9c6c40ce1661190148619cd514e" class="block block-views">
+
+    
+  <div class="content">
+    <div class="view view-gse-topic-related-news-content view-id-gse_topic_related_news_content view-display-id-block view-dom-id-9a48f1d5ca055a8fe6e042aea4e76699">
+            <div class="view-header">
+      <style type="text/css">
+   #main-content .view-footer { clear: both; }
+.node-gse-topic .field-name-topic-node-related-news-with-fea .views-field-field-feature {
+    max-height: 400px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+</style>
+<h2>Featured News</h2>    </div>
+  
+  
+      <div class="attachment attachment-before">
+      <div class="view view-gse-topic-related-news-content view-id-gse_topic_related_news_content view-display-id-attachment_1">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last view-row-nid-10533">
+      
+  <div class="views-field views-field-field-feature">        <div class="field-content"><img src="https://www.gse.upenn.edu/sites/default/files/penngse_give_to_students_kane_main.jpg" width="650" height="450" alt="Headshot of Andrea Kane wearing a tan blazer with lines, against a blurred backdrop." /></div>  </div>  
+  <div class="views-field views-field-field-image">        <div class="field-content"></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/news/%E2%80%9C-theme-we-give-students%E2%80%9D-penn-gse%E2%80%99s-dr-andrea-kane-school-leadership-and-supporting-students%E2%80%99"><h3>“The Theme Is that We Give to Students”: Penn GSE’s Dr. Andrea Kane on School Leadership and Supporting Students’ Potential</h3></a></span>  </div>  
+  <div class="views-field views-field-field-news-date field-name-field-news-date">        <div class="field-content"><span class="date-display-single">May 13, 2022</span></div>  </div>  
+  <div class="views-field views-field-field-news-front-teaser">        <div class="field-content"><p>New faculty member and former superintendent Dr. Andrea Kane shares her expertise in instructional leadership, access and equity, and more, as she brings her perspective from twenty-five years in public schools to Penn GSE.</p></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+    
+
+<div  class="node node-gse-news view-mode-topic_page_display node-nid-10528">
+
+
+<div class="row">
+<div class="col-sm-4 ">
+<div class="field field-name-field-news-front-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/penngse_breaking_ground_thumb.jpg" width="130" height="90" alt="Shiny blue hardhats with the “Extraordinary Impact” logo sit on a table." /></div></div></div></div>
+
+<div class="col-sm-8 ">
+<div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><h3 class="pseudo-h4 bg-lilacish"><a href="/news/breaking-ground-penn-gse%E2%80%99s-second-century-penn-gse-launches-historic-building-expansion">Breaking Ground for Penn GSE’s Second Century: Penn GSE Launches Historic Building Expansion</a></h3></div></div></div><div class="field field-name-field-news-date field-type-date field-label-hidden"><div class="field-items"><div class="field-item even"><span class="date-display-single">May 13, 2022</span></div></div></div></div>
+
+</div>
+</div>
+
+
+  </div>
+  <div class="views-row views-row-2 views-row-even">
+    
+
+<div  class="node node-gse-news view-mode-topic_page_display node-nid-10532">
+
+
+<div class="row">
+<div class="col-sm-4 ">
+<div class="field field-name-field-news-front-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/penngse_professional_growth_collaboration_thumb.jpg" width="130" height="90" alt="A close-up of Penn’s College Hall shows a stone wall with two vertical windows outlined in red, seen between green tree branches." /></div></div></div></div>
+
+<div class="col-sm-8 ">
+<div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><h3 class="pseudo-h4 bg-lilacish"><a href="/news/professional-growth-through-collaboration-penn-gse-center-professional-learning-builds-networks">Professional Growth Through Collaboration: The Penn GSE Center for Professional Learning Builds Networks</a></h3></div></div></div><div class="field field-name-field-news-date field-type-date field-label-hidden"><div class="field-items"><div class="field-item even"><span class="date-display-single">May 13, 2022</span></div></div></div></div>
+
+</div>
+</div>
+
+
+  </div>
+  <div class="views-row views-row-3 views-row-odd">
+    
+
+<div  class="node node-gse-news view-mode-topic_page_display node-nid-10531">
+
+
+<div class="row">
+<div class="col-sm-4 ">
+<div class="field field-name-field-news-front-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/penngse_workforce_alumni_thumb.jpg" width="130" height="90" alt="Digitally illustrated human figures in different bright colors in stand on a newspaper page titled “JOBS” that contains various job listings." /></div></div></div></div>
+
+<div class="col-sm-8 ">
+<div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><h3 class="pseudo-h4 bg-lilacish"><a href="/news/opening-doors-and-reimagining-learning-penn-gse-alumni-shape-workforce">Opening Doors and Reimagining Learning: Penn GSE Alumni Shape the Workforce</a></h3></div></div></div><div class="field field-name-field-news-date field-type-date field-label-hidden"><div class="field-items"><div class="field-item even"><span class="date-display-single">May 13, 2022</span></div></div></div></div>
+
+</div>
+</div>
+
+
+  </div>
+  <div class="views-row views-row-4 views-row-even views-row-last">
+    
+
+<div  class="node node-gse-news node-promoted view-mode-topic_page_display node-nid-10464">
+
+
+<div class="row">
+<div class="col-sm-4 ">
+<div class="field field-name-field-news-front-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/catapult_thumb.png" width="130" height="90" alt="Catapult logo and symbol" /></div></div></div></div>
+
+<div class="col-sm-8 ">
+<div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><h3 class="pseudo-h4 bg-lilacish"><a href="/news/first-catapult-cohort">Charting a course for the future of EdTech: The inaugural Catapult cohort</a></h3></div></div></div><div class="field field-name-field-news-date field-type-date field-label-hidden"><div class="field-items"><div class="field-item even"><span class="date-display-single">April 12, 2022</span></div></div></div></div>
+
+</div>
+</div>
+
+
+  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <a href="/news" class="rm-text-link pull-right">See all News &gt;</a>    </div>
+  
+  
+</div>  </div>
+</div>
+</div></div></div>    </div>
+  </div>
+  </div>
+</div><!-- end featured_news --> 
+<div class="upper-checkerboard-outer-wrap">
+  <div class="upper-checkerboard-container container">
+      <div class="checkerboard-wrap">
+        <div id="content-photo-panel-0" class="content-photo-panel photoright-layout content-photo-panel-type-video  wide-image">   <div class="content-photo-photo content-photo-video"><div class="embedded-video"><iframe title="Video" src="//player.vimeo.com/video/237817308?color=ffffff&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div></div>   <div class="content-photo-content"><h3>Putting Synthetic Biology in the Hands of High School Students</h3><p>Penn GSE's <a href="http://scholar.gse.upenn.edu/kafai">Yasmin Kafai</a> is bringing the new field of synthetic biology into Philadelphia high schools. Kafai is collaborating with PennDesign's Orkan Telhan to develop affordable, safe, and user-friendly synthetic biology wetlab kits for high school students. Students use the kits to build genetic circuits, which they insert into microorganisms to manipulate the color, smell, and shape of the organisms.&nbsp;</p></div><div class="push"></div></div><div id="content-photo-panel-1" class="content-photo-panel photoleft-layout content-photo-panel-type-photo  wide-image">   <div class="content-photo-photo"><img alt="Rendering of overall look of the capital building expansion for Penn GSE" src="https://www.gse.upenn.edu/sites/default/files/rendering-EastwardExpansion_2.jpg" /></div>   <div class="content-photo-content"><h3>A Landmark of Twenty-First Century Learning: Penn GSE Plans State-of-the-Art Home for Education on Campus</h3><p>This is a tremendous opportunity for Penn GSE to design educational spaces from the ground up, based upon cutting-edge knowledge of how to support active learning."</p><p class="quote-attribution">— <a href="http://scholar.gse.upenn.edu/grossman">Dean Pam Grossman</a></p></div><div class="push"></div></div>      </div>
+  </div>
+</div>
+  <div class="embedded-events-panel">
+    <div id="feed-panel-0" class="basic-panel feed-panel feed-panel-1-items feed-panel-type-event feed-panel-has-featured-no"><div class="feed-panel-content-outer-wrap"><div class="feed-panel-content-wrapper container "><div class="feed-panel-top-content"><h2>Events</h2></div><div class="feed-panel-feed-content"><div class='feed-panel-feed-item feed-panel-feed-item--featured-item'><div  class="ds-1col node node-event view-mode-landing_page_default  clearfix">
+
+  
+  <div class="event-date"><span class="date-display-single">Nov 1</span></div><div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><h3><a href="/event/education-entrepreneurship-program-information-session-1">Education Entrepreneurship Program Information Session</a></h3></div></div></div><span><div class="event-date--full"><div class="field field-name-field-date field-type-datetime field-label-hidden"><div class="field-items"><div class="field-item even"><span class="date-display-single">Tuesday, November 1, 2022 - 12:00pm</span></div></div></div></div></span><span class="field field-name-field-date-time-note field-type-text field-label-hidden" >ET</span><br /><div class="event-location">Online</div><div class="field field-name-field-event-short-description field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"></div></div></div></div>
+
+</div></div><div class="feed-panel-bottom-content"></div></div><!-- end content-wrapper --></div><!-- end feed-panel-content-outer-wrap --><div class="push"></div></div>  </div>
+<div class="main-region-wrap">
+  <div class="container main-region-container">
+    <div class="row">
+      <div class="col-sm-12 ">
+        <div class="main-content-wrap">
+        <div class="related-programs-wrap"><h2>Related Programs</h2><div  class="ds-1col node node-gse-program node-promoted view-mode-topic_page_display  clearfix">
+
+  
+  <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="pseudo-h4 bg-moss"><a href="/academics/programs/education-entrepreneurship-masters">Education Entrepreneurship M.S.Ed.</a></div></div></div></div></div>
+
+<div  class="ds-1col node node-gse-program node-promoted view-mode-topic_page_display  clearfix">
+
+  
+  <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="pseudo-h4 bg-moss"><a href="/academics/professional-development-continuing-education/experiences-applied-computational-thinking-certificate">Experiences in Applied Computational Thinking</a></div></div></div></div></div>
+
+<div  class="ds-1col node node-gse-program node-promoted view-mode-topic_page_display  clearfix">
+
+  
+  <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="pseudo-h4 bg-moss"><a href="/academics/programs/learning-sciences-technology-masters">Learning Sciences and Technologies M.S.Ed.</a></div></div></div></div></div>
+
+<div  class="ds-1col node node-gse-program node-promoted view-mode-topic_page_display  clearfix">
+
+  
+  <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="pseudo-h4 bg-moss"><a href="/academics/programs/medical-education-masters">Medical Education M.S.Ed.</a></div></div></div></div></div>
+
+<div  class="ds-1col node node-gse-program node-promoted view-mode-topic_page_display  clearfix">
+
+  
+  <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="pseudo-h4 bg-moss"><a href="/academics/programs/penn-chief-learning-officer-edd">Penn Chief Learning Officer Ed.D.</a></div></div></div></div></div>
+
+<div  class="ds-1col node node-gse-program node-promoted view-mode-topic_page_display  clearfix">
+
+  
+  <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="pseudo-h4 bg-moss"><a href="/academics/center-professional-learning/project-based-learning-certificate">Project-Based Learning</a></div></div></div></div></div>
+
+<div  class="ds-1col node node-gse-program node-promoted view-mode-topic_page_display  clearfix">
+
+  
+  <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div class="pseudo-h4 bg-moss"><a href="/academics/professional-development-continuing-education/virtual-online-teaching-certificate">Virtual Online Teaching Program</a></div></div></div></div></div>
+
+</div><div><a class="btn btn-special btn-cta btn-inline btn-wide" href="/academics/program-finder">Find a Program</a></div>        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row gse-topic-faculty-experts">
+  <div class="col-sm-12 ">
+  <div class="container">
+    <div class="below_intro-content-wrap">
+    <div class="field field-name-topic-related-faculty field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div id="block-views-topic-related-faculty-block" class="block block-views">
+
+    <h2>Faculty Experts</h2>
+  
+  <div class="content">
+    <div class="view view-topic-related-faculty view-id-topic_related_faculty view-display-id-block view-dom-id-e399941fa30a395ae702215de01f7925">
+            <div class="view-header">
+      <style>
+  .view-faculty-associated-programs .field-content {
+   padding-left: 10px;
+   }
+
+</style>    </div>
+  
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-field-faculty-photo">        <div class="field-content"><img src="https://www.gse.upenn.edu/sites/default/files/Herrmann%20Zachary%20thumb.jpg" width="180" height="225" alt="Penn GSE Faculty Zachary Herrmann" /></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/academics/faculty-directory/herrmann">Zachary Herrmann</a></span>  </div>  
+  <div class="views-field views-field-field-title">        <div class="field-content">Adjunct Assistant Professor</div>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-field-faculty-photo">        <div class="field-content"><img src="https://www.gse.upenn.edu/sites/default/files/Kafai_Yasmin%20Oct%202018%20thumb.jpg" width="180" height="225" alt="Penn GSE Faculty Yasmin B. Kafai" /></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/academics/faculty-directory/kafai">Yasmin B. Kafai</a></span>  </div>  
+  <div class="views-field views-field-field-title">        <div class="field-content">Lori and Michael Milken President’s Distinguished Professor</div>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-field-faculty-photo">        <div class="field-content"><img src="https://www.gse.upenn.edu/sites/default/files/Amy-Stornaiuolo-thumbnail.jpg" width="180" height="225" alt="Penn GSE Faculty Amy Stornaiuolo" /></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/academics/faculty-directory/stornaiuolo">Amy Stornaiuolo</a></span>  </div>  
+  <div class="views-field views-field-field-title">        <div class="field-content">Associate Professor</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <div class="text-center">
+  <a class="btn btn-inline" href="/news/find-an-expert?topic=7404">View all Topic Experts</a>
+<div></div></div>    </div>
+  
+  
+</div>  </div>
+</div>
+</div></div></div><div class="field field-name-for-the-media-block field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even"><div id="block-block-82" class="block block-block">
+
+    
+  <div class="content">
+    <h2 class="text-lg text-header" style="margin-bottom: 10px; margin-top: 10px; font-size: 26px; font-family: Lato; font-weight: bold;">Media Inquiries</h2><p class="sidebar-copy">Penn GSE Communications is here to help reporters connect with the education experts they need.</p><p class="sidebar-copy" style="margin-top: 18px;"><strong>Contact us</strong></p><address style="margin-top: 6px;"><p style="margin-bottom:24px;"><strong>Kat Stein</strong><br />Executive Director of Penn GSE Communications <br />(215) 898-9642<br /><a href="mailto:katstein@gse.upenn.edu">katstein@upenn.edu</a> </p><p style="margin-bottom:24px;"><strong>Matthew Vlahos</strong><br />Senior Associate Director of Penn GSE Communications<br />(215) 898-3269<br /><a href="mailto:vlahos@upenn.edu">vlahos@upenn.edu </a></p></address>  </div>
+</div>
+</div></div></div>    </div>
+  </div>
+  </div>
+</div>
+<div class="below-outer-wrap" class="row">
+<div class="col-sm-12 ">
+  <div class="below-main-content-wrap">
+    <div class="container">
+      <h2 class="label-above">Featured Research</h2>
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="/about-penn-gse/catalyst">Catalyst @ Penn GSE</a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>A center for global education innovation, Catalyst @ Penn GSE connects people and ideas to develop new ways to advance education in novel and meaningful directions.</p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+      <div class="field field-name-field-logo field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/Catalyst-Boot-Camp.jpeg" width="400" height="266" alt="Participants in Penn GSE Catalyst Entrepreneurship Boot Camp" /></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="/about-penn-gse/catalyst/coalition-for-educational-equity">Coalition for Educational Equity</a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The Coalition for Educational Equity provides innovative resources, research-based training, and technical assistance and consultation to school district leaders throughout the Mid-Atlantic region in Pennsylvania, New Jersey, and New York.</p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+      <div class="field field-name-field-logo field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/Kindergarden-Classroom-table.jpeg" width="400" height="266" alt="Kindergarten classroom" /></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="https://collaboratory.gse.upenn.edu/">Collaboratory for Teacher Education</a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The Collaboratory for Teacher Education at Penn GSE is a laboratory for the design, implementation, and study of experimental approaches to teacher education.</p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+      <div class="field field-name-field-logo field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/powell-mural.jpg" width="650" height="400" alt="Mural depicting a child writing." /></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="https://www.educationcompetition.org/">Milken-Penn GSE Education Business Plan Competition</a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The EBPC is considered the most prestigious and well-funded education business plan competition, celebrating and nurturing meaningful innovations in education, offering a full range of supports to elevate ideas to the next level and move research into practice.  </p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+      <div class="field field-name-field-logo field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/EBPC-01.jpg" width="650" height="400" alt="Education Business Plan Competition participants." /></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="http://www.upenn.edu/learninganalytics/index.html">Penn Center for Learning Analytics </a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The Penn Center for Learning Analytics uses a blend of large-scale and small-scale research methods, from analytics and data mining to ethnographic and field observation methods, to study learning and engagement.</p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+      <div class="field field-name-field-logo field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/Penn-Center-for-Learning-Analytics-logo.jpg" width="562" height="346" alt="Penn Center for Learning Analytics logo" /></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="https://pln.gse.upenn.edu/">Penn Literacy Network </a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The Penn Literacy Network (PLN) is a comprehensive professional development/curricular enhancement/school reform program, providing on-site and regionally-based credit-bearing or non-credit bearing courses, workshops, coaching programs, and leadership trainings.</p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+      <div class="field field-name-field-logo field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/Penn-literacy-network-logo.jpg" width="562" height="346" alt="Penn Literacy Network logo" /></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="/academics/research/penn-project-civic-engagement">The Penn Project for Civic Engagement</a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The Penn Project for Civic Engagement is a cross-University project that collaborates with media, business and community agencies to identify and address projects on emerging issues. It links citizen concerns to expert knowledge and media coverage, to develop real-world solutions that might not emerge otherwise.</p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+          </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+
+
+<div  class="node node-center-initative node-promoted node-teaser view-mode-teaser ">
+    <div class="row">
+    <div class="col-sm-9 ">
+      <h3><a href="https://www.mcgrawprize.com/">Harold W. McGraw, Jr. Prize in Education</a></h3><div class="field field-name-field-teaser field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The Harold W. McGraw, Jr. Prize in Education celebrates innovation in education by recognizing outstanding individuals who have dedicated themselves to improving education and whose accomplishments are making a difference today.</p></div></div></div>    </div>
+    <div class="col-sm-3 ">
+      <div class="field field-name-field-logo field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.gse.upenn.edu/sites/default/files/mcgraw-prize-logo-card.png" width="1000" height="650" alt="Harold W. McGraw, Jr. Prize in Education Logo" /></div></div></div>    </div>
+  </div>
+</div>
+
+
+<!-- Needed to activate display suite support on forms -->
+<a class="rm-text-link text-lg" href="/academics/research">See all Penn GSE Research &gt;</a>    </div>
+  </div>
+</div>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="checkerboard-wrap">
+              </div>
+  </div>
+</div>
+
+<div class="container related_content-container">
+  <div class="row related_content-row">
+    <div class="col-sm-12 ">
+    <div class="related_content-content-wrap">
+    <div class="group-interested field-group-div"><h2><span>You May Be Interested In</span></h2><div class="field field-name-field-you-may-be-interested-in field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><h3>Related Topics</h3><ul><li><a href="/explore-by-topic/global-initiatives">Global Initiatives</a></li><li><a href="/explore-by-topic/higher-education">Higher Education</a></li><li><a href="/explore-by-topic/leadership">Leadership</a></li><li><a href="/explore-by-topic/philadelphia-impact">Philadelphia Impact</a></li><li><a href="/explore-by-topic/teaching-learning">Teaching &amp; Learning</a></li></ul></div></div></div></div>    </div>
+  </div>
+  </div>
+</div>
+
+</div>
+
+
+  </div>
+</div>
+  </div>
+              </div><!-- end main-content -->
+                  </div><!-- end main-content-row -->
+      <div id="push"></div>
+</div>
+<!-- END WRAP FOR STICKY FOOTER -->
+<!-- START FOOTER SECTION -->
+<footer class="footer">
+    <a id="footer" name="footer"></a>
+    <div class="footer-nav-row row">
+      <div class="col-sm-6 col-md-4 address-column">
+          <div class="region region-footer-col-1">
+    <div id="block-block-105" class="block block-block">
+
+    
+  <div class="content">
+    <div><a href="/"><img src="/sites/default/themes/gse_2019/img/PennGSE_UPenn_Logo.png" alt="Penn GSE Logo" /></a></div><address><p><strong>University of Pennsylvania<br />Graduate School of Education</strong><br/><span style="font-size: 16px">3700 Walnut Street<br />Philadelphia, PA 19104</span></p><p style="font-size: 16px;">1-877-PENN-GSE<br/><a href="mailto:admissions@gse.upenn.edu">admissions@gse.upenn.edu</a></p></address>  </div>
+</div>
+  </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+          <div class="region region-footer-col-2">
+    <div id="block-block-106" class="block block-block">
+
+    
+  <div class="content">
+    <ul><li><a href="/about-penn-gse">About</a></li><li><a href="/admissions">Admissions &amp; Financial Aid</a></li><li><a href="/academics/program-finder">Find a Program</a></li><li><a href="/admissions/visits">Visiting Campus</a></li><li><a href="/alumni">Alumni</a></li><li><a href="/about-penn-gse/diversity-inclusion">Diversity &amp; Inclusion</a></li><li><a href="/academics/faculty-directory">Faculty Directory</a></li><li><a href="/academics/faculty-directory/open-faculty-positions">Open Faculty Positions</a></li><li><a href="/support">Support Penn GSE</a></li></ul>  </div>
+</div>
+  </div>
+      </div>
+      <div class="col-sm-6 col-md-3 sm-below-address-column">
+          <div class="region region-footer-col-3">
+    <div id="block-block-108" class="block block-block">
+
+    
+  <div class="content">
+    <ul><li><a href="/academiccalendar" target="_blank">Academic Calendar</a></li><li><a href="/news/events-calendar">Events Calendar</a></li><li><a href="/student/career-professional-development">Career &amp; Professional Development</a></li><li><a href="https://canvas.upenn.edu">Canvas Access</a></li><li><a href="http://pennintouch.apps.upenn.edu/">PennInTouch</a></li><li><a href="http://www.library.upenn.edu/">Libraries</a></li><li><a href="https://onepenn.gse.upenn.edu/student-records-registrar">Registrar/Student Records Office</a></li><li><a href="http://www.upenn.edu/computing/webmail/">Webmail</a></li></ul>  </div>
+</div>
+  </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+          <div class="region region-footer-col-4">
+    <div id="block-block-107" class="block block-block">
+
+    
+  <div class="content">
+    <ul><li><a href="https://onepenn.gse.upenn.edu/business-office">Business Office</a></li><li><a href="https://onepenn.gse.upenn.edu/facility-services">Facility Services</a></li><li><a href="https://onepenn.gse.upenn.edu/human-resources">Human Resources</a></li><li><a href="https://onepenn.gse.upenn.edu/information-technology">Information Technology</a></li><li><a href="https://onepenn.gse.upenn.edu/human-resources/staff-directory">Staff Directory</a></li><li><a href="http://www.upenn.edu/u@penn">U@Penn</a></li></ul><p style="font-size: 14px; font-style: italic; margin-right: 50px; line-height: 17px;"><a class="external-link" href="https://accessibility.web-resources.upenn.edu/get-help">Report accessibility issues and request help</a></p>  </div>
+</div>
+  </div>
+      </div>
+    </div>
+    <div class="footer-copyright-row row">
+      <div class="col-sm-12">
+        <p>&copy; 2022 Penn Graduate School of Education</p>
+              </div>
+    </div>
+    <div class="footer-social-row row">
+      <div class="col-sm-4">
+        <div class="penn-logo">
+          <img src="/sites/gse.upenn.edu/themes/gse_2019/img/UniversityofPennsylvania_FullLogo_RGB.png" alt="University of Pennsylvania Logo" style="width:200px;" />
+        </div>
+      </div>
+      <div class="social-icons col-sm-8 text-right">
+          <div class="region region-below-footer">
+    <div id="block-block-109" class="block block-block">
+
+    
+  <div class="content">
+    <a class="fa-icon fab fa-facebook-f" href="https://www.facebook.com/penngse/ ">Facebook</a> <a class="fa-icon fab fa-twitter" href="https://twitter.com/PennGSE">Twitter</a> <a class="fa-icon fab fa-vimeo-v" href="https://vimeo.com/penngse">Vimeo</a> <a class="fa-icon fab fa-linkedin" href="https://www.linkedin.com/school/penngse">LinkedIn</a> <a class="fa-icon fab fa-instagram" href="https://www.instagram.com/penngse">Instagram</a>  </div>
+</div>
+<div id="block-block-112" class="block block-block">
+
+    
+  <div class="content">
+    <p><a href="https://www.upenn.edu/about/disclaimer">Disclaimer</a>  |  <a href="https://www.upenn.edu/about/privacy_policy">Privacy Policy</a>  |  <a href="https://onepenn.gse.upenn.edu/human-resources/policies-procedures/equal-opportunity-harassment">Penn GSE Equal Opportunity &amp; Harassment Policies</a></p>  </div>
+</div>
+  </div>
+      </div>
+    </div>
+</footer><!--- END FOOTER -->
+  <script type="text/javascript">
+      $(document).ready(function(){
+      $('h1.title').html('Education Innovation & Entrepre&shy;neurship');
+});  </script>
+     <!-- Additional Styles & Scripts. -->
+  
+  
+   <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-1aa00bfcf66dd80d478","applicationID":"217948986","transactionName":"Z1ZWYkdSDEsAUhIKV14cdVVBWg1WTl8JB11vQ1VRUGwUUQRG","queueTime":0,"applicationTime":4392,"atts":"SxFVFA9IH0U=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

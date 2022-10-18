@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+	<html class="no-js ie8" lang="en-US">
+<![endif]-->
+<!--[if IE 9 ]>
+	<html class="no-js ie9" lang="en-US">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en-US"><!--<![endif]-->
+	<head>
+			<style>.async-hide { opacity: 0 !important} </style>
+	<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+	})(window,document.documentElement,'async-hide','dataLayer',4000,
+	{'GTM-PXDNXK':true});</script>
+	   <!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-Q7KH');</script>
+	<!-- End Google Tag Manager -->
+  		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"3bc688e83b",applicationID:"183476221"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(9),c=t(10),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(11);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(8),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],7:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],8:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],9:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],10:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],11:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(9),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!M++){var t=T.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(x,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+T.offset],null,"api"),c("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){c("mark",["domContent",a()+T.offset],null,"api")}var a=t(5),c=t("handle"),f=t(9),u=t("ee"),s=t(7),d=t(2),p=t(3),l=d.getConfiguration("ssl")===!1?"http":"https",v=window,m=v.document,g="addEventListener",y="attachEvent",h=v.XMLHttpRequest,w=h&&h.prototype,b=!1;NREUM.o={ST:setTimeout,SI:v.setImmediate,CT:clearTimeout,XHR:h,REQ:v.Request,EV:v.Event,PR:v.Promise,MO:v.MutationObserver};var E=""+location,x={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},O=h&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(6),m[g]?(m[g]("DOMContentLoaded",o,p(!1)),v[g]("load",r,p(!1))):(m[y]("onreadystatechange",i),v[y]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var M=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(10),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="https://executiveeducation.wharton.upenn.edu/xmlrpc.php">
+		<link rel="icon" type="image/x-icon" href="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/favicon.ico" /><link rel="apple-touch-icon" sizes="180x180" href="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/apple-touch-icon.png" /><link rel="mask-icon" color="#004785" href="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/penn-logo-mask.svg" /><script type="text/javascript">window.ajaxurl = "https://executiveeducation.wharton.upenn.edu/wp-admin/admin-ajax.php"</script>
+		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+		
+<!-- Social Warfare v4.3.0 https://warfareplugins.com - BEGINNING OF OUTPUT -->
+<style>
+	@font-face {
+		font-family: "sw-icon-font";
+		src:url("https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.3.0");
+		src:url("https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.eot?ver=4.3.0#iefix") format("embedded-opentype"),
+		url("https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.woff?ver=4.3.0") format("woff"),
+		url("https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.ttf?ver=4.3.0") format("truetype"),
+		url("https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/fonts/sw-icon-font.svg?ver=4.3.0#1445203416") format("svg");
+		font-weight: normal;
+		font-style: normal;
+		font-display:block;
+	}
+</style>
+<!-- Social Warfare v4.3.0 https://warfareplugins.com - END OF OUTPUT -->
+
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v18.1 (Yoast SEO v18.5.1) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Innovation Tournaments — Nano Tools for Leaders</title>
+	<meta name="description" content="Create and select exceptional opportunities for innovation. An innovation tournament is one such approach. This is a structured, multi-round competition based on the Darwinian principle of the &quot;survival of the fittest.&quot;" />
+	<link rel="canonical" href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Innovation Tournaments: More and Better Ideas" />
+	<meta property="og:description" content="Create and select exceptional opportunities for innovation. An innovation tournament is one such approach. This is a structured, multi-round competition based on the Darwinian principle of the &quot;survival of the fittest.&quot;" />
+	<meta property="og:url" content="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/" />
+	<meta property="og:site_name" content="Wharton Executive Education" />
+	<meta property="article:modified_time" content="2018-08-16T14:11:11+00:00" />
+	<meta property="og:image" content="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/social.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/social.png" />
+	<meta name="twitter:label1" content="Est. reading time" />
+	<meta name="twitter:data1" content="4 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://executiveeducation.wharton.upenn.edu/#organization","name":"Wharton Executive Education","url":"https://executiveeducation.wharton.upenn.edu/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://executiveeducation.wharton.upenn.edu/#logo","inLanguage":"en-US","url":"https://executiveeducation.wharton.upenn.edu/wp-content/uploads/2018/04/Wharton-ExecEd-2017_LG-01.png","contentUrl":"https://executiveeducation.wharton.upenn.edu/wp-content/uploads/2018/04/Wharton-ExecEd-2017_LG-01.png","width":320,"height":70,"caption":"Wharton Executive Education"},"image":{"@id":"https://executiveeducation.wharton.upenn.edu/#logo"}},{"@type":"WebSite","@id":"https://executiveeducation.wharton.upenn.edu/#website","url":"https://executiveeducation.wharton.upenn.edu/","name":"Wharton Executive Education","description":"","publisher":{"@id":"https://executiveeducation.wharton.upenn.edu/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://executiveeducation.wharton.upenn.edu/search/#q={search_term_string}&t=ThisSite"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/#webpage","url":"https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/","name":"Innovation Tournaments — Nano Tools for Leaders","isPartOf":{"@id":"https://executiveeducation.wharton.upenn.edu/#website"},"datePublished":"2011-03-01T05:00:00+00:00","dateModified":"2018-08-16T14:11:11+00:00","description":"Create and select exceptional opportunities for innovation. An innovation tournament is one such approach. This is a structured, multi-round competition based on the Darwinian principle of the \"survival of the fittest.\"","breadcrumb":{"@id":"https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/"]}]},{"@type":"BreadcrumbList","@id":"https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://executiveeducation.wharton.upenn.edu/"},{"@type":"ListItem","position":2,"name":"Wharton@Work","item":"https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/"},{"@type":"ListItem","position":3,"name":"Innovation Tournaments: More and Better Ideas"}]}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//executiveeducation.wharton.upenn.edu' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Wharton Executive Education &raquo; Feed" href="https://executiveeducation.wharton.upenn.edu/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Wharton Executive Education &raquo; Comments Feed" href="https://executiveeducation.wharton.upenn.edu/comments/feed/" />
+<link rel='stylesheet' id='social-warfare-block-css-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/js/post-editor/dist/blocks.style.build.css?ver=5.9.4' type='text/css' media='all' />
+<link rel='stylesheet' id='wpmf-bakery-style-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/wp-media-folder//assets/css/vc_style.css?ver=5.3.21' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://executiveeducation.wharton.upenn.edu/wp-includes/css/dist/block-library/style.min.css?ver=5.9.4' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='social_warfare-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/css/style.min.css?ver=4.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-mobile-style-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/themes/responsive-mobile/css/style.css?ver=0.0.10' type='text/css' media='all' />
+<link rel='stylesheet' id='vc_plugin_table_style_css-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/easy-tables-vc/assets/css/style.min.css?ver=2.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='vc_plugin_themes_css-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/easy-tables-vc/assets/css/themes.min.css?ver=2.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_custom_css-css'  href='//executiveeducation.wharton.upenn.edu/wp-content/uploads/js_composer/custom.css?ver=6.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='martech-chupacabra-style-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/css/style-v2.css?ver=3.41.10' type='text/css' media='all' />
+<link rel='stylesheet' id='martech-chupacabra-style-v3-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/css/style.css?ver=3.41.10' type='text/css' media='all' />
+<link rel='stylesheet' id='martech-chupacabra-style-print-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/css/print.css?ver=3.41.10' type='text/css' media='print' />
+<link rel='stylesheet' id='responsive-mobile-child-style-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/themes/Chupe2-0-child/style.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wee-styles-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/wharton-execed/includes/css/style.css?ver=1.51' type='text/css' media='all' />
+<link rel='stylesheet' id='wee-print-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/wharton-execed/includes/css/print.css?ver=0.1' type='text/css' media='print' />
+<link rel='stylesheet' id='bsf-Defaults-css'  href='https://executiveeducation.wharton.upenn.edu/wp-content/uploads/smile_fonts/Defaults/Defaults.css?ver=3.19.11' type='text/css' media='all' />
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<link rel="https://api.w.org/" href="https://executiveeducation.wharton.upenn.edu/wp-json/" /><link rel="alternate" type="application/json" href="https://executiveeducation.wharton.upenn.edu/wp-json/wp/v2/wee_waw/67473" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://executiveeducation.wharton.upenn.edu/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://executiveeducation.wharton.upenn.edu/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.9.4" />
+<link rel='shortlink' href='https://executiveeducation.wharton.upenn.edu/?p=67473' />
+    <script type="text/javascript">
+        var MTIProjectId='9c101523-c9e9-4e52-b751-a5b16576f638';
+        (function() {
+            var mtiTracking = document.createElement('script');
+            mtiTracking.type='text/javascript';
+            mtiTracking.async='true';
+             mtiTracking.src='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/fonts/mtiFontTrackingCode.js';
+            (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild( mtiTracking );
+        })();
+    </script><meta name="martech:page-title" content="Innovation Tournaments: More and Better Ideas"><meta name="martech:site-title" content="Wharton Executive Education"><meta name="martech:site-pname" content="wharton-executiveeducation"><meta name="martech:site-penv" content="live"><meta name="martech:site-hostname" content="executiveeducation.wharton.upenn.edu"><meta name="martech:archive" content="false"><meta name="martech:home" content="false"><meta name="martech:content-type" content="wee_waw"><meta name="martech:tag" content=""><meta name="martech:category" content=""><meta name="martech:thumbnail" content="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/social.png">
+        <script type="text/javascript">
+            var jQueryMigrateHelperHasSentDowngrade = false;
+
+			window.onerror = function( msg, url, line, col, error ) {
+				// Break out early, do not processing if a downgrade reqeust was already sent.
+				if ( jQueryMigrateHelperHasSentDowngrade ) {
+					return true;
+                }
+
+				var xhr = new XMLHttpRequest();
+				var nonce = '139c0ce9a3';
+				var jQueryFunctions = [
+					'andSelf',
+					'browser',
+					'live',
+					'boxModel',
+					'support.boxModel',
+					'size',
+					'swap',
+					'clean',
+					'sub',
+                ];
+				var match_pattern = /\)\.(.+?) is not a function/;
+                var erroredFunction = msg.match( match_pattern );
+
+                // If there was no matching functions, do not try to downgrade.
+                if ( typeof erroredFunction !== 'object' || typeof erroredFunction[1] === "undefined" || -1 === jQueryFunctions.indexOf( erroredFunction[1] ) ) {
+                    return true;
+                }
+
+                // Set that we've now attempted a downgrade request.
+                jQueryMigrateHelperHasSentDowngrade = true;
+
+				xhr.open( 'POST', 'https://executiveeducation.wharton.upenn.edu/wp-admin/admin-ajax.php' );
+				xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+				xhr.onload = function () {
+					var response,
+                        reload = false;
+
+					if ( 200 === xhr.status ) {
+                        try {
+                        	response = JSON.parse( xhr.response );
+
+                        	reload = response.data.reload;
+                        } catch ( e ) {
+                        	reload = false;
+                        }
+                    }
+
+					// Automatically reload the page if a deprecation caused an automatic downgrade, ensure visitors get the best possible experience.
+					if ( reload ) {
+						location.reload();
+                    }
+				};
+
+				xhr.send( encodeURI( 'action=jquery-migrate-downgrade-version&_wpnonce=' + nonce ) );
+
+				// Suppress error alerts in older browsers
+				return true;
+			}
+        </script>
+
+		<meta name="martech:intranet" content="false"><meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>	</head>
+
+<body class="wee_waw-template-default single single-wee_waw postid-67473 default-site-header wharton-executiveeducation martech-menu--default wee_waw-innovation-tournaments full-window-home-page-header wpb-js-composer js-comp-ver-6.9.0 vc_responsive" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-Q7KH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager -->
+        
+<script>
+	
+	
+	
+	
+	
+	
+	
+	</script>
+<div id="container" class="site">
+	<nav id="jump-links" aria-label="Jump links">
+		<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+		<a class="skip-link screen-reader-text" href="#main-navigation">Skip to main menu</a>
+	</nav>
+<style>.header_alert{background-color:#fcd787;}.header_alert *:not(a) {color:#2d2c41;}</style><div class="container-full-width header_alert"><div class="header_alert__inner"><div class="header_alert__close"><button id="AlertClose" class="ha_close__button"><i class="fa fa-times"></i></button></div><div class="header_alert__content"><h4 style="text-align:center;margin-bottom:0;"><a style="color:#ae243a !important;border-bottom:1px solid #ae243a !important;" href="https://executiveeducation.wharton.upenn.edu/coronavirus-response/" target="_blank" >Read Wharton Executive Education’s COVID-19 Safety Policy</a></h4>
+</div></div></div>	<header id="header" class="container-full-width site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+		<div id="top-menu-container" class="group header--container">
+			<a href="https://executiveeducation.wharton.upenn.edu" class="wee-brand" title="Wharton Home"><img class="print" style="display:none;" src="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/wharton-execed/includes/images/wharton-execed.svg" alt="Wharton Executive Education logo"/></a><nav id="wee-contact-navigation" class="wee-contact-navigation" aria-label="Mobile contact links"><a href="mailto:execed@wharton.upenn.edu"><i class="fa fa-envelope"></i></a><a href="tel:12158981776"><i class="fa fa-phone"></i></a></nav><nav id="wee-global-navigation" class="wee-global-navigation" aria-label="Global utility navigation links"><ul id="menu-global-navigation" class="global-nav wee-global-nav"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46864 depth-0"><a title="Program Finder" href="https://executiveeducation.wharton.upenn.edu/program-finder/">Program Finder</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46866 depth-0"><a title="News" href="https://executiveeducation.wharton.upenn.edu/news">News</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46868" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46868 depth-0"><a title="Contact Us" href="https://executiveeducation.wharton.upenn.edu/contact-us/">Contact Us</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46869" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46869 depth-0"><a title="Wharton School Home" target="_blank" href="https://www.wharton.upenn.edu/">Wharton School Home</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-82295" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-82295 depth-0"><a title="Wharton Direct Login" target="_blank" href="https://execedapps.wharton.upenn.edu/whartondirect">Wharton Direct Login</a></li>
+</ul></nav>        <a href="/search/#t=ThisSite" class="search-button search--closed">
+        <span class="accessible-label">Search Wharton</span>
+    </a>
+    <button id="mobile-nav-button" aria-label="Mobile menu toggle">
+        <span class="accessible-label">Mobile menu toggle</span>
+    </button>
+		</div>
+		<div class="main-navigation header--container main-navigation--default">
+			<div class="header-row">
+				<div id="martech-site-branding">
+					<div class="martech-site-branding-container group">
+						    <div id="department" class="department department--logo">
+        <a class="dept-container" title="Wharton Executive Education" href="https://executiveeducation.wharton.upenn.edu/">
+			                <span class="brand-image"><img src="https://executiveeducation.wharton.upenn.edu/wp-content/uploads/2021/09/wharton-execed-white-LG-2021.svg"alt="Wharton Executive Education"/></span>
+			            <span class="brand-text">Wharton Executive Education</span>
+        </a>
+    </div>
+    											</div>
+				</div>
+				<!-- main menu -->
+				<div id="main-menu-container" class="container-full-width">
+					<nav id="main-navigation" class="site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Primary navigation links">
+						<div id="mobile-current-item">Menu</div>
+												<div class="main-nav group"><ul id="menu-main-mobile-navigation" class="menu-header-navigation"><li id="menu-item-83829" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83829"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/">Programs for Individuals</a>
+<ul class="sub-menu">
+	<li id="menu-item-83830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83830"><a href="#">Program Topics</a>
+	<ul class="sub-menu">
+		<li id="menu-item-83831" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83831"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/comprehensive-executive-programs/">Comprehensive Executive Programs</a></li>
+		<li id="menu-item-83832" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83832"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/leadership-and-management/">Leadership and Management</a></li>
+		<li id="menu-item-83833" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83833"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/finance-and-wealth-management/">Finance and Wealth Management</a></li>
+		<li id="menu-item-83835" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83835"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/strategy-and-innovation/">Strategy and Innovation</a></li>
+		<li id="menu-item-83834" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83834"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/marketing/">Marketing</a></li>
+		<li id="menu-item-84129" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84129"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/partnership-programs/">Partnership Programs</a></li>
+		<li id="menu-item-90117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90117"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/self-paced-online-programs/">Self-Paced Online Programs</a></li>
+	</ul>
+</li>
+	<li id="menu-item-83836" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83836"><a href="#">Program Information</a>
+	<ul class="sub-menu">
+		<li id="menu-item-83837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83837"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/">All Programs</a></li>
+		<li id="menu-item-90115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90115"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/wharton-live-online/">Wharton LIVE Online</a></li>
+		<li id="menu-item-88429" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88429"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/certificate-of-professional-development/">Certificate of Professional Development</a></li>
+		<li id="menu-item-84130" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84130"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/alumni-status-programs/">Alumni Status Programs</a></li>
+		<li id="menu-item-83840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83840"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/group-enrollment/">Group Enrollment</a></li>
+		<li id="menu-item-83839" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83839"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/">Plan Your Stay</a></li>
+		<li id="menu-item-83838" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83838"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/policies-and-values/registration-information/">Registration Information</a></li>
+		<li id="menu-item-83841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83841"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/frequently-asked-questions/">Frequently Asked Questions</a></li>
+		<li id="menu-item-85024" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85024"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/lifelong-learning/">Lifelong Learning</a></li>
+		<li id="menu-item-85023" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85023"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/veterans-benefits/">Veterans’ Benefits: GI Bill</a></li>
+	</ul>
+</li>
+	<li id="menu-item-83842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83842"><a href="#">Featured Programs for Senior Executives</a>
+	<ul class="sub-menu">
+		<li id="menu-item-83843" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83843"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/advanced-management-program/">Advanced Management Program</a></li>
+		<li id="menu-item-83844" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83844"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/general-management-program/">General Management Program</a></li>
+		<li id="menu-item-83845" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83845"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/advanced-finance-program/">Advanced Finance Program</a></li>
+		<li id="menu-item-83846" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83846"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/executive-development-program/">Executive Development Program</a></li>
+	</ul>
+</li>
+	<li id="menu-item-83847" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83847"><a href="#">Get Started</a></li>
+	<li id="menu-item-83848" class="cta-link menu-item menu-item-type-post_type menu-item-object-page menu-item-83848"><a href="https://executiveeducation.wharton.upenn.edu/program-finder/"><i class="fa fa-search" aria-hidden="true"></i><span>Find a Program</span><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+	<li id="menu-item-83849" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83849"><a target="_blank" rel="noopener" href="https://executive.wharton.upenn.edu/download-calendar.html"><i class="fa fa-calendar" aria-hidden="true"></i><span>Download Calendar</span></a></li>
+</ul>
+</li>
+<li id="menu-item-83850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83850"><a href="https://executiveeducation.wharton.upenn.edu/for-organizations/">Custom Solutions for Organizations</a>
+<ul class="sub-menu">
+	<li id="menu-item-83851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83851"><a href="https://executiveeducation.wharton.upenn.edu/for-organizations/our-approach/">Our Approach</a></li>
+	<li id="menu-item-83852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83852"><a href="https://executiveeducation.wharton.upenn.edu/for-organizations/the-learning-experience/">The Learning Experience</a></li>
+	<li id="menu-item-83853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83853"><a href="https://executiveeducation.wharton.upenn.edu/for-organizations/our-clients/">Our Clients</a></li>
+	<li id="menu-item-84128" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84128"><a href="https://executiveeducation.wharton.upenn.edu/for-organizations/wharton-expertise/">Wharton Expertise</a></li>
+	<li id="menu-item-90113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90113"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/blended-learning-solutions-for-organizations/">Blended Learning Solutions for Organizations</a></li>
+	<li id="menu-item-83855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83855"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/group-enrollment/">Group Enrollment</a></li>
+	<li id="menu-item-83856" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83856"><a href="#">Get Started</a></li>
+	<li id="menu-item-83857" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83857"><a target="_blank" rel="noopener" href="https://executive.wharton.upenn.edu/custom-inquiry-form.html"><i class="fa fa-question-circle" aria-hidden="true"></i><span>Custom Program Inquiry</span></a></li>
+	<li id="menu-item-83858" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83858"><a target="_blank" rel="noopener" href="https://executive.wharton.upenn.edu/download-custom-brochure.html"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Download Custom Brochure</span></a></li>
+</ul>
+</li>
+<li id="menu-item-83859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83859"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/">Online Learning</a>
+<ul class="sub-menu">
+	<li id="menu-item-90112" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90112"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/wharton-live-online/">Wharton LIVE Online</a></li>
+	<li id="menu-item-90114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90114"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/self-paced-online-programs/">Self-Paced Online Programs</a></li>
+	<li id="menu-item-90116" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90116"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/blended-learning-solutions-for-organizations/">Blended Learning Solutions for Organizations</a></li>
+	<li id="menu-item-83862" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83862"><a href="#">Get Started</a></li>
+	<li id="menu-item-83863" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83863"><a href="https://executiveeducation.wharton.upenn.edu/program-finder/?fm=%5B%22online%22%5D"><i class="fa fa-search" aria-hidden="true"></i><span>Find an Online Program</span></a></li>
+</ul>
+</li>
+<li id="menu-item-83865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83865"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/">About Wharton</a>
+<ul class="sub-menu">
+	<li id="menu-item-83866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83866"><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/">Thought Leadership</a></li>
+	<li id="menu-item-83868" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83868"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/">Campus Experience</a></li>
+	<li id="menu-item-83869" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83869"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/policies-and-values/">Policies and Values</a></li>
+	<li id="menu-item-83870" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83870"><a href="#">Wharton@Work</a></li>
+	<li id="menu-item-83871" class="cta-link menu-item menu-item-type-post_type menu-item-object-page menu-item-83871"><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/subscribe-to-wharton-at-work/"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Subscribe</span></a></li>
+	<li id="menu-item-83872" class="cta-link menu-item menu-item-type-post_type menu-item-object-page menu-item-83872"><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span>Read Current Issue</span></a></li>
+</ul>
+</li>
+<li id="menu-item-89294" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89294"><a target="_blank" rel="noopener" href="https://online.wharton.upenn.edu/">Wharton Online</a></li>
+<li id="menu-item-83873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83873"><a href="https://executiveeducation.wharton.upenn.edu/faculty/">Faculty</a></li>
+</ul></div>					</nav><!-- #site-navigation -->
+									</div><!-- #main-menu-container -->
+				<div id="sub-menu-container" class="container-full-width">
+					<div id="sub-menu" class="container">
+						<nav id="sub-navigation" class="site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Secondary navigation links">
+												</nav><!-- #site-navigation -->
+					</div><!-- #sub-menu -->
+				</div><!-- #sub-menu-container -->
+			</div>
+		</div>
+
+		<div class="wee-mega-menu"><nav id="wee-main-navigation" class="wee-site-navigation navbar navbar-default" aria-label="Main site navigation links"><ul id="wee-menu-header-navigation" class="wee-menu-header-navigation nav navbar-nav"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-84123" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-84123 depth-0"><a title="Home" href="https://executiveeducation.wharton.upenn.edu/">Home</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83773" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83773 dropdown depth-0" data-toggle="hover-dropdown"><a title="Programs for Individuals" href="https://executiveeducation.wharton.upenn.edu/for-individuals/" class="dropdown-toggle" aria-haspopup="true">Programs for Individuals <i class="fa fa-angle-down"></i></a>
+<div class="dropdown-menu ddnav-wrapper depth-0">
+
+<div class="ddnav-inner">
+
+<ul role="menu" class="ddnav-menu">
+<li class="section-link"><a title="Programs for Individuals" href="https://executiveeducation.wharton.upenn.edu/for-individuals/" class="dropdown-toggle" aria-haspopup="true">Programs for Individuals</a></li>	<li role="presentation" class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83775 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li role="presentation" class="header menu-item menu-item-type-custom menu-item-object-custom menu-item-83785 depth-2">Program Information</li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83786" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83786 depth-2"><a title="All Programs" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/">All Programs</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-90110" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90110 depth-2"><a title="Wharton LIVE Online" href="https://executiveeducation.wharton.upenn.edu/online-learning/wharton-live-online/">Wharton LIVE Online</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-84125" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84125 depth-2"><a title="Alumni Status Programs" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/alumni-status-programs/">Alumni Status Programs</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83789" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83789 depth-2"><a title="Group Enrollment" href="https://executiveeducation.wharton.upenn.edu/for-individuals/group-enrollment/">Group Enrollment</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-84126" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84126 depth-2"><a title="Certificate of Professional Development" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/certificate-of-professional-development/">Certificate of Professional Development</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83788" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83788 depth-2"><a title="Plan Your Stay" href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/">Plan Your Stay</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83787" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83787 depth-2"><a title="Registration Information" href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/policies-and-values/registration-information/">Registration Information</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83790" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83790 depth-2"><a title="Frequently Asked Questions" href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/frequently-asked-questions/">Frequently Asked Questions</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-85022" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85022 depth-2"><a title="Lifelong Learning" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/lifelong-learning/">Lifelong Learning</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-85021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85021 depth-2"><a title="Veterans’ Benefits: GI Bill" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/veterans-benefits/">Veterans’ Benefits: GI Bill</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-91646" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-91646 depth-2"><a title="The Knowledge for Impact Award" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/knowledge-for-impact-award/">The Knowledge for Impact Award</a></li>
+	</ul>
+</li>
+	<li role="presentation" class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83774 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li role="presentation" class="header menu-item menu-item-type-custom menu-item-object-custom menu-item-83778 depth-2">Program Topics</li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83779" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83779 depth-2"><a title="Comprehensive Executive Programs" href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/comprehensive-executive-programs/">Comprehensive Executive Programs</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83780" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83780 depth-2"><a title="Leadership and Management" href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/leadership-and-management/">Leadership and Management</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83781" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83781 depth-2"><a title="Finance and Wealth Management" href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/finance-and-wealth-management/">Finance and Wealth Management</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83782" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83782 depth-2"><a title="Marketing" href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/marketing/">Marketing</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83783" class="menu-item menu-item-type-taxonomy menu-item-object-wee_program_topic_tax menu-item-83783 depth-2"><a title="Strategy and Innovation" href="https://executiveeducation.wharton.upenn.edu/for-individuals/program-topics/strategy-and-innovation/">Strategy and Innovation</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-84124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84124 depth-2"><a title="Partnership Programs" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/partnership-programs/">Partnership Programs</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-90119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90119 depth-2"><a title="Self-Paced Online Programs" href="https://executiveeducation.wharton.upenn.edu/online-learning/self-paced-online-programs/">Self-Paced Online Programs</a></li>
+	</ul>
+</li>
+	<li role="presentation" class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83776 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li role="presentation" class="header menu-item menu-item-type-custom menu-item-object-custom menu-item-83791 depth-2">Featured Programs for Senior Executives</li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83792" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83792 depth-2"><a title="Advanced Management Program" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/advanced-management-program/">Advanced Management Program</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83793" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83793 depth-2"><a title="General Management Program" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/general-management-program/">General Management Program</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83794" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83794 depth-2"><a title="Advanced Finance Program" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/advanced-finance-program/">Advanced Finance Program</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83795" class="menu-item menu-item-type-post_type menu-item-object-wee_programs menu-item-83795 depth-2"><a title="Executive Development Program" href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/executive-development-program/">Executive Development Program</a></li>
+	</ul>
+</li>
+	<li role="presentation" class="column cta-column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83777 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83796" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83796 depth-2"><a title="Get Started" href="#">Get Started</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83797" class="cta-link menu-item menu-item-type-post_type menu-item-object-page menu-item-83797 depth-2"><a title="Find a Program" href="https://executiveeducation.wharton.upenn.edu/program-finder/"><i class="fa fa-search" aria-hidden="true"></i><span>Find a Program</span></a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83798" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83798 depth-2"><a title="Download Calendar" target="_blank" href="https://executive.wharton.upenn.edu/download-calendar.html"><i class="fa fa-calendar" aria-hidden="true"></i><span>Download Calendar</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83799" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83799 dropdown depth-0" data-toggle="hover-dropdown"><a title="Solutions for Organizations" href="https://executiveeducation.wharton.upenn.edu/for-organizations/" class="dropdown-toggle" aria-haspopup="true">Solutions for Organizations <i class="fa fa-angle-down"></i></a>
+<div class="dropdown-menu ddnav-wrapper depth-0">
+
+<div class="ddnav-inner">
+
+<ul role="menu" class="ddnav-menu">
+<li class="section-link"><a title="Solutions for Organizations" href="https://executiveeducation.wharton.upenn.edu/for-organizations/" class="dropdown-toggle" aria-haspopup="true">Solutions for Organizations</a></li>	<li role="presentation" class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83801 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83802 depth-2"><a title="Our Approach" href="https://executiveeducation.wharton.upenn.edu/for-organizations/our-approach/">Our Approach</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83803" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83803 depth-2"><a title="The Learning Experience" href="https://executiveeducation.wharton.upenn.edu/for-organizations/the-learning-experience/">The Learning Experience</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-84127" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84127 depth-2"><a title="Wharton Expertise" href="https://executiveeducation.wharton.upenn.edu/for-organizations/wharton-expertise/">Wharton Expertise</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-90111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90111 depth-2"><a title="Blended Learning Solutions for Organizations" href="https://executiveeducation.wharton.upenn.edu/online-learning/blended-learning-solutions-for-organizations/">Blended Learning Solutions for Organizations</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83804 depth-2"><a title="Our Clients" href="https://executiveeducation.wharton.upenn.edu/for-organizations/our-clients/">Our Clients</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83806 depth-2"><a title="Group Enrollment" href="https://executiveeducation.wharton.upenn.edu/for-individuals/group-enrollment/">Group Enrollment</a></li>
+	</ul>
+</li>
+	<li role="presentation" class="column cta-column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83800 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83809" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83809 depth-2"><a title="Get Started" href="#">Get Started</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83807" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83807 depth-2"><a title="Custom Program Inquiry" target="_blank" href="https://executive.wharton.upenn.edu/custom-inquiry-form.html"><i class="fa fa-question-circle" aria-hidden="true"></i><span>Custom Program Inquiry</span></a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83808" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83808 depth-2"><a title="Download Custom Brochure" target="_blank" href="https://executive.wharton.upenn.edu/download-custom-brochure.html"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Download Custom Brochure</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83810" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83810 dropdown depth-0" data-toggle="hover-dropdown"><a title="Online Learning" href="https://executiveeducation.wharton.upenn.edu/online-learning/" class="dropdown-toggle" aria-haspopup="true">Online Learning <i class="fa fa-angle-down"></i></a>
+<div class="dropdown-menu ddnav-wrapper depth-0">
+
+<div class="ddnav-inner">
+
+<ul role="menu" class="ddnav-menu">
+<li class="section-link"><a title="Online Learning" href="https://executiveeducation.wharton.upenn.edu/online-learning/" class="dropdown-toggle" aria-haspopup="true">Online Learning</a></li>	<li role="presentation" class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83813 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-90107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90107 depth-2"><a title="Wharton LIVE Online" href="https://executiveeducation.wharton.upenn.edu/online-learning/wharton-live-online/">Wharton LIVE Online</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-90109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90109 depth-2"><a title="Self-Paced Online Programs" href="https://executiveeducation.wharton.upenn.edu/online-learning/self-paced-online-programs/">Self-Paced Online Programs</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-90108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-90108 depth-2"><a title="Blended Learning Solutions for Organizations" href="https://executiveeducation.wharton.upenn.edu/online-learning/blended-learning-solutions-for-organizations/">Blended Learning Solutions for Organizations</a></li>
+	</ul>
+</li>
+	<li role="presentation" class="column cta-column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83814 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83815" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83815 depth-2"><a title="Get Started" href="#">Get Started</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83816" class="cta-link menu-item menu-item-type-custom menu-item-object-custom menu-item-83816 depth-2"><a title="Find an Online Program" href="https://executiveeducation.wharton.upenn.edu/program-finder/?fm=%5B%22online%22%5D"><i class="fa fa-search" aria-hidden="true"></i><span>Find an Online Program</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83818" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83818 dropdown depth-0" data-toggle="hover-dropdown"><a title="About Wharton" href="https://executiveeducation.wharton.upenn.edu/about-wharton/" class="dropdown-toggle" aria-haspopup="true">About Wharton <i class="fa fa-angle-down"></i></a>
+<div class="dropdown-menu ddnav-wrapper depth-0">
+
+<div class="ddnav-inner">
+
+<ul role="menu" class="ddnav-menu">
+<li class="section-link"><a title="About Wharton" href="https://executiveeducation.wharton.upenn.edu/about-wharton/" class="dropdown-toggle" aria-haspopup="true">About Wharton</a></li>	<li role="presentation" class="column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83823 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83819" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83819 depth-2"><a title="Thought Leadership" href="https://executiveeducation.wharton.upenn.edu/thought-leadership/">Thought Leadership</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83821" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83821 depth-2"><a title="Plan Your Stay" href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/">Plan Your Stay</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83822" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83822 depth-2"><a title="Policies and Values" href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/policies-and-values/">Policies and Values</a></li>
+	</ul>
+</li>
+	<li role="presentation" class="column cta-column menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-83824 dropdown depth-1">
+	<div class="dropdown-menu ddnav-wrapper depth-1">
+
+	<div class="ddnav-inner">
+
+	<ul role="menu" class="ddnav-menu">
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83825" class="cta-heading menu-item menu-item-type-custom menu-item-object-custom menu-item-83825 depth-2"><a title="Wharton@Work" href="#">Wharton@Work</a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83827" class="cta-link menu-item menu-item-type-post_type menu-item-object-page menu-item-83827 depth-2"><a title="Read Current Issue" href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/"><i class="fa fa-newspaper-o" aria-hidden="true"></i><span>Read Current Issue</span></a></li>
+		<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83826" class="cta-link menu-item menu-item-type-post_type menu-item-object-page menu-item-83826 depth-2"><a title="Subscribe" href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/subscribe-to-wharton-at-work/"><i class="fa fa-plus-circle" aria-hidden="true"></i><span>Subscribe</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-89297" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89297 depth-0"><a title="Wharton Online" target="_blank" href="https://online.wharton.upenn.edu/">Wharton Online</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-83828" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83828 depth-0"><a title="Faculty" href="https://executiveeducation.wharton.upenn.edu/faculty/">Faculty</a></li>
+</ul></nav></div>	</header><!-- #header -->
+		<div class="mm-overlay"></div>
+	
+
+<div id="breadcrumbs" role="navigation" aria-label="Breadcrumbs"><div class="breadcrumbs--inner"><span><span><a href="https://executiveeducation.wharton.upenn.edu/">Home</a> › <span><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/">Wharton@Work</a> › <span class="breadcrumb_last" aria-current="page">Innovation Tournaments: More and Better Ideas</span></span></span></span></div></div>	<div id="wrapper" class="site-content container-full-width">
+
+
+<main id="main" class="site-main" role="main">
+	<section class="waw-info">
+		<div class="container">
+			<div class="vc_row wpb_row">
+				<article class="wpb_column col-sm-8 col-sm-push-4 col-md-9 col-md-push-3 waw-articles-heading">
+					<h2><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/" title="Link to Wharton@Work">Wharton@Work</a></h2>
+					<p class="waw-meta xsmall">
+					March 2011&ensp;|&ensp;<a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/nano-tools/">Nano Tools</a>&ensp;|&ensp;<a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/innovation/" rel="tag">Innovation</a>					</p>
+					<h1 class="beta waw-single-title">Innovation Tournaments: More and Better Ideas</h1>
+
+					
+					<p><strong>Nano Tools for Leaders®</strong> are fast, effective leadership tools that you can learn and start using in less than 15 minutes — with the potential to significantly impact your success as a leader and the engagement and productivity of the people you lead.</p>
+<p><strong>Contributors:</strong> Christian Terwiesch, Andrew M. Heller Professor, Professor of Operations and Information Management; and Karl Ulrich, CIBC Professor, Professor of Operations and Information Management, and Vice Dean of Innovation at the Wharton School, University of Pennsylvania.</p>
+<hr />
+<h2>The Goal:</h2>
+<p>Create and select exceptional opportunities for innovation.</p>
+<h2>Nano Tool:</h2>
+<p>Companies with a structured, professional approach to innovation are rare. Most do a great job managing processes like recruiting and sales training, but view innovation as a creative process that's shrouded in mystery. As a result, money is often thrown at mediocre projects with the hope that some luck will enter in and make them successful. Organizations seeking exceptional opportunities for innovation must instead employ a very process-driven approach to drive innovation.</p>
+<p>An innovation tournament is one such approach. Like its counterpart in sports, this is a structured, multi-round competition. Based on the Darwinian principle of the "survival of the fittest," it systematically elicits a large number of innovation opportunities (the contestants) and selects a handful of exceptional ones (the winners). An organization's first tournament should take the form of an innovation workshop, which introduces the key ideas of tournaments to participants while creating an appetite for future competitions. It also can result in some exceptional innovation opportunities.</p>
+<h2>How It Works:</h2>
+<ul class="bullet-list">
+<li>The professional services organization Deloitte holds annual three-phase innovation tournaments, or "Innovation Quests," to identify innovative ideas that occur daily at client sites or field organizations. In the first phase, all employees are invited to submit ideas electronically. These ideas are reviewed, and a few are selected by a team of leaders and subject experts. In the next phase, idea owners build teams and solicit feedback meant to enhance the original proposal. During the final phase, all personnel vote on the ideas. Winners receive a monetary prize and greater exposure to senior leadership.</li>
+<li>Grand Challenges Explorations was initiated by the Bill and Melinda Gates Foundation in 2008 to identify and create tools to improve the health of those in the developing world. The $100 million accelerated grant program seeks ideas from anywhere and anyone, requiring short online applications and no preliminary data. Offering encouragement to those with bold, unconventional proposals, Grand Challenges selects winning grants after about four months from the submission deadline. Grants have been awarded to 405 researchers from 34 countries.</li>
+<li>Google's "Product Ideas" campaign invites users to preview features and products and then submit innovation suggestions. Other users can then vote on the ideas. A recent campaign involved a preview of a new version of Google Groups. In two months, it drew more than 1500 suggestions that were voted on by over 20,000 users.</li>
+</ul>
+<h2>Action Steps:</h2>
+<ol>
+<li><strong>Select</strong> a group of 15 to 40 employees to participate in the innovation workshop, and determine an area of strategic importance in which you want to innovate. Instruct participants to spend 20 minutes on individual ideation, coming up with five ideas related to the chosen area.</li>
+<li><strong>Convene</strong> groups of four or five participants to discuss the opportunities that each individual conceived, and then generate additional opportunities through group discussion. Each group should pick, from the entire set identified, its best opportunities to share with the full workshop group.</li>
+<li><strong>Pitch</strong> ideas to the full group. All pitches should adhere to the 2-1-0 rule: a maximum of two minutes for a presentation, exactly one opportunity per sheet of paper or slide, and no discussion of the opportunities during or after the presentations. Each group member should pitch one idea.</li>
+<li><strong>Vote</strong> on the opportunities and review the results. Arrange opportunities in the order of support they garnered. Discussion will ensue, which should include steps needed to advance the opportunities, as well as the strengths, weaknesses, and opportunities for improvement in the process.</li>
+</ol>
+<h2>Additional Resources:</h2>
+<ul class="bullet-list">
+<li><strong>Knowledge@Wharton's and Wipro Technologies' Global Innovation Tournament</strong> Generate bold and creative ideas and solutions with measurable results in the areas of sustainability and customer-centric innovation. <strong>Entries are due March 7, 2012.</strong> There is no entry fee and the grand prize is $20,000.</li>
+<li><strong><em>Innovation Tournaments: Creating and Selecting Exceptional Opportunities.</em></strong> Christian Terwiesch and Karl T. Ulrich (Harvard Business School Press, 2009).</li>
+<li><strong>"Idea Generation and the Quality of the Best Idea."</strong> Karan Girota, Christian Terwiesch, and Karl Ulrich, <em>Management Science</em>, Vol. 56, No. 4, pp. 591-605, 2010.</li>
+<li><strong>"Picking the Winners"</strong> Christian Terwiesch and Karl T. Ulrich, <em>International Commerce Review</em>, Vol. 9, No. 1, pp. 10-21, 2010.</li>
+<li>Christian Terwiesch is faculty director of Wharton Executive Education's <em>Innovation Tournaments</em> program and teaches in the <a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/executive-development-program/"><em>Executive Development Program</em></a>. Karl Ulrich teaches in <em>Innovation Tournaments</em>, <em>Competitive Marketing Strategies</em>, and <em><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/all-programs/innovation-for-growth-strategies-for-creating-value/">Innovation for Growth: Strategies and Best Practices</a></em>.</li>
+</ul>
+<h2>About Nano Tools:</h2>
+<p>Nano Tools for Leaders<sup>®</sup> was conceived and developed by Deb Giffen, MCC, Director of Innovative Learning Solutions at Wharton Executive Education. It is jointly sponsored by Wharton Executive Education and Wharton's Center for Leadership and Change Management, Wharton Professor of Management Michael Useem, Director. Nano Tools Academic Director, Professor Adam Grant.</p>
+
+					<strong><a href="https://executiveeducation.wharton.upenn.edu/wp-content/uploads/2018/03/1103-Innovation-Tournaments.pdf" download>Download this Nano Tool as a PDF</a></strong>
+					<div class="social-sharing"><hr><h5>Share This</h5><div class="swp_social_panel swp_horizontal_panel swp_flat_fresh  swp_default_full_color swp_other_full_color swp_individual_full_color scale-100 scale-full_width" data-min-width="1100" data-float-color="#ffffff" data-float="none" data-float-mobile="none" data-transition="slide" data-post-id="67473" ><div class="nc_tweetContainer swp_share_button swp_linkedin" data-network="linkedin"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fexecutiveeducation.wharton.upenn.edu%2Fthought-leadership%2Fwharton-at-work%2F2011%2F03%2Finnovation-tournaments%2F" data-link="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fexecutiveeducation.wharton.upenn.edu%2Fthought-leadership%2Fwharton-at-work%2F2011%2F03%2Finnovation-tournaments%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_linkedin_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_facebook" data-network="facebook"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fexecutiveeducation.wharton.upenn.edu%2Fthought-leadership%2Fwharton-at-work%2F2011%2F03%2Finnovation-tournaments%2F" data-link="https://www.facebook.com/share.php?u=https%3A%2F%2Fexecutiveeducation.wharton.upenn.edu%2Fthought-leadership%2Fwharton-at-work%2F2011%2F03%2Finnovation-tournaments%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_facebook_icon"></i><span class="swp_share">Share</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_twitter" data-network="twitter"><a class="nc_tweet swp_share_link" rel="nofollow noreferrer noopener" target="_blank" href="https://twitter.com/intent/tweet?text=Innovation+Tournaments%3A+More+and+Better+Ideas&url=https%3A%2F%2Fexecutiveeducation.wharton.upenn.edu%2Fthought-leadership%2Fwharton-at-work%2F2011%2F03%2Finnovation-tournaments%2F" data-link="https://twitter.com/intent/tweet?text=Innovation+Tournaments%3A+More+and+Better+Ideas&url=https%3A%2F%2Fexecutiveeducation.wharton.upenn.edu%2Fthought-leadership%2Fwharton-at-work%2F2011%2F03%2Finnovation-tournaments%2F"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_twitter_icon"></i><span class="swp_share">Tweet</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button swp_email" data-network="email"><a class="nc_tweet noPop swp_share_link" rel="nofollow noreferrer noopener" href="mailto:?subject=Innovation%20Tournaments%3A%20More%20and%20Better%20Ideas&body=Nano%20Tools%20for%20Leaders%C2%AE%20are%20fast%2C%20effective%20leadership%20tools%20that%20you%20can%20learn%20and%20start%20using%20in%20less%20than%2015%20minutes%20%E2%80%94%20with%20the%20potential%20to%20significantly%20impact%20your%20success%20as%20a%20leader%20and%20the%20engagement%20and%20productivity%20of%20the%20people%20you%20lead.%20Contributors%3A%20Christian%20Terwiesch%2C%20Andrew%20M.%20Heller%20Professor%2C%0D%0A%0D%0ARead More Here: %20https%3A%2F%2Fexecutiveeducation.wharton.upenn.edu%2Fthought-leadership%2Fwharton-at-work%2F2011%2F03%2Finnovation-tournaments%2F" target="_blank"><span class="swp_count swp_hide"><span class="iconFiller"><span class="spaceManWilly"><i class="sw swp_email_icon"></i><span class="swp_share">Email</span></span></span></span></a></div><div class="nc_tweetContainer swp_share_button total_shares total_sharesalt" ><span class="swp_count ">0 <span class="swp_label">Shares</span></span></div></div><p class="small share-rss"><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/feed/"><i class="fa fa-rss"></i> Subscribe to the <em>Wharton@Work</em> RSS Feed</a></p></div>				</article>
+				<div class="wpb_column col-sm-4 col-sm-pull-8 col-md-3 col-md-pull-9 waw-sidebar" role="complementary">
+					
+<div class="waw-sidebar--current-issue"><hr><h3 class="delta"><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/">Current Issue</a></h3><ul class="sidebar-nav waw-sidebar--navigation"><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2022/10/conversation-with-jeremy-siegel/">Investment Advice for the Long Run with Jeremy Siegel</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2022/10/the-prepared-leader/">The Prepared Leader</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2022/10/four-game-changing-negotiation-techniques/">Four Game-Changing Negotiation Techniques</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2022/10/the-25-minute-meeting/">The 25-Minute Meeting</a></li></ul></div>
+
+<hr><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/subscribe-to-wharton-at-work/" class="vc_btn vc_btn_red vc_btn_md vc_btn-md waw-subscribe">Subscribe to W@W</a>
+<div class="waw-sidebar--archives"><hr><h3 id="wawAToggle" class="delta" tabindex="0">Archives</h3><ul class="sidebar-nav waw-sidebar--navigation"><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/nano-tools/">Nano Tools</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2018/05/poll-results-archive/">Poll Results</a></li>	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2022/'>2022</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2021/'>2021</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2020/'>2020</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2019/'>2019</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2018/'>2018</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2017/'>2017</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2016/'>2016</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2015/'>2015</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2014/'>2014</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2013/'>2013</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2012/'>2012</a></li>
+	<li><a href='https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/'>2011</a></li>
+</ul></div>
+<div class="waw-sidebar--categories"><hr><h3 id="wawCToggle" class="delta" tabindex="0">Categories</h3><ul class="sidebar-nav waw-sidebar--navigation"><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/business-trends/">Business Trends</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/customized-learning/">Customized Learning</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/entrepreneurs/">Entrepreneurs</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/finance/">Finance</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/innovation/">Innovation</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/leadership/">Leadership</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/management/">Management</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/marketing/">Marketing</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/negotiation-persuasion/">Negotiation and Persuasion</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/reading-list/">Reading List</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/senior-leadership/">Senior Leadership</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/strategy/">Strategy</a></li><li><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/category/wealth-management/">Wealth Management</a></li></ul></div>				</div>
+			</div>
+		</div>
+	</section>
+
+	
+</main><!-- #main -->
+
+
+
+<div class="utility-footer-wrapper"><section class="utility-footer"><nav id="wee-footer-navigation" class="wee-footer-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" aria-label="Footer utility navigation links"><div class="wee-footer--logo" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"><a href="https://executiveeducation.wharton.upenn.edu" title="Wharton Executive Education"></a></div><div class="wee-footer--link-wrapper"><ul id="menu-footer-navigation" class="wee-footer-nav"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46860" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46860 depth-0"><a title="Program Finder" href="https://executiveeducation.wharton.upenn.edu/program-finder/">Program Finder</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46861" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46861 depth-0"><a title="Subscribe to Wharton@Work Newsletter" href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/subscribe-to-wharton-at-work/">Subscribe to <em>Wharton@Work</em> Newsletter</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46862 depth-0"><a title="Cancellation &amp; Transfer Policy" href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/policies-and-values/registration-information/">Cancellation &#038; Transfer Policy</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-46863" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46863 depth-0"><a title="Contact Us" href="https://executiveeducation.wharton.upenn.edu/contact-us/">Contact Us</a></li>
+</ul><ul class="wee-footer--sm-links"><li><a href="https://www.facebook.com/whartonexeced" target="_blank"><i class="fa fa-facebook"></i></a></li><li><a href="https://www.linkedin.com/school/wharton-executive-education/" target="_blank"><i class="fa fa-linkedin"></i></a></li><li><a href="https://www.youtube.com/user/whartonexeced" target="_blank"><i class="fa fa-youtube-play"></i></a></li></ul></div></nav></section></div><a data-scroll href="#header" title="Scroll to top link." id="scrollTop"><i class="fa fa-angle-up"></i><span>Back To Top</span></a></div><!-- end of #wrapper -->
+</div><!-- end of #container -->
+
+<footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter">
+	<div id="martech-footer-wrapper" class="wrapper footer-row">
+		<div class="footer-primary"> 		<a href="#" title="Additional Links" class="footer-primary-toggle">Additional Links <i class="icon-arrow-down3"></i></a>
+				<nav class="masonry additional-links" aria-label="Footer navigation links">
+						<ul class="footer-menu masonry-brick">
+				<div class="list-title">Wharton Executive Education</div>				<div class="menu-main-mobile-navigation-container"><ul id="menu-main-mobile-navigation" class="masonry-menu"><li id="menu-item-83829" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83829"><a href="https://executiveeducation.wharton.upenn.edu/for-individuals/">Programs for Individuals</a></li>
+<li id="menu-item-83850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83850"><a href="https://executiveeducation.wharton.upenn.edu/for-organizations/">Custom Solutions for Organizations</a></li>
+<li id="menu-item-83859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83859"><a href="https://executiveeducation.wharton.upenn.edu/online-learning/">Online Learning</a></li>
+<li id="menu-item-83865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-83865"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/">About Wharton</a></li>
+<li id="menu-item-89294" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89294"><a target="_blank" rel="noopener" href="https://online.wharton.upenn.edu/">Wharton Online</a></li>
+<li id="menu-item-83873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83873"><a href="https://executiveeducation.wharton.upenn.edu/faculty/">Faculty</a></li>
+</ul></div>
+			</ul>
+									<ul class="footer-menu masonry-brick">
+
+				<div class="list-title">Featured Links</div>										<div class="menu-wharton-footer-additional-links-container"><ul id="menu-wharton-footer-additional-links" class="masonry-menu"><li id="menu-item-75917" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75917"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/policies-and-values/registration-information/">Registration Information</a></li>
+<li id="menu-item-70863" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70863"><a href="https://executiveeducation.wharton.upenn.edu/program-finder/">Open-Enrollment Program Finder</a></li>
+<li id="menu-item-70860" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70860"><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/">Thought Leadership</a></li>
+<li id="menu-item-70861" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70861"><a href="https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/"><em>Wharton@Work</em></a></li>
+<li id="menu-item-81158" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81158"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/frequently-asked-questions/">Frequently Asked Questions</a></li>
+<li id="menu-item-75253" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75253"><a href="https://executiveeducation.wharton.upenn.edu/about-wharton/plan-your-stay/">Plan Your Stay</a></li>
+<li id="menu-item-75255" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75255"><a href="https://executiveeducation.wharton.upenn.edu/news">Executive Education News</a></li>
+<li id="menu-item-75254" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75254"><a href="https://executiveeducation.wharton.upenn.edu/contact-us/">Contact Executive Education</a></li>
+</ul></div>			</ul>
+						<ul class="footer-menu masonry-brick grid-sizer">
+				<li class="list-title">Programs</li>
+				<li><a href="https://undergrad.wharton.upenn.edu/">Undergraduate</a></li>
+				<li><a href="https://mba.wharton.upenn.edu">MBA</a></li>
+				<li><a href="https://executivemba.wharton.upenn.edu">EMBA</a></li>
+				<li><a href="https://doctoral.wharton.upenn.edu/">Doctorate</a></li>
+				<li><a href="https://executiveeducation.wharton.upenn.edu/">Executive Education</a></li>
+				<li><a href="https://online.wharton.upenn.edu/">Wharton Online</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick grid-sizer">
+				<li class="list-title">Locations</li>
+				<li><a href="https://www.wharton.upenn.edu/philadelphia-campus/">Philadelphia</a></li>
+				<li><a href="https://sf.wharton.upenn.edu/">San Francisco</a></li>
+				<li><a href="https://pwcc.upenn.edu/">Beijing</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">The Power of Wharton</li>
+				<li><a href="https://global.wharton.upenn.edu/">Global Influence</a></li>
+				<li><a href="https://wcai.wharton.upenn.edu/">Analytics</a></li>
+				<li><a href="https://entrepreneurship.wharton.upenn.edu//">Entrepreneurship & Innovation</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">Featured</li>
+				<li><a href="https://giving.aws.cloud.upenn.edu/fund?program=WHA&fund=342105&appeal=WHAWEB">Give to Wharton</a></li>
+				<li><a href="https://alumni.wharton.upenn.edu/">Alumni</a></li>
+				<li><a href="https://knowledge.wharton.upenn.edu/">Knowledge@Wharton</a></li>
+				<li><a href="https://recruiters-corp.wharton.upenn.edu/">Recruiters & Corporations</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">Wharton</li>
+				<li><a href="https://www.wharton.upenn.edu/faculty-directory/">Faculty</a></li>
+				<li><a href="https://www.wharton.upenn.edu/about-wharton/">About Us</a></li>
+				<li><a href="https://www.wharton.upenn.edu/research-centers/">Research Centers</a></li>
+				<li><a href="https://www.wharton.upenn.edu/departments/">Departments</a></li>
+			</ul>
+			<ul class="footer-menu masonry-brick">
+				<li class="list-title">Resources</li>
+				<li><a href="https://www.wharton.upenn.edu/contact-wharton">Contact Us</a></li>
+				<li><a href="https://news.wharton.upenn.edu/">News</a></li>
+				<li><a href="https://inside.wharton.upenn.edu/">Faculty &amp; Staff</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="footer-secondary">
+
+		<div class="copyright">
+			<a class="footer-logo hide-650" href="https://www.upenn.edu"><img src="https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/images/penn-logo-white.svg" class="martech-footer-logo" alt="The University of Pennsylvania" ></a><div class="btn-wrap"><ul class="social-icons"><li class="facebook-icon"><a href="https://www.facebook.com/whartonexeced" target="_blank"><span class="accessible-label">Facebook</span></a></li><li class="linkedin-icon"><a href="https://www.linkedin.com/school/wharton-executive-education/" target="_blank"><span class="accessible-label">LinkedIn</span></a></li><li class="youtube-icon"><a href="https://www.youtube.com/user/whartonexeced" target="_blank"><span class="accessible-label">YouTube</span></a></li></ul><!-- .social-icons --><span class="give"><a href="https://giving.aws.cloud.upenn.edu/fund?program=WHA&fund=342105&appeal=WHAWEB" class="btn--secondary vc_btn vc_btn_red vc_btn-sm" target="_blank" title="Give to Wharton">Support Wharton</a></span></div><a href="https://apps.wharton.upenn.edu/authentication?service=wordpress&returnURL=https://executiveeducation.wharton.upenn.edu/cms-login">&copy;</a>2022&nbsp;<a href="https://www.wharton.upenn.edu/">The Wharton School,</a> &nbsp;<a href="https://www.upenn.edu/">The University of Pennsylvania</a> &nbsp;<span>| &nbsp;<a href="https://executiveeducation.wharton.upenn.edu" title="Wharton Executive Education">Wharton Executive Education</a>&nbsp; </span>| &nbsp;<a href="https://executiveeducation.wharton.upenn.edu/privacy-policy/">Privacy&nbsp;Policy</a>&nbsp; | &nbsp;<a href="https://accessibility.web-resources.upenn.edu/get-help" target="_blank">Report&nbsp;Accessibility&nbsp;Issues&nbsp;and&nbsp;Get&nbsp;Help</a>		</div>
+
+	</div>
+</div><!--/#martech-footer-wrapper-->
+	</footer><!-- #footer -->
+      <script type="text/javascript">
+      (function ($) {
+        $(window).load(function(){
+          $('#footer-2-col').masonry({
+            columnWidth:  '.grid-sizer',
+            itemSelector: '.menu-item'
+          });
+        });
+        })(jQuery);
+      </script>
+    <script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-includes/js/imagesloaded.min.js?ver=4.1.4' id='imagesloaded-js'></script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-includes/js/masonry.min.js?ver=4.2.2' id='masonry-js'></script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2b' id='jquery-masonry-js'></script>
+<script type='text/javascript' id='social_warfare_script-js-extra'>
+/* <![CDATA[ */
+var socialWarfare = {"addons":["pro"],"post_id":"67473","variables":{"emphasizeIcons":"0","powered_by_toggle":false,"affiliate_link":"https:\/\/warfareplugins.com"},"floatBeforeContent":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/social-warfare/assets/js/script.min.js?ver=4.3.0' id='social_warfare_script-js'></script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-content/themes/responsive-mobile/js/responsive-scripts.min.js?ver=1.2.5' id='responsive-scripts-js'></script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-includes/js/hoverIntent.min.js?ver=1.10.2' id='hoverIntent-js'></script>
+<script type='text/javascript' id='martech-v3-script-js-extra'>
+/* <![CDATA[ */
+var ajax_object = {"ajaxurl":"https:\/\/executiveeducation.wharton.upenn.edu\/wp-admin\/admin-ajax.php","ajaxnonce":"6a3ee5baa8"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/martech-chupacabra/includes/js/scripts.min.js?ver=3.41.10' id='martech-v3-script-js'></script>
+<script type='text/javascript' src='https://polyfill.io/v3/polyfill.min.js?ver=0.1' id='wee-polyfill-js'></script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/wharton-execed/includes/js/scripts.js?ver=1.51' id='wee-scripts-js'></script>
+<script type='text/javascript' src='https://executiveeducation.wharton.upenn.edu/wp-content/plugins/wharton-execed/includes/js/wee-slx.min.js?ver=0.1' id='wee-slx-js'></script>
+<script type="text/javascript"> var swp_nonce = "6dc473e6d1";function parentIsEvil() { var html = null; try { var doc = top.location.pathname; } catch(err){ }; if(typeof doc === "undefined") { return true } else { return false }; }; if (parentIsEvil()) { top.location = self.location.href; };var url = "https://executiveeducation.wharton.upenn.edu/thought-leadership/wharton-at-work/2011/03/innovation-tournaments/";if(url.indexOf("stfi.re") != -1) { var canonical = ""; var links = document.getElementsByTagName("link"); for (var i = 0; i < links.length; i ++) { if (links[i].getAttribute("rel") === "canonical") { canonical = links[i].getAttribute("href")}}; canonical = canonical.replace("?sfr=1", "");top.location = canonical; console.log(canonical);};var swpFloatBeforeContent = false; var swp_ajax_url = "https://executiveeducation.wharton.upenn.edu/wp-admin/admin-ajax.php"; var swp_post_id = "67473";var swpClickTracking = false; swpPinIt={"enabled":false};</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"3bc688e83b","applicationID":"183476221","transactionName":"ZVxSMRZRWUZXWhBQXVwWcQYQWVhbGUoNV1VeXB0SAVVoQldO","queueTime":0,"applicationTime":584,"atts":"SRtRR15LSkg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

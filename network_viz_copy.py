@@ -29,7 +29,6 @@ from bokeh.models import EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.palettes import Blues8, Spectral8
 from bokeh.transform import linear_cmap
 from networkx.algorithms import community
-
 """#Data Loading"""
 
 df = pd.read_csv("network.csv")
@@ -305,7 +304,7 @@ networkx.set_node_attributes(G, name_class, "Name")
 taptool = plot.select(type=TapTool)
 taptool.callback = OpenURL(url="@URL")
 # plot the network using spiral layout, other options:https://networkx.org/documentation/stable/reference/drawing.html#module-networkx.drawing.layout
-pos = networkx.spring_layout(G,scale=13, k=0.9)
+pos = networkx.spring_layout(G,scale=13, k=0.95)
 network_graph = from_networkx(G, pos, center=(0, 0))
 network_graph.edge_renderer.data_source.data["line_width"] = [G.get_edge_data(a,b)['weight'] for a, b in G.edges()]
 #Create newnetwork graph from filtered data
@@ -330,19 +329,21 @@ plot.renderers.append(network_graph)
 
 #Add Labels
 x, y = zip(*network_graph.layout_provider.graph_layout.values())
-node_labels = list(map(index_class.get, list(G.nodes())))
-
-label_source = ColumnDataSource({'x': x, 'y': y, 'name': [node_labels[i] for i in range(len(x))]})
+node_labels = list(G.nodes())
+print(len(node_labels))
+a = [index_class[key] for key in node_labels]
+label_source = ColumnDataSource({'x': x, 'y': y, 'name': a})
 labels = LabelSet(x='x', y='y', text='name', source=label_source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.8)
 plot.renderers.append(labels)
 
-# draw_tool = PointDrawTool(renderers=[network_graph.node_renderer])
-# plot.add_tools(draw_tool)
-# plot.toolbar.active_tap = draw_tool
+draw_tool = PointDrawTool(renderers=[network_graph.node_renderer])
+plot.add_tools(draw_tool)
+plot.toolbar.active_tap = draw_tool
 
 #Dropdown widget
 #User can select a single node and see all the nodes it connects to (regardless of source or target), and updated metrics.
 menu = list(zip(source_domains_sorted, source_domains_sorted))
+
 selection = Select(options=["Select a unit"]+menu)
 egocentric_text = Div(text="Egocentric Network:")
 

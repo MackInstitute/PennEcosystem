@@ -10,25 +10,20 @@ https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data
 
 #Import Libraries
 """
-
-# !pip install pyvis
 # !pip install Network
 # !pip install TapTool
 
 import pandas as pd
 import networkx
 # !pip install bokeh
-import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from operator import itemgetter
-# from bokeh.io import output_notebook, show, save
 from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, Toggle, PointDrawTool, Tooltip
 from bokeh.plotting import figure, curdoc, from_networkx
 from bokeh.models import EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.palettes import Blues8, Spectral8
 from bokeh.transform import linear_cmap
-from networkx.algorithms import community
 """#Data Loading"""
 
 df = pd.read_csv("PennEcosystem/network.csv")
@@ -59,13 +54,10 @@ source_domains_sorted = sorted(df['source'].unique())
 from bokeh.core.enums import SizingMode
 from bokeh.io import show
 from bokeh.models import CustomJS, MultiChoice
-from bokeh.io.output import output_file
 from bokeh.models import Button, CustomJS, Div, CheckboxButtonGroup, TapTool, OpenURL, Select
 from bokeh.plotting import figure
 from bokeh.layouts import column, row
 from bokeh.models import CDSView, ColumnDataSource, GroupFilter
-from bokeh.io import show
-from networkx.algorithms import community
 
 #Choose colors for node and edge highlighting
 node_highlight_color = '#2171b5'

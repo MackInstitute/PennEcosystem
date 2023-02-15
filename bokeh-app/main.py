@@ -529,17 +529,6 @@ analysis = column(analysis_text, egocentric_text, selection,
                   out_degree_centrality_text, out_degree_output_div,
                   eigen_degree_centrality_text, eigen_degree_output_div)
 Title_text = Div(text= "Penn Innovation Ecosystem (PIE)", style={'font-size': '200%'})
-Intro_tdxt = Div(text='''PIE is an innovation management tool with visualization of innovation related resources at Penn to help users 
-                 (corporate partners, Penn innovation community, researchers, faculty and students) better understand innovation entities 
-                 and activities. We want to understand the connection/hierarchy between innovation entities in upenn.edu and rank the influence of innovation entities and resources.''')
+Intro_tdxt = Div(text='''We invite you to explore the PIE as a network of "innovation nodes" that develop, commercialize, teach, and promote innovations at the University of Pennsylvania. Two innovation nodes are connected if at least one of them (source node) embeds on its website a link to the other one (target node)''')
 dashboard = column(Title_text, Intro_tdxt,row(layout, analysis))
 curdoc().add_root(dashboard)
-# https://towardsdatascience.com/how-to-create-a-plotly-visualization-and-embed-it-on-websites-517c1a78568b
-
-from bokeh.plotting import figure
-from bokeh.resources import CDN
-from bokeh.embed import file_html
-
-
-html = file_html(dashboard, CDN, "my plot")
-# np.save(html)

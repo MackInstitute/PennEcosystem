@@ -10,23 +10,28 @@ https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data
 
 #Import Libraries
 """
+
+# !pip install pyvis
 # !pip install Network
 # !pip install TapTool
 
 import pandas as pd
 import networkx
 # !pip install bokeh
+import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from operator import itemgetter
+# from bokeh.io import output_notebook, show, save
 from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, Toggle, PointDrawTool, Tooltip
 from bokeh.plotting import figure, curdoc, from_networkx
 from bokeh.models import EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.palettes import Blues8, Spectral8
 from bokeh.transform import linear_cmap
+from networkx.algorithms import community
 """#Data Loading"""
 
-df = pd.read_csv("PennEcosystem/network.csv")
+df = pd.read_csv("/Users/wanxing/PycharmProjects/PennEcosystem/bokeh-app/data/network.csv")
 print("reading data")
 df.rename(columns={'domains_clean':'source', 'embedded_domains':'target', 'embedded_domains.1':'count'}, inplace=True)
 start = 1
@@ -34,30 +39,40 @@ end = 10
 width = end - start
 df['weight'] =(df['count']-df['count'].min())/(df['count'].max()-df['count'].min())*width+start
 df = df[df['target']!='None']
-df['source'] = df['source'].apply(lambda x: x.replace('.upenn.edu',''))
-df['target'] = df['target'].apply(lambda x: x.replace('.upenn.edu',''))
+df['source_truncated'] = df['source'].apply(lambda x: x.replace('.upenn.edu',''))
+df['target_truncated'] = df['target'].apply(lambda x: x.replace('.upenn.edu',''))
 
-df_cat = pd.read_excel("PennEcosystem/network.csvsite_domainV2.xlsx", sheet_name='domain')
+df_cat = pd.read_excel("/Users/wanxing/PycharmProjects/PennEcosystem/bokeh-app/data/site_domainV2.xlsx", sheet_name='domain')
 df_cat['Category'] = df_cat[['R&D','Teaching','Organizer', 'Knowledge', 'Media']].apply(lambda x: ','.join(x[x.isnull()==False].index), axis=1)
-df_cat['domains'] = df_cat['domain'].apply(lambda x: x.split('/')[2].replace('www.','').replace('.upenn.edu',''))
+df_cat['domain_truncated'] = df_cat['domain'].apply(lambda x: x.split('/')[2].replace('www.','').replace('.upenn.edu',''))
 
-url_class = dict(zip(df_cat['domains'],df_cat['domain']))
-category_class = dict(zip(df_cat['domains'],df_cat['Category']))
-index_class = dict(zip(df_cat['domains'],df_cat['Node_Name']))
-name_class = dict(zip(df_cat['domains'],df_cat['Popup_Name']))
-df['source_category'] = df['source'].map(category_class)
-df['target_category'] = df['target'].map(category_class)
-domains_sorted = sorted(df_cat['domains'].unique())
-target_domains_sorted = sorted(df['target'].unique())
-source_domains_sorted = sorted(df['source'].unique())
+url_class = dict(zip(df_cat['Node_Name'],df_cat['domain']))
+category_class = dict(zip(df_cat['Node_Name'],df_cat['Category']))
+index_class = dict(zip(df_cat['domain_truncated'],df_cat['Node_Name']))
+name_class = dict(zip(df_cat['Node_Name'],df_cat['Popup_Name']))
+
+
+df['source_name'] = df['source_truncated'].map(index_class)
+df['target_name'] = df['target_truncated'].map(index_class)
+df['source_category'] = df['source_name'].map(category_class)
+df['target_category'] = df['target_name'].map(category_class)
+
+target_domains_sorted = sorted(df['target_truncated'].map(index_class).unique())
+source_domains_sorted = sorted(df['source_truncated'].map(index_class).unique())
+print(df)
+
+domains_sorted = sorted(df[df['source_category'].str.contains('Teaching')==False]['source_name'].unique())
 """#Network(interactive)"""
 from bokeh.core.enums import SizingMode
 from bokeh.io import show
 from bokeh.models import CustomJS, MultiChoice
+from bokeh.io.output import output_file
 from bokeh.models import Button, CustomJS, Div, CheckboxButtonGroup, TapTool, OpenURL, Select
 from bokeh.plotting import figure
 from bokeh.layouts import column, row
 from bokeh.models import CDSView, ColumnDataSource, GroupFilter
+from bokeh.io import show
+from networkx.algorithms import community
 
 #Choose colors for node and edge highlighting
 node_highlight_color = '#2171b5'
@@ -100,7 +115,7 @@ def callback_generate():
     new_plot.xgrid.grid_line_color = None
     new_plot.ygrid.grid_line_color = None
     new_plot.axis.visible=False
-        
+    
     if len(source_checkbox_button_group.active) == 0 and len(target_checkbox_button_group.active) > 0:
         source_group_selected = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
     else:
@@ -112,9 +127,11 @@ def callback_generate():
 
     source_node_selected = source_multi_choice.value
     target_node_selected = target_multi_choice.value
-
-    source =  df[(df["target_category"].isin(target_group_selected)) & (df['source_category'].isin(source_group_selected)) | 
-                 (df["source"].isin(source_node_selected)) | (df['target'].isin(target_node_selected))]
+    if (len(source_node_selected)==0 & len(target_node_selected)==0 & len(source_checkbox_button_group.active)==0 & len(target_checkbox_button_group.active)==0):
+        source = df
+    else:
+        source =  df[(df["target_category"].isin(target_group_selected)) & (df['source_category'].isin(source_group_selected)) | 
+                 (df["source_name"].isin(source_node_selected)) | (df['target_name'].isin(target_node_selected))]
     print(source)
     if remove_school_button.active:
         df_filtered =  source[(source["target_category"].str.contains('Teaching')==False) & (source['source_category'].str.contains('Teaching')==False)]
@@ -123,7 +140,7 @@ def callback_generate():
     else:
         df_filtered = source
     print(df_filtered)
-    G_generate = networkx.from_pandas_edgelist(df_filtered, 'source', 'target', edge_attr=['weight'], create_using=networkx.DiGraph())
+    G_generate = networkx.from_pandas_edgelist(df_filtered, 'source_name', 'target_name', edge_attr=['weight'], create_using=networkx.DiGraph())
 
     #Calculate degree for each node and add as node attribute
     degrees = dict(networkx.degree(G_generate))
@@ -135,6 +152,7 @@ def callback_generate():
     networkx.set_node_attributes(G_generate, name='adjusted_node_size', values=adjusted_node_size)
     networkx.set_node_attributes(G_generate, url_class, "URL")
     networkx.set_node_attributes(G_generate, category_class, "category")
+    networkx.set_node_attributes(G_generate, name_class, "Name")
     # Configure tap tool
     taptool = new_plot.select(type=TapTool)
     taptool.callback = OpenURL(url="@URL")
@@ -158,7 +176,7 @@ def callback_generate():
     x, y = zip(*network_graph.layout_provider.graph_layout.values())
     print(x,y)
     node_labels = list(G.nodes())
-    label_source = ColumnDataSource({'x': x, 'y': y, 'name': [node_labels[i] for i in range(len(x))]})
+    label_source = ColumnDataSource({'x': x, 'y': y, 'name': node_labels})
     labels = LabelSet(x='x', y='y', text='name', source=label_source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.8)
     new_plot.renderers.append(labels)
     group = row(column(source_cat_txt, source_multi_choice, source_checkbox_button_group),
@@ -198,7 +216,7 @@ def callback_generate():
 
 
 ## Source
-source_node_txt = Div(text="Select Source Unit(s):")
+source_node_txt = Div(text="Select Source Node(s):")
 source_checkbox_button_group = CheckboxButtonGroup(labels=labels)
 source_cat_txt = Div(text="Select Source Group(s):")
 source_multi_choice = MultiChoice(options=source_domains_sorted)
@@ -225,7 +243,7 @@ source_multi_choice = MultiChoice(options=source_domains_sorted)
 #     code += "line{}.visible = active.includes({});".format(c, c)
 
 
-G = networkx.from_pandas_edgelist(df, 'source', 'target', edge_attr=['weight'], create_using=networkx.DiGraph())
+G = networkx.from_pandas_edgelist(df, 'source_name', 'target_name', edge_attr=['weight'], create_using=networkx.DiGraph())
 # callback = CustomJS(args = {'checkbox':source_checkbox_button_group, 'df': df, 'data_new': data_new},
 # code = """
 # # console.log(df);
@@ -255,7 +273,7 @@ G = networkx.from_pandas_edgelist(df, 'source', 'target', edge_attr=['weight'], 
 #     # create a callback that will reset the datasource
 
 ## Target
-target_node_txt = Div(text="Select Target Unit(s):")
+target_node_txt = Div(text="Select Target Node(s):")
 target_checkbox_button_group = CheckboxButtonGroup(labels=labels)
 target_cat_txt = Div(text="Select Target Group(s):")
 target_multi_choice = MultiChoice(options=target_domains_sorted)
@@ -322,9 +340,7 @@ plot.renderers.append(network_graph)
 #Add Labels
 x, y = zip(*network_graph.layout_provider.graph_layout.values())
 node_labels = list(G.nodes())
-print(len(node_labels))
-a = [index_class[key] for key in node_labels]
-label_source = ColumnDataSource({'x': x, 'y': y, 'name': a})
+label_source = ColumnDataSource({'x': x, 'y': y, 'name': node_labels})
 labels = LabelSet(x='x', y='y', text='name', source=label_source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.8)
 plot.renderers.append(labels)
 
@@ -334,10 +350,10 @@ plot.toolbar.active_tap = draw_tool
 
 #Dropdown widget
 #User can select a single node and see all the nodes it connects to (regardless of source or target), and updated metrics.
-menu = list(zip(source_domains_sorted, source_domains_sorted))
+menu = list(zip(domains_sorted, domains_sorted))
 
-selection = Select(options=["Select a unit"]+menu)
-egocentric_text = Div(text="Egocentric Network:")
+selection = Select(options=["Full Network"]+menu)
+egocentric_text = Div(text="Learn more about an individual node:")
 
 def callback_select(attr, old, new):
     # selected_node=selection.value
@@ -405,7 +421,7 @@ def callback_select(attr, old, new):
     #Add Labels
     x, y = zip(*new_network_graph.layout_provider.graph_layout.values())
     node_labels = list(new_G.nodes())
-    label_source = ColumnDataSource({'x': x, 'y': y, 'name': [node_labels[i] for i in range(len(x))]})
+    label_source = ColumnDataSource({'x': x, 'y': y, 'name': node_labels})
     labels = LabelSet(x='x', y='y', text='name', source=label_source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.8)
     new_plot.renderers.append(labels)
 
@@ -524,3 +540,13 @@ Title_text = Div(text= "Penn Innovation Ecosystem (PIE)", style={'font-size': '2
 Intro_tdxt = Div(text='''We invite you to explore the PIE as a network of "innovation nodes" that develop, commercialize, teach, and promote innovations at the University of Pennsylvania. Two innovation nodes are connected if at least one of them (source node) embeds on its website a link to the other one (target node)''')
 dashboard = column(Title_text, Intro_tdxt,row(layout, analysis))
 curdoc().add_root(dashboard)
+# https://towardsdatascience.com/how-to-create-a-plotly-visualization-and-embed-it-on-websites-517c1a78568b
+
+# from bokeh.plotting import figure, save, output_file
+# from bokeh.resources import CDN
+# from bokeh.embed import file_html
+
+# # output_file(filename="page.html")
+# # save(dashboard)
+# html = file_html(dashboard, CDN, "my plot")
+# print(html)

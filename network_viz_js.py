@@ -460,22 +460,35 @@ remove_school_button = Toggle(label='''Exclude schools from network''')
 ## reset button
 ## clear all the widget and return the full network
 reset_button = Button(label="Reset to Full Network",  button_type='primary')
-def callback_reset():
-    target_multi_choice.value = []
-    source_multi_choice.value = []
-    target_checkbox_button_group.active = []
-    source_checkbox_button_group.active = []
-    selection.value = None
-    remove_school_button.active = False
-    layout.children[2] = plot
-    dashboard.children[2].children[1] = column(analysis_text, egocentric_text, selection, 
-                  density_text, density, 
-                  clustering_text, clustering,
-                #   degree_centrality_text, degree_output_div,
-                  in_degree_centrality_text, in_degree_output_div,
-                  out_degree_centrality_text, out_degree_output_div,
-                  eigen_degree_centrality_text, eigen_degree_output_div)
-reset_button.on_click(callback_reset)
+# def callback_reset():
+#     target_multi_choice.value = []
+#     source_multi_choice.value = []
+#     target_checkbox_button_group.active = []
+#     source_checkbox_button_group.active = []
+#     selection.value = None
+#     remove_school_button.active = False
+#     layout.children[2] = plot
+#     dashboard.children[2].children[1] = column(analysis_text, egocentric_text, selection, 
+#                   density_text, density, 
+#                   clustering_text, clustering,
+#                 #   degree_centrality_text, degree_output_div,
+#                   in_degree_centrality_text, in_degree_output_div,
+#                   out_degree_centrality_text, out_degree_output_div,
+#                   eigen_degree_centrality_text, eigen_degree_output_div)
+# reset_button.on_click(callback_reset)
+
+reset_button.js_on_click(CustomJS(args=dict(target_multi_choice=target_multi_choice,
+                                            source_multi_choice=source_multi_choice,
+                                            target_checkbox_button_group=target_checkbox_button_group,
+                                            source_checkbox_button_group=source_checkbox_button_group,
+                                            selection=selection,
+                                            remove_school_button=remove_school_button
+                                            ), code='''
+                                            target_multi_choice.value=[];
+                                            source_multi_choice.value=[];
+                                            target_checkbox_button_group.active=[];
+                                            source_checkbox_button_group.active=[];
+                                            '''))
 
 generate_button = Button(label="Generate",  button_type='danger')
 

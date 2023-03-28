@@ -29,6 +29,7 @@ from bokeh.models import EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.palettes import Blues8, Spectral8
 from bokeh.transform import linear_cmap
 from networkx.algorithms import community
+
 """#Data Loading"""
 
 df = pd.read_csv("/Users/wanxing/PycharmProjects/PennEcosystem/bokeh-app/data/network.csv")
@@ -50,7 +51,6 @@ url_class = dict(zip(df_cat['Node_Name'],df_cat['domain']))
 category_class = dict(zip(df_cat['Node_Name'],df_cat['Category']))
 index_class = dict(zip(df_cat['domain_truncated'],df_cat['Node_Name']))
 name_class = dict(zip(df_cat['Node_Name'],df_cat['Popup_Name']))
-
 
 df['source_name'] = df['source_truncated'].map(index_class)
 df['target_name'] = df['target_truncated'].map(index_class)
@@ -127,12 +127,12 @@ def callback_generate():
 
     source_node_selected = source_multi_choice.value
     target_node_selected = target_multi_choice.value
-    if (len(source_node_selected)==0 & len(target_node_selected)==0 & len(source_checkbox_button_group.active)==0 & len(target_checkbox_button_group.active)==0):
+    if ((len(source_node_selected)==0) & (len(target_node_selected)==0) & (len(source_checkbox_button_group.active)==0) & (len(target_checkbox_button_group.active)==0)):
         source = df
     else:
         source =  df[(df["target_category"].isin(target_group_selected)) & (df['source_category'].isin(source_group_selected)) | 
                  (df["source_name"].isin(source_node_selected)) | (df['target_name'].isin(target_node_selected))]
-    print(source)
+    print("source",source)
     if remove_school_button.active:
         df_filtered =  source[(source["target_category"].str.contains('Teaching')==False) & (source['source_category'].str.contains('Teaching')==False)]
         # df_filtered = d[d['source_category'].str.contains(cat_selected)==False]
@@ -266,11 +266,6 @@ G = networkx.from_pandas_edgelist(df, 'source_name', 'target_name', edge_attr=['
 # }
 # data_new.change.emit();
 # # """)
-# def update(event):
-# #Callback    
-#     print("update triggered")
-#     df.data = data
-#     # create a callback that will reset the datasource
 
 ## Target
 target_node_txt = Div(text="Select Target Node(s):")
@@ -281,6 +276,8 @@ target_multi_choice = MultiChoice(options=target_domains_sorted)
 #     console.log('multi_choice: value=' + this.value, this.toString())
 # """))
 
+#Remove school button
+remove_school_button = Toggle(label='''Exclude schools from network''')
 
 #Calculate degree for each node and add as node attribute
 degrees = dict(networkx.degree(G))
@@ -336,13 +333,168 @@ network_graph.inspection_policy = NodesAndLinkedEdges()
 
 plot.renderers.append(network_graph)
 
-
 #Add Labels
 x, y = zip(*network_graph.layout_provider.graph_layout.values())
 node_labels = list(G.nodes())
 label_source = ColumnDataSource({'x': x, 'y': y, 'name': node_labels})
 labels = LabelSet(x='x', y='y', text='name', source=label_source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.8)
 plot.renderers.append(labels)
+
+# print(G.nodes(data=True))
+# G.nodes data structure:
+# ('Acceleration.Lab', 
+# {'degree': 2, 
+# adjusted_node_size': 7, 
+# 'URL': 'https://accelerationlab.upenn.edu/', 
+# 'category': 'R&D', 
+# 'Name': 'Acceleration Lab, Penn Medicine'})
+
+node_data = dict(index=list(G.nodes), category = [G.nodes[i]['category'] for i in G.nodes])
+# print("node_data\n", node_data)
+node_source = ColumnDataSource(node_data)
+# print("edge\n",G.edges)
+# edge_source=G.edges
+# edge_data = dict(source=[e[0] for e in G.edges()], target=[e[1] for e in G.edges()])
+# edge_source=ColumnDataSource(edge_data)
+network_graph.edge_renderer.data_source.data['start'] = [e[0] for e in G.edges()]
+network_graph.edge_renderer.data_source.data['end'] = [e[1] for e in G.edges()]
+# print(network_graph.node_renderer.data_source.data)
+init_node_source = network_graph.node_renderer.data_source.data.copy()
+init_edge_source = network_graph.edge_renderer.data_source.data.copy()
+init_label_source = label_source.data.copy()
+callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, 
+                              edge_source=network_graph.edge_renderer.data_source,
+                              label_source=label_source,
+                              source_checkbox_button_group=source_checkbox_button_group,
+                              source_multi_choice=source_multi_choice,
+                              target_checkbox_button_group=target_checkbox_button_group,
+                              target_multi_choice=target_multi_choice,
+                              remove_school_button=remove_school_button), code="""
+    var remove_school = remove_school_button.active;
+    console.log('remove school', remove_school);
+    const node_data = node_source.data;
+    console.log(node_data);
+    // Name, URL, adjusted_node_size, category, degree, index
+    // Create filtered data framework
+    var node_data_filtered = {'Name':[], 'URL':[], 'adjusted_node_size':[], 'category':[], 'degree':[], 'index':[]};
+    const name = node_data['Name'];
+    const url = node_data['URL'];
+    const adjusted_node_size = node_data['adjusted_node_size'];
+    const category = node_data['category'];
+    const degree = node_data['degree'];
+    const index = node_data['index'];
+    // extract values from multiple choice
+    var source_nodes = source_multi_choice.value;
+    var target_nodes = target_multi_choice.value;
+    // extract values from selected category
+    var source_labels = Array.from(source_checkbox_button_group.active, a => isNaN(source_checkbox_button_group.labels[a]) ? source_checkbox_button_group.labels[a] : Number(source_checkbox_button_group.labels[a]));
+    var target_labels = Array.from(target_checkbox_button_group.active, a => isNaN(target_checkbox_button_group.labels[a]) ? target_checkbox_button_group.labels[a] : Number(target_checkbox_button_group.labels[a]));
+    var selected_category = [];
+    var selected_node = [];
+    selected_category = Array.from(new Set(source_labels.concat(target_labels)));
+    selected_node = Array.from(new Set(source_nodes.concat(target_nodes)));
+    console.log("selected categories", selected_category);
+    console.log("selected node", selected_node);
+
+    // filter label
+    const label_data = label_source.data;
+    console.log(label_data)
+    var label_source_filter = {'x':[],'y':[],'name':[]};
+    const label = label_data['name'];
+    const x = label_data['x'];
+    const y = label_data['y'];
+
+    for (let i = 0; i < category.length; i++) {
+        for (let j = 0; j < selected_category.length; j++) {
+            if (category[i].includes(selected_category[j])) {
+                node_data_filtered['Name'].push(name[i]);
+                node_data_filtered['URL'].push(url[i]);
+                node_data_filtered['adjusted_node_size'].push(adjusted_node_size[i]);
+                node_data_filtered['category'].push(category[i]);
+                node_data_filtered['degree'].push(degree[i]);
+                node_data_filtered['index'].push(index[i]);
+            }
+        }
+    }
+
+    for (let i = 0; i < index.length; i++) {
+        for (let j = 0; j < selected_node.length; j++) {
+            if (index[i].includes(selected_node[j])) {
+                node_data_filtered['Name'].push(name[i]);
+                node_data_filtered['URL'].push(url[i]);
+                node_data_filtered['adjusted_node_size'].push(adjusted_node_size[i]);
+                node_data_filtered['category'].push(category[i]);
+                node_data_filtered['degree'].push(degree[i]);
+                node_data_filtered['index'].push(index[i]);
+            }
+        }
+        for (let z = 0; z < source_labels.length; z++) {
+            if (category[i].includes(source_labels[z])) {
+                source_nodes.push(index[i]);
+            }
+        }
+        for (let a = 0; a < target_labels.length; a++) {
+            if (category[i].includes(target_labels[a])) {
+                target_nodes.push(index[i]);
+            }
+        }
+        for (let b = 0; b < label.length; b++) {
+            if (node_data_filtered['index'].includes(label[b])) {
+                label_source_filter['x'].push(x[b]);
+                label_source_filter['y'].push(y[b]);
+                label_source_filter['name'].push(label[b]);
+            }
+        }
+    }
+    if (remove_school) {
+        for (let i = 0; i < node_data_filtered['index'].length; i++) {
+            if (node_data_filtered['category'][i].includes('Teaching')) {
+                node_data_filtered['Name'].splice(i);
+                node_data_filtered['URL'].splice(i);
+                node_data_filtered['adjusted_node_size'].splice(i);
+                node_data_filtered['category'].splice(i);
+                node_data_filtered['degree'].splice(i);
+                node_data_filtered['index'].splice(i);
+            }
+        }
+    }
+    console.log('source node', source_nodes);
+    console.log('target node', target_nodes);
+    console.log(node_data_filtered);
+    node_source.data = node_data_filtered;
+    node_source.change.emit();
+    console.log('label',label_source_filter)
+    label_source.data = label_source_filter;
+    label_source.change.emit();
+
+    // filter edge
+    var edge_data_filtered = {'end':[],'line_width':[],'start':[],'weight':[]};
+    const line_width = edge_source.data['line_width'];
+    const weight = edge_source.data['weight'];
+    const start = edge_source.data['start'];
+    const end = edge_source.data['end'];
+    console.log(edge_source.data);
+    for (let i = 0; i < start.length; i++) {
+        var source = start[i];
+        var target = end[i];
+        for (let j = 0; j < source_nodes.length; j++) {
+            if (source === source_nodes[j]) {
+                for (let z = 0; z < target_nodes.length; z++) {
+                    if (target === target_nodes[z]) {
+                        edge_data_filtered['end'].push(end[i]);
+                        edge_data_filtered['line_width'].push(line_width[i]);
+                        edge_data_filtered['start'].push(start[i]);
+                        edge_data_filtered['weight'].push(weight[i]);
+                    }
+                }
+            }
+        }
+    } 
+    console.log(edge_data_filtered);
+    edge_source.data = edge_data_filtered;
+    edge_source.change.emit();
+    """)
+
 
 draw_tool = PointDrawTool(renderers=[network_graph.node_renderer])
 plot.add_tools(draw_tool)
@@ -376,6 +528,11 @@ def callback_select(attr, old, new):
     # # network_graph = from_networkx(G_node, networkx.spring_layout, scale=15, center=(0, 0))
     # #Create newnetwork graph from filtered data
     # #Set node sizes and colors according to node degree (color as category from attribute)
+    target_multi_choice.value = []
+    source_multi_choice.value = []
+    target_checkbox_button_group.active = []
+    source_checkbox_button_group.active = []
+    remove_school_button.active = False
     new_plot = figure(tooltips = HOVER_TOOLTIPS,
               tools="pan,wheel_zoom,save,reset,tap", active_scroll='wheel_zoom',
               x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), 
@@ -383,7 +540,7 @@ def callback_select(attr, old, new):
     selected_node=selection.value
     print("node", selected_node)
 
-    new_G = networkx.ego_graph(G, selected_node)
+    new_G = networkx.ego_graph(G, selected_node, center=False)
     # new_G = networkx.from_pandas_edgelist(source, 'source', 'target', edge_attr=['weight'], create_using=networkx.DiGraph())
 
     #Calculate degree for each node and add as node attribute
@@ -410,7 +567,6 @@ def callback_select(attr, old, new):
     #Set edge opacity and width
     new_network_graph.edge_renderer.glyph = MultiLine(line_alpha=0.3, line_width=1)
 
-
     #Set edge highlight colors
     new_network_graph.edge_renderer.selection_glyph = MultiLine(line_color=edge_highlight_color, line_width=2)
     new_network_graph.edge_renderer.hover_glyph = MultiLine(line_color=edge_highlight_color, line_width=2)
@@ -432,9 +588,9 @@ def callback_select(attr, old, new):
     in_degree = networkx.in_degree_centrality(new_G)
     out_degree = networkx.out_degree_centrality(new_G)
     # eigen_degree = networkx.eigenvector_centrality_numpy(new_G)
-    in_degree.pop(selected_node)
-    out_degree.pop(selected_node)
-    eigen_degree.pop(selected_node)
+    # in_degree.pop(selected_node)
+    # out_degree.pop(selected_node)
+    # eigen_degree.pop(selected_node)
     sorted_in_degree = sorted(in_degree.items(), key=itemgetter(1), reverse=True)
     sorted_out_degree = sorted(out_degree.items(), key=itemgetter(1), reverse=True)
     # sorted_eigen_degree = sorted(eigen_degree.items(), key=itemgetter(1), reverse=True)
@@ -454,33 +610,54 @@ def callback_select(attr, old, new):
         out_degree_centrality_text, new_out_degree_output_div)
 selection.on_change('value', callback_select)
 
-#Remove school button
-remove_school_button = Toggle(label='''Exclude schools from network''')
+
 
 ## reset button
 ## clear all the widget and return the full network
 reset_button = Button(label="Reset to Full Network",  button_type='primary')
-def callback_reset():
-    target_multi_choice.value = []
-    source_multi_choice.value = []
-    target_checkbox_button_group.active = []
-    source_checkbox_button_group.active = []
-    selection.value = None
-    remove_school_button.active = False
-    layout.children[2] = plot
-    dashboard.children[2].children[1] = column(analysis_text, egocentric_text, selection, 
-                  density_text, density, 
-                  clustering_text, clustering,
-                #   degree_centrality_text, degree_output_div,
-                  in_degree_centrality_text, in_degree_output_div,
-                  out_degree_centrality_text, out_degree_output_div,
-                  eigen_degree_centrality_text, eigen_degree_output_div)
-reset_button.on_click(callback_reset)
+# Python code for callback reset
+# def callback_reset():
+#     target_multi_choice.value = []
+#     source_multi_choice.value = []
+#     target_checkbox_button_group.active = []
+#     source_checkbox_button_group.active = []
+#     selection.value = None
+#     remove_school_button.active = False
+#     layout.children[2] = plot
+#     dashboard.children[2].children[1] = column(analysis_text, egocentric_text, selection, 
+#                   density_text, density, 
+#                   clustering_text, clustering,
+#                 #   degree_centrality_text, degree_output_div,
+#                   in_degree_centrality_text, in_degree_output_div,
+#                   out_degree_centrality_text, out_degree_output_div,
+#                   eigen_degree_centrality_text, eigen_degree_output_div)
+# JS code for callback reset
+print(init_node_source)
+callback_reset = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, init_node_source=init_node_source,
+                              edge_source=network_graph.edge_renderer.data_source, init_edge_source = init_edge_source,
+                              label_source=label_source, init_label_source=init_label_source,
+                              source_checkbox_button_group=source_checkbox_button_group,
+                              source_multi_choice=source_multi_choice,
+                              target_checkbox_button_group=target_checkbox_button_group,
+                              target_multi_choice=target_multi_choice,
+                              remove_school_button=remove_school_button), code="""
+    target_multi_choice.value = [];
+    source_multi_choice.value = [];
+    target_checkbox_button_group.active = [];
+    source_checkbox_button_group.active = [];
+    node_source.data=init_node_source;
+    console.log('reset', node_source.data);
+    edge_source.data=init_edge_source;
+    label_source.data=init_label_source;
+    node_source.change.emit();
+    edge_source.change.emit();
+    label_source.change.emit();
+    """)
+reset_button.js_on_click(callback_reset)
 
 generate_button = Button(label="Generate",  button_type='danger')
-
-generate_button.on_click(callback_generate)
-
+# generate_button.on_click(callback_generate)
+generate_button.js_on_click(callback)
 group = row(column(source_node_txt, source_multi_choice, source_cat_txt, source_checkbox_button_group),
             column(target_node_txt, target_multi_choice, target_cat_txt, target_checkbox_button_group),
             sizing_mode='stretch_both')
@@ -539,14 +716,31 @@ analysis = column(analysis_text, egocentric_text, selection,
 Title_text = Div(text= "Penn Innovation Ecosystem (PIE)", style={'font-size': '200%'})
 Intro_tdxt = Div(text='''We invite you to explore the PIE as a network of "innovation nodes" that develop, commercialize, teach, and promote innovations at the University of Pennsylvania. Two innovation nodes are connected if at least one of them (source node) embeds on its website a link to the other one (target node)''')
 dashboard = column(Title_text, Intro_tdxt,row(layout, analysis))
+
+# # Testing js code
+# reset_button.js_on_click(CustomJS(args=dict(target_multi_choice=target_multi_choice,
+#                                             source_multi_choice=source_multi_choice,
+#                                             target_checkbox_button_group=target_checkbox_button_group,
+#                                             source_checkbox_button_group=source_checkbox_button_group,
+#                                             selection=selection,
+#                                             remove_school_button=remove_school_button,
+#                                             layout=layout,dashboard=dashboard
+#                                             ), code='''
+#                                             target_multi_choice.value=[];
+#                                             source_multi_choice.value=[];
+#                                             target_checkbox_button_group.active=[];
+#                                             source_checkbox_button_group.active=[];
+#                                             // selection.value='Full Network';
+#                                             remove_school_button.active=false;
+#                                             '''))
 curdoc().add_root(dashboard)
 # https://towardsdatascience.com/how-to-create-a-plotly-visualization-and-embed-it-on-websites-517c1a78568b
 
-# from bokeh.plotting import figure, save, output_file
-# from bokeh.resources import CDN
-# from bokeh.embed import file_html
+from bokeh.plotting import figure, save, output_file
+from bokeh.resources import CDN
+from bokeh.embed import file_html
 
-# # output_file(filename="page.html")
-# # save(dashboard)
-# html = file_html(dashboard, CDN, "my plot")
-# print(html)
+output_file(filename="page.html")
+# save(dashboard)
+html = file_html(dashboard, CDN, "my plot")
+print(html)

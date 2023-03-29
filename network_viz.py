@@ -105,114 +105,114 @@ plot.ygrid.grid_line_color = None
 plot.axis.visible=False
 labels = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
 
-
-def callback_generate():
-    new_plot = figure(tooltips = HOVER_TOOLTIPS,
-              tools="pan,wheel_zoom,save,reset,tap", active_scroll='wheel_zoom',
-              x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), 
-              plot_width=1000)
+# Python callback generate function
+# def callback_generate():
+#     new_plot = figure(tooltips = HOVER_TOOLTIPS,
+#               tools="pan,wheel_zoom,save,reset,tap", active_scroll='wheel_zoom',
+#               x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), 
+#               plot_width=1000)
     
-    new_plot.xgrid.grid_line_color = None
-    new_plot.ygrid.grid_line_color = None
-    new_plot.axis.visible=False
+#     new_plot.xgrid.grid_line_color = None
+#     new_plot.ygrid.grid_line_color = None
+#     new_plot.axis.visible=False
     
-    if len(source_checkbox_button_group.active) == 0 and len(target_checkbox_button_group.active) > 0:
-        source_group_selected = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
-    else:
-        source_group_selected = [source_checkbox_button_group.labels[i] for i in source_checkbox_button_group.active]
-    if len(target_checkbox_button_group.active) == 0 and len(source_checkbox_button_group.active) > 0:
-        target_group_selected = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
-    else:
-        target_group_selected = [target_checkbox_button_group.labels[i] for i in target_checkbox_button_group.active]
+#     if len(source_checkbox_button_group.active) == 0 and len(target_checkbox_button_group.active) > 0:
+#         source_group_selected = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
+#     else:
+#         source_group_selected = [source_checkbox_button_group.labels[i] for i in source_checkbox_button_group.active]
+#     if len(target_checkbox_button_group.active) == 0 and len(source_checkbox_button_group.active) > 0:
+#         target_group_selected = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
+#     else:
+#         target_group_selected = [target_checkbox_button_group.labels[i] for i in target_checkbox_button_group.active]
 
-    source_node_selected = source_multi_choice.value
-    target_node_selected = target_multi_choice.value
-    if ((len(source_node_selected)==0) & (len(target_node_selected)==0) & (len(source_checkbox_button_group.active)==0) & (len(target_checkbox_button_group.active)==0)):
-        source = df
-    else:
-        source =  df[(df["target_category"].isin(target_group_selected)) & (df['source_category'].isin(source_group_selected)) | 
-                 (df["source_name"].isin(source_node_selected)) | (df['target_name'].isin(target_node_selected))]
-    print("source",source)
-    if remove_school_button.active:
-        df_filtered =  source[(source["target_category"].str.contains('Teaching')==False) & (source['source_category'].str.contains('Teaching')==False)]
-        # df_filtered = d[d['source_category'].str.contains(cat_selected)==False]
-        print("updated",df_filtered)
-    else:
-        df_filtered = source
-    print(df_filtered)
-    G_generate = networkx.from_pandas_edgelist(df_filtered, 'source_name', 'target_name', edge_attr=['weight'], create_using=networkx.DiGraph())
+#     source_node_selected = source_multi_choice.value
+#     target_node_selected = target_multi_choice.value
+#     if ((len(source_node_selected)==0) & (len(target_node_selected)==0) & (len(source_checkbox_button_group.active)==0) & (len(target_checkbox_button_group.active)==0)):
+#         source = df
+#     else:
+#         source =  df[(df["target_category"].isin(target_group_selected)) & (df['source_category'].isin(source_group_selected)) | 
+#                  (df["source_name"].isin(source_node_selected)) | (df['target_name'].isin(target_node_selected))]
+#     print("source",source)
+#     if remove_school_button.active:
+#         df_filtered =  source[(source["target_category"].str.contains('Teaching')==False) & (source['source_category'].str.contains('Teaching')==False)]
+#         # df_filtered = d[d['source_category'].str.contains(cat_selected)==False]
+#         print("updated",df_filtered)
+#     else:
+#         df_filtered = source
+#     print(df_filtered)
+#     G_generate = networkx.from_pandas_edgelist(df_filtered, 'source_name', 'target_name', edge_attr=['weight'], create_using=networkx.DiGraph())
 
-    #Calculate degree for each node and add as node attribute
-    degrees = dict(networkx.degree(G_generate))
-    networkx.set_node_attributes(G_generate, name='degree', values=degrees)
+#     #Calculate degree for each node and add as node attribute
+#     degrees = dict(networkx.degree(G_generate))
+#     networkx.set_node_attributes(G_generate, name='degree', values=degrees)
 
-    # #Slightly adjust degree so that the nodes with very small degrees are still visible
-    number_to_adjust_by = 5
-    adjusted_node_size = dict([(node, degree+number_to_adjust_by) for node, degree in networkx.degree(G)])
-    networkx.set_node_attributes(G_generate, name='adjusted_node_size', values=adjusted_node_size)
-    networkx.set_node_attributes(G_generate, url_class, "URL")
-    networkx.set_node_attributes(G_generate, category_class, "category")
-    networkx.set_node_attributes(G_generate, name_class, "Name")
-    # Configure tap tool
-    taptool = new_plot.select(type=TapTool)
-    taptool.callback = OpenURL(url="@URL")
-    network_graph = from_networkx(G_generate, pos, scale=15, center=(0, 0))
-    #Create newnetwork graph from filtered data
-    #Set node sizes and colors according to node degree (color as category from attribute)
-    network_graph.node_renderer.glyph = Circle(size=size_by_this_attribute, fill_color=node_fill_color)
-    #Set node highlight colors
-    network_graph.node_renderer.hover_glyph = Circle(size=size_by_this_attribute, fill_color=node_highlight_color, line_width=2)
-    network_graph.node_renderer.selection_glyph = Circle(size=size_by_this_attribute, fill_color=node_highlight_color, line_width=2)
-    #Set edge opacity and width
-    network_graph.edge_renderer.glyph = MultiLine(line_alpha=0.3, line_width=1)
-    #Set edge highlight colors
-    network_graph.edge_renderer.selection_glyph = MultiLine(line_color=edge_highlight_color, line_width=2)
-    network_graph.edge_renderer.hover_glyph = MultiLine(line_color=edge_highlight_color, line_width=2)
-    #Highlight nodes and edges
-    network_graph.selection_policy = NodesAndLinkedEdges()
-    network_graph.inspection_policy = NodesAndLinkedEdges()
-    new_plot.renderers.append(network_graph)
-    #Add Labels
-    x, y = zip(*network_graph.layout_provider.graph_layout.values())
-    print(x,y)
-    node_labels = list(G.nodes())
-    label_source = ColumnDataSource({'x': x, 'y': y, 'name': node_labels})
-    labels = LabelSet(x='x', y='y', text='name', source=label_source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.8)
-    new_plot.renderers.append(labels)
-    group = row(column(source_cat_txt, source_multi_choice, source_checkbox_button_group),
-                column(target_cat_txt, target_multi_choice, target_checkbox_button_group),
-                sizing_mode='stretch_both')
-    layout.children[2] = new_plot
-    # update metrics
-    new_density = Div(text="{:.2f}".format(networkx.density(G_generate)))
-    new_clustering = Div(text="{:.2f}".format(networkx.average_clustering(G_generate)))
-    degree = networkx.degree_centrality(G_generate)
-    in_degree = networkx.in_degree_centrality(G_generate)
-    out_degree = networkx.out_degree_centrality(G_generate)
-    eigen_degree = networkx.eigenvector_centrality_numpy(G_generate)
+#     # #Slightly adjust degree so that the nodes with very small degrees are still visible
+#     number_to_adjust_by = 5
+#     adjusted_node_size = dict([(node, degree+number_to_adjust_by) for node, degree in networkx.degree(G)])
+#     networkx.set_node_attributes(G_generate, name='adjusted_node_size', values=adjusted_node_size)
+#     networkx.set_node_attributes(G_generate, url_class, "URL")
+#     networkx.set_node_attributes(G_generate, category_class, "category")
+#     networkx.set_node_attributes(G_generate, name_class, "Name")
+#     # Configure tap tool
+#     taptool = new_plot.select(type=TapTool)
+#     taptool.callback = OpenURL(url="@URL")
+#     network_graph = from_networkx(G_generate, pos, scale=15, center=(0, 0))
+#     #Create newnetwork graph from filtered data
+#     #Set node sizes and colors according to node degree (color as category from attribute)
+#     network_graph.node_renderer.glyph = Circle(size=size_by_this_attribute, fill_color=node_fill_color)
+#     #Set node highlight colors
+#     network_graph.node_renderer.hover_glyph = Circle(size=size_by_this_attribute, fill_color=node_highlight_color, line_width=2)
+#     network_graph.node_renderer.selection_glyph = Circle(size=size_by_this_attribute, fill_color=node_highlight_color, line_width=2)
+#     #Set edge opacity and width
+#     network_graph.edge_renderer.glyph = MultiLine(line_alpha=0.3, line_width=1)
+#     #Set edge highlight colors
+#     network_graph.edge_renderer.selection_glyph = MultiLine(line_color=edge_highlight_color, line_width=2)
+#     network_graph.edge_renderer.hover_glyph = MultiLine(line_color=edge_highlight_color, line_width=2)
+#     #Highlight nodes and edges
+#     network_graph.selection_policy = NodesAndLinkedEdges()
+#     network_graph.inspection_policy = NodesAndLinkedEdges()
+#     new_plot.renderers.append(network_graph)
+#     #Add Labels
+#     x, y = zip(*network_graph.layout_provider.graph_layout.values())
+#     print(x,y)
+#     node_labels = list(G.nodes())
+#     label_source = ColumnDataSource({'x': x, 'y': y, 'name': node_labels})
+#     labels = LabelSet(x='x', y='y', text='name', source=label_source, background_fill_color='white', text_font_size='10px', background_fill_alpha=.8)
+#     new_plot.renderers.append(labels)
+#     group = row(column(source_cat_txt, source_multi_choice, source_checkbox_button_group),
+#                 column(target_cat_txt, target_multi_choice, target_checkbox_button_group),
+#                 sizing_mode='stretch_both')
+#     layout.children[2] = new_plot
+#     # update metrics
+#     new_density = Div(text="{:.2f}".format(networkx.density(G_generate)))
+#     new_clustering = Div(text="{:.2f}".format(networkx.average_clustering(G_generate)))
+#     degree = networkx.degree_centrality(G_generate)
+#     in_degree = networkx.in_degree_centrality(G_generate)
+#     out_degree = networkx.out_degree_centrality(G_generate)
+#     eigen_degree = networkx.eigenvector_centrality_numpy(G_generate)
 
-    sorted_degree = sorted(degree.items(), key=itemgetter(1), reverse=True)
-    sorted_in_degree = sorted(in_degree.items(), key=itemgetter(1), reverse=True)
-    sorted_out_degree = sorted(out_degree.items(), key=itemgetter(1), reverse=True)
-    sorted_eigen_degree = sorted(eigen_degree.items(), key=itemgetter(1), reverse=True)
+#     sorted_degree = sorted(degree.items(), key=itemgetter(1), reverse=True)
+#     sorted_in_degree = sorted(in_degree.items(), key=itemgetter(1), reverse=True)
+#     sorted_out_degree = sorted(out_degree.items(), key=itemgetter(1), reverse=True)
+#     sorted_eigen_degree = sorted(eigen_degree.items(), key=itemgetter(1), reverse=True)
 
-    in_degree_output = " "
-    for n, v in sorted_in_degree[:5]:
-        in_degree_output += n + " " + "{:.2f}".format(v) + '</br>'
-    new_in_degree_output_div = Div(text=str(in_degree_output))
-    out_degree_output = " "
-    for n, v in sorted_out_degree[:5]:
-        out_degree_output += n + " " + "{:.2f}".format(v) + '</br>'
-    new_out_degree_output_div = Div(text=str(out_degree_output))
-    eigen_degree_output = " "
-    for n, v in sorted_eigen_degree[:5]:
-        eigen_degree_output += n + " " + "{:.2f}".format(v) + '</br>'
-    new_eigen_degree_output_div = Div(text=str(eigen_degree_output))
-    analysis.children[4] = new_density
-    analysis.children[6] =  new_clustering
-    analysis.children[8] = new_in_degree_output_div
-    analysis.children[10] = new_out_degree_output_div
-    analysis.children[12] = new_eigen_degree_output_div
+#     in_degree_output = " "
+#     for n, v in sorted_in_degree[:5]:
+#         in_degree_output += n + " " + "{:.2f}".format(v) + '</br>'
+#     new_in_degree_output_div = Div(text=str(in_degree_output))
+#     out_degree_output = " "
+#     for n, v in sorted_out_degree[:5]:
+#         out_degree_output += n + " " + "{:.2f}".format(v) + '</br>'
+#     new_out_degree_output_div = Div(text=str(out_degree_output))
+#     eigen_degree_output = " "
+#     for n, v in sorted_eigen_degree[:5]:
+#         eigen_degree_output += n + " " + "{:.2f}".format(v) + '</br>'
+#     new_eigen_degree_output_div = Div(text=str(eigen_degree_output))
+#     analysis.children[4] = new_density
+#     analysis.children[6] =  new_clustering
+#     analysis.children[8] = new_in_degree_output_div
+#     analysis.children[10] = new_out_degree_output_div
+#     analysis.children[12] = new_eigen_degree_output_div
 
 
 ## Source
@@ -349,40 +349,35 @@ plot.renderers.append(labels)
 # 'category': 'R&D', 
 # 'Name': 'Acceleration Lab, Penn Medicine'})
 
-node_data = dict(index=list(G.nodes), category = [G.nodes[i]['category'] for i in G.nodes])
-# print("node_data\n", node_data)
-node_source = ColumnDataSource(node_data)
-# print("edge\n",G.edges)
-# edge_source=G.edges
-# edge_data = dict(source=[e[0] for e in G.edges()], target=[e[1] for e in G.edges()])
-# edge_source=ColumnDataSource(edge_data)
-network_graph.edge_renderer.data_source.data['start'] = [e[0] for e in G.edges()]
-network_graph.edge_renderer.data_source.data['end'] = [e[1] for e in G.edges()]
-# print(network_graph.node_renderer.data_source.data)
 init_node_source = network_graph.node_renderer.data_source.data.copy()
 init_edge_source = network_graph.edge_renderer.data_source.data.copy()
 init_label_source = label_source.data.copy()
-callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, 
-                              edge_source=network_graph.edge_renderer.data_source,
-                              label_source=label_source,
+node_data_filtered = {'Name':[], 'URL':[], 'adjusted_node_size':[], 'category':[], 'degree':[], 'index':[]}
+edge_data_filtered = {'end':[],'line_width':[],'start':[],'weight':[]}
+callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, init_node_source=init_node_source,node_data_filtered=node_data_filtered,
+                              edge_source=network_graph.edge_renderer.data_source, init_edge_source=init_edge_source,edge_data_filtered=edge_data_filtered,
+                              label_source=label_source, init_label_source=init_label_source,
                               source_checkbox_button_group=source_checkbox_button_group,
                               source_multi_choice=source_multi_choice,
                               target_checkbox_button_group=target_checkbox_button_group,
                               target_multi_choice=target_multi_choice,
                               remove_school_button=remove_school_button), code="""
+
     var remove_school = remove_school_button.active;
     console.log('remove school', remove_school);
-    const node_data = node_source.data;
-    console.log(node_data);
+    const node_data = init_node_source;
+    console.log("node",node_data);
+
     // Name, URL, adjusted_node_size, category, degree, index
     // Create filtered data framework
-    var node_data_filtered = {'Name':[], 'URL':[], 'adjusted_node_size':[], 'category':[], 'degree':[], 'index':[]};
+    var data = {'Name':[], 'URL':[], 'adjusted_node_size':[], 'category':[], 'degree':[], 'index':[]};
     const name = node_data['Name'];
     const url = node_data['URL'];
     const adjusted_node_size = node_data['adjusted_node_size'];
     const category = node_data['category'];
     const degree = node_data['degree'];
     const index = node_data['index'];
+
     // extract values from multiple choice
     var source_nodes = source_multi_choice.value;
     var target_nodes = target_multi_choice.value;
@@ -393,87 +388,97 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
     var selected_node = [];
     selected_category = Array.from(new Set(source_labels.concat(target_labels)));
     selected_node = Array.from(new Set(source_nodes.concat(target_nodes)));
+
     console.log("selected categories", selected_category);
     console.log("selected node", selected_node);
 
     // filter label
-    const label_data = label_source.data;
+    const label_data = init_label_source;
     console.log(label_data)
     var label_source_filter = {'x':[],'y':[],'name':[]};
     const label = label_data['name'];
+    console.log(label)
     const x = label_data['x'];
     const y = label_data['y'];
-
+    const teaching_nodes = [];
     for (let i = 0; i < category.length; i++) {
         for (let j = 0; j < selected_category.length; j++) {
-            if (category[i].includes(selected_category[j])) {
-                node_data_filtered['Name'].push(name[i]);
-                node_data_filtered['URL'].push(url[i]);
-                node_data_filtered['adjusted_node_size'].push(adjusted_node_size[i]);
-                node_data_filtered['category'].push(category[i]);
-                node_data_filtered['degree'].push(degree[i]);
-                node_data_filtered['index'].push(index[i]);
+            if (remove_school != true && category[i].includes(selected_category[j])) {
+                data['Name'].push(name[i]);
+                data['URL'].push(url[i]);
+                data['adjusted_node_size'].push(adjusted_node_size[i]);
+                data['category'].push(category[i]);
+                data['degree'].push(degree[i]);
+                data['index'].push(index[i]);
+            } else if (remove_school && !category[i].includes('Teaching') && category[i].includes(selected_category[j])) {
+                data['Name'].push(name[i]);
+                data['URL'].push(url[i]);
+                data['adjusted_node_size'].push(adjusted_node_size[i]);
+                data['category'].push(category[i]);
+                data['degree'].push(degree[i]);
+                data['index'].push(index[i]);
             }
         }
     }
 
     for (let i = 0; i < index.length; i++) {
+        // selected nodes  
         for (let j = 0; j < selected_node.length; j++) {
             if (index[i].includes(selected_node[j])) {
-                node_data_filtered['Name'].push(name[i]);
-                node_data_filtered['URL'].push(url[i]);
-                node_data_filtered['adjusted_node_size'].push(adjusted_node_size[i]);
-                node_data_filtered['category'].push(category[i]);
-                node_data_filtered['degree'].push(degree[i]);
-                node_data_filtered['index'].push(index[i]);
+                data['Name'].push(name[i]);
+                data['URL'].push(url[i]);
+                data['adjusted_node_size'].push(adjusted_node_size[i]);
+                data['category'].push(category[i]);
+                data['degree'].push(degree[i]);
+                data['index'].push(index[i]);
             }
         }
-        for (let z = 0; z < source_labels.length; z++) {
-            if (category[i].includes(source_labels[z])) {
+        // source nodes
+        for (let k = 0; k < source_labels.length; k++) {
+            if (category[i].includes(source_labels[k])) {
                 source_nodes.push(index[i]);
             }
         }
+        // target nodes
         for (let a = 0; a < target_labels.length; a++) {
             if (category[i].includes(target_labels[a])) {
                 target_nodes.push(index[i]);
             }
         }
-        for (let b = 0; b < label.length; b++) {
-            if (node_data_filtered['index'].includes(label[b])) {
-                label_source_filter['x'].push(x[b]);
-                label_source_filter['y'].push(y[b]);
-                label_source_filter['name'].push(label[b]);
-            }
+        if (category[i].includes('Teaching')) {
+            teaching_nodes.push(index[i]);
         }
     }
-    if (remove_school) {
-        for (let i = 0; i < node_data_filtered['index'].length; i++) {
-            if (node_data_filtered['category'][i].includes('Teaching')) {
-                node_data_filtered['Name'].splice(i);
-                node_data_filtered['URL'].splice(i);
-                node_data_filtered['adjusted_node_size'].splice(i);
-                node_data_filtered['category'].splice(i);
-                node_data_filtered['degree'].splice(i);
-                node_data_filtered['index'].splice(i);
-            }
+    source_nodes = source_nodes.filter( (x) => !teaching_nodes.includes(x));
+    target_nodes = target_nodes.filter( (x) => !teaching_nodes.includes(x));
+    // label
+    for (let b = 0; b < label.length; b++) {
+        if (data['index'].includes(label[b])) {
+            label_source_filter['x'].push(x[b]);
+            label_source_filter['y'].push(y[b]);
+            label_source_filter['name'].push(label[b]);
         }
     }
+    // Excluding school from nodes
+    
     console.log('source node', source_nodes);
     console.log('target node', target_nodes);
-    console.log(node_data_filtered);
-    node_source.data = node_data_filtered;
+    console.log(data);
+    node_source.data = data;
     node_source.change.emit();
     console.log('label',label_source_filter)
     label_source.data = label_source_filter;
     label_source.change.emit();
 
     // filter edge
-    var edge_data_filtered = {'end':[],'line_width':[],'start':[],'weight':[]};
-    const line_width = edge_source.data['line_width'];
-    const weight = edge_source.data['weight'];
-    const start = edge_source.data['start'];
-    const end = edge_source.data['end'];
-    console.log(edge_source.data);
+    var edge = {'end':[],'line_width':[],'start':[],'weight':[]};
+    const edge_data = init_edge_source;
+    console.log('edge', edge_data)
+    const line_width = edge_data['line_width'];
+    const weight = edge_data['weight'];
+    const start = edge_data['start'];
+    const end = edge_data['end'];
+    console.log(edge_data);
     for (let i = 0; i < start.length; i++) {
         var source = start[i];
         var target = end[i];
@@ -481,17 +486,17 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
             if (source === source_nodes[j]) {
                 for (let z = 0; z < target_nodes.length; z++) {
                     if (target === target_nodes[z]) {
-                        edge_data_filtered['end'].push(end[i]);
-                        edge_data_filtered['line_width'].push(line_width[i]);
-                        edge_data_filtered['start'].push(start[i]);
-                        edge_data_filtered['weight'].push(weight[i]);
+                        edge['end'].push(end[i]);
+                        edge['line_width'].push(line_width[i]);
+                        edge['start'].push(start[i]);
+                        edge['weight'].push(weight[i]);
                     }
                 }
             }
         }
     } 
     console.log(edge_data_filtered);
-    edge_source.data = edge_data_filtered;
+    edge_source.data = edge;
     edge_source.change.emit();
     """)
 
@@ -608,8 +613,31 @@ def callback_select(attr, old, new):
         density_text, new_density,
         in_degree_centrality_text, new_in_degree_output_div,
         out_degree_centrality_text, new_out_degree_output_div)
-selection.on_change('value', callback_select)
+    
+# selection.on_change('value', callback_select)
+callback_select = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, init_node_source=init_node_source,
+                              edge_source=network_graph.edge_renderer.data_source, init_edge_source = init_edge_source,
+                              label_source=label_source, init_label_source=init_label_source,
+                              source_checkbox_button_group=source_checkbox_button_group,
+                              source_multi_choice=source_multi_choice,
+                              target_checkbox_button_group=target_checkbox_button_group,
+                              target_multi_choice=target_multi_choice,
+                              remove_school_button=remove_school_button), code="""
+    const selected = cb_obj.value
+    console.log(selected);
 
+    target_multi_choice.value = [];
+    source_multi_choice.value = [];
+    target_checkbox_button_group.active = [];
+    source_checkbox_button_group.active = [];
+    remove_school_button.active=false;
+    edge_source.data=init_edge_source;
+    label_source.data=init_label_source;
+    node_source.change.emit();
+    edge_source.change.emit();
+    label_source.change.emit();
+    """)
+selection.js_on_change('value', callback_select)
 
 
 ## reset button
@@ -647,6 +675,8 @@ callback_reset = CustomJS(args=dict(node_source=network_graph.node_renderer.data
     source_checkbox_button_group.active = [];
     node_source.data=init_node_source;
     console.log('reset', node_source.data);
+    console.log(remove_school_button)
+    remove_school_button.active=false;
     edge_source.data=init_edge_source;
     label_source.data=init_label_source;
     node_source.change.emit();
@@ -740,7 +770,7 @@ from bokeh.plotting import figure, save, output_file
 from bokeh.resources import CDN
 from bokeh.embed import file_html
 
-output_file(filename="page.html")
+# output_file(filename="page.html")
 # save(dashboard)
 html = file_html(dashboard, CDN, "my plot")
 print(html)

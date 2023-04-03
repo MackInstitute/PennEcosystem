@@ -45,21 +45,23 @@ df['target_truncated'] = df['target'].apply(lambda x: x.replace('.upenn.edu','')
 
 df_cat = pd.read_excel("/Users/wanxing/PycharmProjects/PennEcosystem/bokeh-app/data/site_domainV2.xlsx", sheet_name='domain')
 df_cat['Category'] = df_cat[['R&D','Teaching','Organizer', 'Knowledge', 'Media']].apply(lambda x: ','.join(x[x.isnull()==False].index), axis=1)
+
 df_cat['domain_truncated'] = df_cat['domain'].apply(lambda x: x.split('/')[2].replace('www.','').replace('.upenn.edu',''))
 
 url_class = dict(zip(df_cat['Node_Name'],df_cat['domain']))
 category_class = dict(zip(df_cat['Node_Name'],df_cat['Category']))
 index_class = dict(zip(df_cat['domain_truncated'],df_cat['Node_Name']))
 name_class = dict(zip(df_cat['Node_Name'],df_cat['Popup_Name']))
-
+# school_class = dict(zip(df_cat['Node_Name'],df_cat['School']))
+school_nodes = df_cat[df_cat['School'] == 1]['Node_Name'].to_list()
 df['source_name'] = df['source_truncated'].map(index_class)
 df['target_name'] = df['target_truncated'].map(index_class)
 df['source_category'] = df['source_name'].map(category_class)
 df['target_category'] = df['target_name'].map(category_class)
-
+# df['school'] = df['Node_Name'].map(school_class)
 target_domains_sorted = sorted(df['target_truncated'].map(index_class).unique())
 source_domains_sorted = sorted(df['source_truncated'].map(index_class).unique())
-print(df)
+print(school_nodes)
 
 domains_sorted = sorted(df[df['source_category'].str.contains('Teaching')==False]['source_name'].unique())
 """#Network(interactive)"""
@@ -115,7 +117,7 @@ labels = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
 #     new_plot.xgrid.grid_line_color = None
 #     new_plot.ygrid.grid_line_color = None
 #     new_plot.axis.visible=False
-    
+
 #     if len(source_checkbox_button_group.active) == 0 and len(target_checkbox_button_group.active) > 0:
 #         source_group_selected = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
 #     else:
@@ -310,7 +312,7 @@ networkx.set_node_attributes(G, name_class, "Name")
 # Configure tap tool
 taptool = plot.select(type=TapTool)
 taptool.callback = OpenURL(url="@URL")
-# plot the network using spiral layout, other options:https://networkx.org/documentation/stable/reference/drawing.html#module-networkx.drawing.layout
+# plot the network using spiral layout, other options:https://networkx.org/documentation/stable/reference/drawing.html#module-networkx.drawing.layout 
 pos = networkx.spring_layout(G,scale=13, k=0.95)
 network_graph = from_networkx(G, pos, center=(0, 0))
 network_graph.edge_renderer.data_source.data["line_width"] = [G.get_edge_data(a,b)['weight'] for a, b in G.edges()]
@@ -357,6 +359,7 @@ edge_data_filtered = {'end':[],'line_width':[],'start':[],'weight':[]}
 callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, init_node_source=init_node_source,node_data_filtered=node_data_filtered,
                               edge_source=network_graph.edge_renderer.data_source, init_edge_source=init_edge_source,edge_data_filtered=edge_data_filtered,
                               label_source=label_source, init_label_source=init_label_source,
+                              school_nodes = school_nodes,
                               source_checkbox_button_group=source_checkbox_button_group,
                               source_multi_choice=source_multi_choice,
                               target_checkbox_button_group=target_checkbox_button_group,
@@ -370,7 +373,14 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
 
     // Name, URL, adjusted_node_size, category, degree, index
     // Create filtered data framework
-    var data = {'Name':[], 'URL':[], 'adjusted_node_size':[], 'category':[], 'degree':[], 'index':[]};
+    var data = node_data_filtered;
+    data['Name'] = []
+    data['URL'] = []
+    data['adjusted_node_size'] = []
+    data['category'] = []
+    data['degree'] = []
+    data['index'] = []
+    console.log('data',data)
     const name = node_data['Name'];
     const url = node_data['URL'];
     const adjusted_node_size = node_data['adjusted_node_size'];
@@ -400,17 +410,16 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
     console.log(label)
     const x = label_data['x'];
     const y = label_data['y'];
-    const teaching_nodes = [];
     for (let i = 0; i < category.length; i++) {
         for (let j = 0; j < selected_category.length; j++) {
-            if (remove_school != true && category[i].includes(selected_category[j])) {
+            if (remove_school != true && category[i].includes(selected_category[j]) && !data['index'].includes(index[i])) {
                 data['Name'].push(name[i]);
                 data['URL'].push(url[i]);
                 data['adjusted_node_size'].push(adjusted_node_size[i]);
                 data['category'].push(category[i]);
                 data['degree'].push(degree[i]);
                 data['index'].push(index[i]);
-            } else if (remove_school && !category[i].includes('Teaching') && category[i].includes(selected_category[j])) {
+            } else if (remove_school && !school_nodes.includes(index[i]) && category[i].includes(selected_category[j]) && !data['index'].includes(index[i])) {
                 data['Name'].push(name[i]);
                 data['URL'].push(url[i]);
                 data['adjusted_node_size'].push(adjusted_node_size[i]);
@@ -424,7 +433,7 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
     for (let i = 0; i < index.length; i++) {
         // selected nodes  
         for (let j = 0; j < selected_node.length; j++) {
-            if (index[i].includes(selected_node[j])) {
+            if (index[i].includes(selected_node[j]) && !data['index'].includes(index[i])) {
                 data['Name'].push(name[i]);
                 data['URL'].push(url[i]);
                 data['adjusted_node_size'].push(adjusted_node_size[i]);
@@ -445,12 +454,11 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
                 target_nodes.push(index[i]);
             }
         }
-        if (category[i].includes('Teaching')) {
-            teaching_nodes.push(index[i]);
-        }
+
     }
-    source_nodes = source_nodes.filter( (x) => !teaching_nodes.includes(x));
-    target_nodes = target_nodes.filter( (x) => !teaching_nodes.includes(x));
+    source_nodes = source_nodes.filter( (x) => !school_nodes.includes(x));
+    target_nodes = target_nodes.filter( (x) => !school_nodes.includes(x));
+
     // label
     for (let b = 0; b < label.length; b++) {
         if (data['index'].includes(label[b])) {
@@ -459,8 +467,7 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
             label_source_filter['name'].push(label[b]);
         }
     }
-    // Excluding school from nodes
-    
+
     console.log('source node', source_nodes);
     console.log('target node', target_nodes);
     console.log(data);
@@ -688,11 +695,12 @@ reset_button.js_on_click(callback_reset)
 generate_button = Button(label="Generate",  button_type='danger')
 # generate_button.on_click(callback_generate)
 generate_button.js_on_click(callback)
-group = row(column(source_node_txt, source_multi_choice, source_cat_txt, source_checkbox_button_group),
-            column(target_node_txt, target_multi_choice, target_cat_txt, target_checkbox_button_group),
-            sizing_mode='stretch_both')
 
-layout = column(group, row(remove_school_button, generate_button, reset_button, sizing_mode="scale_width"), plot)
+select_group = column(source_node_txt, source_multi_choice, source_cat_txt, source_checkbox_button_group,
+                    target_node_txt, target_multi_choice, target_cat_txt, target_checkbox_button_group, 
+                    column(remove_school_button, row(generate_button, reset_button,sizing_mode="scale_width")))
+
+layout = row(plot, select_group, sizing_mode="stretch_height")
 analysis_text = Div(text="Network Analysis", style={'font-size': '150%'})
 density_text = Div(text="Density:", style={'font-weight': 'bold'})
 density = Div(text="{:.2f}".format(networkx.density(G)))
@@ -745,8 +753,7 @@ analysis = column(analysis_text, egocentric_text, selection,
                   eigen_degree_centrality_text, eigen_degree_output_div)
 Title_text = Div(text= "Penn Innovation Ecosystem (PIE)", style={'font-size': '200%'})
 Intro_tdxt = Div(text='''We invite you to explore the PIE as a network of "innovation nodes" that develop, commercialize, teach, and promote innovations at the University of Pennsylvania. Two innovation nodes are connected if at least one of them (source node) embeds on its website a link to the other one (target node)''')
-dashboard = column(Title_text, Intro_tdxt,row(layout, analysis))
-
+dashboard = column(Title_text, Intro_tdxt,layout)
 # # Testing js code
 # reset_button.js_on_click(CustomJS(args=dict(target_multi_choice=target_multi_choice,
 #                                             source_multi_choice=source_multi_choice,

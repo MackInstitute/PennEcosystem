@@ -100,7 +100,7 @@ HOVER_TOOLTIPS = [
 plot = figure(tooltips = HOVER_TOOLTIPS,
               tools="pan,wheel_zoom,save,reset,tap", active_scroll='wheel_zoom',
               x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), 
-              plot_width=1000)
+              width=1000, height=600)
 
 plot.xgrid.grid_line_color = None
 plot.ygrid.grid_line_color = None
@@ -547,8 +547,7 @@ def callback_select(attr, old, new):
     remove_school_button.active = False
     new_plot = figure(tooltips = HOVER_TOOLTIPS,
               tools="pan,wheel_zoom,save,reset,tap", active_scroll='wheel_zoom',
-              x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), 
-              plot_width=1000)
+              x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), sizing_mode="scale_width")
     selected_node=selection.value
     print("node", selected_node)
 
@@ -698,9 +697,9 @@ generate_button.js_on_click(callback)
 
 select_group = column(source_node_txt, source_multi_choice, source_cat_txt, source_checkbox_button_group,
                     target_node_txt, target_multi_choice, target_cat_txt, target_checkbox_button_group, 
-                    column(remove_school_button, row(generate_button, reset_button,sizing_mode="scale_width")))
+                    remove_school_button, row(generate_button, reset_button),sizing_mode="scale_width")
 
-layout = row(plot, select_group, sizing_mode="stretch_height")
+layout = row(plot, select_group)
 analysis_text = Div(text="Network Analysis", style={'font-size': '150%'})
 density_text = Div(text="Density:", style={'font-weight': 'bold'})
 density = Div(text="{:.2f}".format(networkx.density(G)))

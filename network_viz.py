@@ -98,9 +98,9 @@ HOVER_TOOLTIPS = [
 
 #Create a plot — set dimensions, toolbar, and title
 plot = figure(tooltips = HOVER_TOOLTIPS,
-              tools="pan,wheel_zoom,save,reset,tap", active_scroll='wheel_zoom',
-              x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), 
-              width=1000, height=600)
+              tools="pan,tap,wheel_zoom,save,reset", active_scroll='wheel_zoom',
+              x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), toolbar_location="left", 
+              width=800, height=600)
 
 plot.xgrid.grid_line_color = None
 plot.ygrid.grid_line_color = None
@@ -273,7 +273,7 @@ G = networkx.from_pandas_edgelist(df, 'source_name', 'target_name', edge_attr=['
 target_node_txt = Div(text="Select Target Node(s):")
 target_checkbox_button_group = CheckboxButtonGroup(labels=labels)
 target_cat_txt = Div(text="Select Target Group(s):")
-target_multi_choice = MultiChoice(options=target_domains_sorted)
+target_multi_choice = MultiChoice(options=target_domains_sorted, height=500)
 # target_multi_choice.js_on_change("value", CustomJS(code="""
 #     console.log('multi_choice: value=' + this.value, this.toString())
 # """))
@@ -695,9 +695,12 @@ generate_button = Button(label="Generate",  button_type='danger')
 # generate_button.on_click(callback_generate)
 generate_button.js_on_click(callback)
 
-select_group = column(source_node_txt, source_multi_choice, source_cat_txt, source_checkbox_button_group,
-                    target_node_txt, target_multi_choice, target_cat_txt, target_checkbox_button_group, 
-                    remove_school_button, row(generate_button, reset_button),sizing_mode="scale_width")
+def mk_div(**kwargs):
+    return Div(text='<div style="background-color: transparent; width: 100px; height: 50px;"></div>', **kwargs)
+
+select_group = column(source_node_txt, source_multi_choice, mk_div(), source_cat_txt, source_checkbox_button_group,
+                    target_node_txt, target_multi_choice, mk_div(), target_cat_txt, target_checkbox_button_group, mk_div(),
+                    remove_school_button, row(generate_button, reset_button, sizing_mode="stretch_width"),sizing_mode="stretch_height",width=400)
 
 layout = row(plot, select_group)
 analysis_text = Div(text="Network Analysis", style={'font-size': '150%'})
@@ -769,7 +772,7 @@ dashboard = column(Title_text, Intro_tdxt,layout)
 #                                             // selection.value='Full Network';
 #                                             remove_school_button.active=false;
 #                                             '''))
-curdoc().add_root(dashboard)
+curdoc().add_root(layout)
 # https://towardsdatascience.com/how-to-create-a-plotly-visualization-and-embed-it-on-websites-517c1a78568b
 
 from bokeh.plotting import figure, save, output_file
@@ -778,5 +781,13 @@ from bokeh.embed import file_html
 
 # output_file(filename="page.html")
 # save(dashboard)
-html = file_html(dashboard, CDN, "my plot")
-print(html)
+html = file_html(layout, CDN, "my plot")
+
+# Creating an HTML file
+Func = open("index.html","w")
+   
+# Adding input data to the HTML file
+Func.write(html)
+              
+# Saving the data into the HTML file
+Func.close()

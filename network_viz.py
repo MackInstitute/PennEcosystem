@@ -99,12 +99,13 @@ HOVER_TOOLTIPS = [
 #Create a plot — set dimensions, toolbar, and title
 plot = figure(tooltips = HOVER_TOOLTIPS,
               tools="pan,tap,wheel_zoom,save,reset", active_scroll='wheel_zoom',
-              x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), toolbar_location="left", 
+              x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), toolbar_location="left",
               width=800, height=600)
 
 plot.xgrid.grid_line_color = None
 plot.ygrid.grid_line_color = None
 plot.axis.visible=False
+plot.toolbar.logo = None
 labels = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
 
 # Python callback generate function
@@ -221,29 +222,7 @@ labels = ["R&D", "Teaching", "Organizer", "Knowledge", "Media"]
 source_node_txt = Div(text="Select Source Node(s):")
 source_checkbox_button_group = CheckboxButtonGroup(labels=labels)
 source_cat_txt = Div(text="Select Source Group(s):")
-source_multi_choice = MultiChoice(options=source_domains_sorted)
-# source_multi_choice.js_on_change("value", CustomJS(code="""
-#     console.log('multi_choice: value=' + this.value, this.toString())
-# """))
-# source_RD = df[df["source_category"].str.contains("R&D")==True]
-# source_Teaching = df[df["source_category"].str.contains("Teaching")==True]
-# source_Organizer = df[df["source_category"].str.contains("Organizer")==True]
-# source_Knowledge = df[df["source_category"].str.contains("Knowledge")==True]
-# source_Media = df[df["source_category"].str.contains("Media")==True]
-# G1 = networkx.from_pandas_edgelist(source_RD, 'source', 'target', edge_attr=['weight'], create_using=nx.DiGraph())
-# G2 = networkx.from_pandas_edgelist(source_Teaching, 'source', 'target', edge_attr=['weight'], create_using=nx.DiGraph())
-# G3 = networkx.from_pandas_edgelist(source_Organizer, 'source', 'target', edge_attr=['weight'], create_using=nx.DiGraph())
-# G4 = networkx.from_pandas_edgelist(source_Knowledge, 'source', 'target', edge_attr=['weight'], create_using=nx.DiGraph())
-# G5 = networkx.from_pandas_edgelist(source_Media, 'source', 'target', edge_attr=['weight'], create_using=nx.DiGraph())
-# selected_nodes = [n for n,v in G.nodes(data=True) if v['since'] == 'December 2008']  
-# args = [('checkbox_source', source_checkbox_button_group)]
-# code = "var active = cb_obj.active;"
-# for c in range(len(LABELS)):
-#     network = networkx.from_pandas_edgelist(G, 'source', 'target', edge_attr=['weight'], create_using=nx.DiGraph())
-#     line = p.line(x='dates', y=currencies[c], line_width=2, alpha=1, name=currencies[c], legend_label=currencies[c], source=source)
-#     args += [('line'+str(c), line)]
-#     code += "line{}.visible = active.includes({});".format(c, c)
-
+source_multi_choice = MultiChoice(options=source_domains_sorted, css_classes = ['overflow-y','scroll'])
 
 G = networkx.from_pandas_edgelist(df, 'source_name', 'target_name', edge_attr=['weight'], create_using=networkx.DiGraph())
 # callback = CustomJS(args = {'checkbox':source_checkbox_button_group, 'df': df, 'data_new': data_new},
@@ -289,23 +268,6 @@ networkx.set_node_attributes(G, name='degree', values=degrees)
 number_to_adjust_by = 5
 adjusted_node_size = dict([(node, degree+number_to_adjust_by) for node, degree in networkx.degree(G)])
 networkx.set_node_attributes(G, name='adjusted_node_size', values=adjusted_node_size)
-
-# communities = community.greedy_modularity_communities(G)
-#Add modularity class and color as attributes to network graph
-
-# # Create empty dictionaries
-# modularity_class = {}
-# modularity_color = {}
-# #Loop through each community in the network
-# for community_number, community in enumerate(communities):
-#     #For each member of the community, add their community number and a distinct color
-#     for name in community: 
-#         modularity_class[name] = community_number
-#         modularity_color[name] = Spectral8[community_number]
-
-# Add modularity class, color, URLs, categoty, degree centrality as attributes from the network above
-# networkx.set_node_attributes(G, modularity_class, 'modularity_class')
-# networkx.set_node_attributes(G, modularity_color, 'modularity_color')
 networkx.set_node_attributes(G, url_class, "URL")
 networkx.set_node_attributes(G, category_class, "category")
 networkx.set_node_attributes(G, name_class, "Name")
@@ -356,8 +318,18 @@ init_edge_source = network_graph.edge_renderer.data_source.data.copy()
 init_label_source = label_source.data.copy()
 node_data_filtered = {'Name':[], 'URL':[], 'adjusted_node_size':[], 'category':[], 'degree':[], 'index':[]}
 edge_data_filtered = {'end':[],'line_width':[],'start':[],'weight':[]}
-callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, init_node_source=init_node_source,node_data_filtered=node_data_filtered,
-                              edge_source=network_graph.edge_renderer.data_source, init_edge_source=init_edge_source,edge_data_filtered=edge_data_filtered,
+
+    # node_source.data=init_node_source;
+    # console.log('reset', node_source.data);
+    # console.log(remove_school_button)
+    # remove_school_button.active=false;
+    # edge_source.data=init_edge_source;
+    # label_source.data=init_label_source;
+    # node_source.change.emit();
+    # edge_source.change.emit();
+    # label_source.change.emit();
+callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_source, init_node_source=init_node_source,
+                              edge_source=network_graph.edge_renderer.data_source, init_edge_source=init_edge_source,
                               label_source=label_source, init_label_source=init_label_source,
                               school_nodes = school_nodes,
                               source_checkbox_button_group=source_checkbox_button_group,
@@ -365,7 +337,6 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
                               target_checkbox_button_group=target_checkbox_button_group,
                               target_multi_choice=target_multi_choice,
                               remove_school_button=remove_school_button), code="""
-
     var remove_school = remove_school_button.active;
     console.log('remove school', remove_school);
     const node_data = init_node_source;
@@ -373,14 +344,16 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
 
     // Name, URL, adjusted_node_size, category, degree, index
     // Create filtered data framework
-    var data = node_data_filtered;
-    data['Name'] = []
-    data['URL'] = []
-    data['adjusted_node_size'] = []
-    data['category'] = []
-    data['degree'] = []
-    data['index'] = []
-    console.log('data',data)
+    //var data = {'Name':[], 'URL':[], 'adjusted_node_size':[], 'category':[], 'degree':[], 'index':[]};
+    var node = node_source.data;
+    var data_name = []
+    var data_url = []
+    var data_adjusted_node_size = []
+    var data_category = []
+    var data_degree = []
+    var data_index = []
+
+    // Extracting data from dictionary
     const name = node_data['Name'];
     const url = node_data['URL'];
     const adjusted_node_size = node_data['adjusted_node_size'];
@@ -391,6 +364,7 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
     // extract values from multiple choice
     var source_nodes = source_multi_choice.value;
     var target_nodes = target_multi_choice.value;
+    console.log(target_nodes)
     // extract values from selected category
     var source_labels = Array.from(source_checkbox_button_group.active, a => isNaN(source_checkbox_button_group.labels[a]) ? source_checkbox_button_group.labels[a] : Number(source_checkbox_button_group.labels[a]));
     var target_labels = Array.from(target_checkbox_button_group.active, a => isNaN(target_checkbox_button_group.labels[a]) ? target_checkbox_button_group.labels[a] : Number(target_checkbox_button_group.labels[a]));
@@ -402,30 +376,22 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
     console.log("selected categories", selected_category);
     console.log("selected node", selected_node);
 
-    // filter label
-    const label_data = init_label_source;
-    console.log(label_data)
-    var label_source_filter = {'x':[],'y':[],'name':[]};
-    const label = label_data['name'];
-    console.log(label)
-    const x = label_data['x'];
-    const y = label_data['y'];
     for (let i = 0; i < category.length; i++) {
         for (let j = 0; j < selected_category.length; j++) {
-            if (remove_school != true && category[i].includes(selected_category[j]) && !data['index'].includes(index[i])) {
-                data['Name'].push(name[i]);
-                data['URL'].push(url[i]);
-                data['adjusted_node_size'].push(adjusted_node_size[i]);
-                data['category'].push(category[i]);
-                data['degree'].push(degree[i]);
-                data['index'].push(index[i]);
-            } else if (remove_school && !school_nodes.includes(index[i]) && category[i].includes(selected_category[j]) && !data['index'].includes(index[i])) {
-                data['Name'].push(name[i]);
-                data['URL'].push(url[i]);
-                data['adjusted_node_size'].push(adjusted_node_size[i]);
-                data['category'].push(category[i]);
-                data['degree'].push(degree[i]);
-                data['index'].push(index[i]);
+            if (remove_school != true && category[i].includes(selected_category[j]) && !data_index.includes(index[i])) {
+                data_name.push(name[i]);
+                data_url.push(url[i]);
+                data_adjusted_node_size.push(adjusted_node_size[i]);
+                data_category.push(category[i]);
+                data_degree.push(degree[i]);
+                data_index.push(index[i]);
+            } else if (remove_school && !school_nodes.includes(index[i]) && category[i].includes(selected_category[j]) && !data_index.includes(index[i])) {
+                data_name.push(name[i]);
+                data_url.push(url[i]);
+                data_adjusted_node_size.push(adjusted_node_size[i]);
+                data_category.push(category[i]);
+                data_degree.push(degree[i]);
+                data_index.push(index[i]);
             }
         }
     }
@@ -433,13 +399,13 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
     for (let i = 0; i < index.length; i++) {
         // selected nodes  
         for (let j = 0; j < selected_node.length; j++) {
-            if (index[i].includes(selected_node[j]) && !data['index'].includes(index[i])) {
-                data['Name'].push(name[i]);
-                data['URL'].push(url[i]);
-                data['adjusted_node_size'].push(adjusted_node_size[i]);
-                data['category'].push(category[i]);
-                data['degree'].push(degree[i]);
-                data['index'].push(index[i]);
+            if (index[i].includes(selected_node[j]) && !data_index.includes(index[i])) {
+                data_name.push(name[i]);
+                data_url.push(url[i]);
+                data_adjusted_node_size.push(adjusted_node_size[i]);
+                data_category.push(category[i]);
+                data_degree.push(degree[i]);
+                data_index.push(index[i]);
             }
         }
         // source nodes
@@ -456,31 +422,62 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
         }
 
     }
+
     source_nodes = source_nodes.filter( (x) => !school_nodes.includes(x));
     target_nodes = target_nodes.filter( (x) => !school_nodes.includes(x));
 
+    node['Name'] = data_name
+    node['URL'] = data_url
+    node['adjusted_node_size'] = data_adjusted_node_size
+    node['category'] = data_category
+    node['degree'] = data_degree
+    node['index'] = data_index
+
+    // filter label 
+    const label_data = init_label_source;
+    console.log(label_data)
+    //var label_source_filter = {'x':[],'y':[],'name':[]};
+    var label_filter = label_source.data
+    var label_x = []
+    var label_y = []
+    var label_name = []
+
+    const x = label_data['x'];
+    const y = label_data['y'];
+    const label = label_data['name'];
+    console.log(data_index)
     // label
     for (let b = 0; b < label.length; b++) {
-        if (data['index'].includes(label[b])) {
-            label_source_filter['x'].push(x[b]);
-            label_source_filter['y'].push(y[b]);
-            label_source_filter['name'].push(label[b]);
+        if (data_index.includes(label[b])) {
+            label_x.push(x[b]);
+            label_y.push(y[b]);
+            label_name.push(label[b]);
         }
     }
 
     console.log('source node', source_nodes);
     console.log('target node', target_nodes);
-    console.log(data);
-    node_source.data = data;
+
+    //node_source.data = data;
     node_source.change.emit();
-    console.log('label',label_source_filter)
-    label_source.data = label_source_filter;
+
+    label_filter['x'] = label_x
+    label_filter['y'] = label_y
+    label_filter['name'] = label_name
+
+    //label_source.data = label_source_filter;
     label_source.change.emit();
 
     // filter edge
-    var edge = {'end':[],'line_width':[],'start':[],'weight':[]};
+    // var edge = {'end':[],'line_width':[],'start':[],'weight':[]};
+    var edge = edge_source.data;
+    var edge_end = [];
+    var edge_line_width = [];
+    var edge_start = [];
+    var edge_weight = [];
     const edge_data = init_edge_source;
     console.log('edge', edge_data)
+
     const line_width = edge_data['line_width'];
     const weight = edge_data['weight'];
     const start = edge_data['start'];
@@ -493,24 +490,24 @@ callback = CustomJS(args=dict(node_source=network_graph.node_renderer.data_sourc
             if (source === source_nodes[j]) {
                 for (let z = 0; z < target_nodes.length; z++) {
                     if (target === target_nodes[z]) {
-                        edge['end'].push(end[i]);
-                        edge['line_width'].push(line_width[i]);
-                        edge['start'].push(start[i]);
-                        edge['weight'].push(weight[i]);
+                        edge_end.push(end[i]);
+                        edge_line_width.push(line_width[i]);
+                        edge_start.push(start[i]);
+                        edge_weight.push(weight[i]);
                     }
                 }
             }
         }
     } 
-    console.log(edge_data_filtered);
-    edge_source.data = edge;
+    //console.log(edge_data_filtered);
+    //edge_source.data = edge;
+    edge['end'] = edge_end
+    edge['line_width'] = edge_line_width
+    edge['start'] = edge_start
+    edge['weight'] = edge_weight
     edge_source.change.emit();
     """)
 
-
-draw_tool = PointDrawTool(renderers=[network_graph.node_renderer])
-plot.add_tools(draw_tool)
-plot.toolbar.active_tap = draw_tool
 
 #Dropdown widget
 #User can select a single node and see all the nodes it connects to (regardless of source or target), and updated metrics.
@@ -644,7 +641,6 @@ callback_select = CustomJS(args=dict(node_source=network_graph.node_renderer.dat
     label_source.change.emit();
     """)
 selection.js_on_change('value', callback_select)
-
 
 ## reset button
 ## clear all the widget and return the full network

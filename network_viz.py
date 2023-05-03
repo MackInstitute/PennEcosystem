@@ -2,9 +2,10 @@
 # Required file: network.cvs, site_domainV2.xlsx
 # output index.html file
 # https://programminghistorian.org/en/lessons/exploring-and-analyzing-network-data-with-python
+# To run the file: 
+# enter the following command in Terminal: bokeh serve --show network_viz.py
+# for development: BOKEH_MINIFIED=no bokeh serve --dev --show network_viz.py
 #Import Libraries
-
-
 # !pip install pyvis
 # !pip install Network
 # !pip install TapTool
@@ -18,7 +19,6 @@ from bokeh.models import Range1d, Circle, ColumnDataSource, MultiLine, Toggle
 from bokeh.plotting import figure, curdoc, from_networkx
 from bokeh.models import EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.palettes import Blues8, Spectral8
-
 
 """#Data Loading"""
 df = pd.read_csv("/Users/wanxing/PycharmProjects/PennEcosystem/bokeh-app/data/network.csv")
@@ -53,6 +53,7 @@ source_domains_sorted = sorted(df['source_truncated'].map(index_class).unique())
 print(school_nodes)
 
 domains_sorted = sorted(df[df['source_category'].str.contains('Teaching')==False]['source_name'].unique())
+
 """#Network(interactive)"""
 from bokeh.core.enums import SizingMode
 from bokeh.io import show
@@ -87,7 +88,7 @@ HOVER_TOOLTIPS = [
 
 #Create a plot — set dimensions, toolbar, and title
 plot = figure(tooltips = HOVER_TOOLTIPS,
-              tools="pan,tap,wheel_zoom,save,reset", active_scroll='wheel_zoom',
+              tools="pan,tap,wheel_zoom,save,reset",
               x_range=Range1d(-15.1, 15.1), y_range=Range1d(-15.1, 15.1), toolbar_location="left",
               width=800, height=600)
 
@@ -774,5 +775,4 @@ Func = open("index.html","w")
 # Adding input data to the HTML file
 Func.write(html)
               
-# Saving the data into the HTML file
 Func.close()

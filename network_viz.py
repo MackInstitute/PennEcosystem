@@ -21,7 +21,7 @@ from bokeh.models import EdgesAndLinkedNodes, NodesAndLinkedEdges, LabelSet
 from bokeh.palettes import Blues8, Spectral8
 
 """#Data Loading"""
-df = pd.read_csv("/Users/wanxing/PycharmProjects/PennEcosystem/bokeh-app/data/network.csv")
+df = pd.read_csv("./bokeh-app/data/network.csv")
 print("reading data")
 df.rename(columns={'domains_clean':'source', 'embedded_domains':'target', 'embedded_domains.1':'count'}, inplace=True)
 start = 1
@@ -32,9 +32,8 @@ df = df[df['target']!='None']
 df['source_truncated'] = df['source'].apply(lambda x: x.replace('.upenn.edu',''))
 df['target_truncated'] = df['target'].apply(lambda x: x.replace('.upenn.edu',''))
 
-df_cat = pd.read_excel("/Users/wanxing/PycharmProjects/PennEcosystem/bokeh-app/data/site_domainV2.xlsx", sheet_name='domain')
+df_cat = pd.read_excel("./bokeh-app/data/site_domainV2.xlsx", sheet_name='domain')
 df_cat['Category'] = df_cat[['R&D','Teaching','Organizer', 'Knowledge', 'Media']].apply(lambda x: ','.join(x[x.isnull()==False].index), axis=1)
-
 df_cat['domain_truncated'] = df_cat['domain'].apply(lambda x: x.split('/')[2].replace('www.','').replace('.upenn.edu',''))
 
 url_class = dict(zip(df_cat['Node_Name'],df_cat['domain']))
@@ -62,9 +61,8 @@ from bokeh.io.output import output_file
 from bokeh.models import Button, CustomJS, Div, CheckboxButtonGroup, TapTool, OpenURL, Select
 from bokeh.plotting import figure
 from bokeh.layouts import column, row
-from bokeh.models import CDSView, ColumnDataSource, GroupFilter
+from bokeh.models import ColumnDataSource
 from bokeh.io import show
-from networkx.algorithms import community
 
 #Choose colors for node and edge highlighting
 node_highlight_color = '#2171b5'

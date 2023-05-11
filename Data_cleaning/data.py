@@ -1,7 +1,7 @@
 import urllib
 import os
 import time
-
+import pandas as pd
 df = pd.read_csv('total_links.csv', index_col=0)
 links = df.Url
 destination_dir = 'home/mgmt/wanxing/html/'

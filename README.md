@@ -1,7 +1,6 @@
-# PennEcosystem
+# Penn Innovation Ecosystem
 In the terminal, run command line:
-bokeh serve --show network_viz.py
-
+bokeh serve --show network_viz.py //
 (debug)BOKEH_MINIFIED=no bokeh serve --dev --show network_viz.py
 
 Penn Innovation Ecosystem (PIE)
@@ -32,6 +31,7 @@ From Google search results by searching for “site:upenn.edu “innovation”�
 
 The following links (16 members of Ecosystem Penn) and other innovation-relevant units are added to total_links.csv, including the URLs of schools, departments, and other organizations: https://www.sas.upenn.edu/, https://venturelab.upenn.edu/, https://www.asc.upenn.edu/, https://www.dental.upenn.edu/, https://www.design.upenn.edu/, https://www.gse.upenn.edu/, https://www.seas.upenn.edu/, https://www.law.upenn.edu/, https://www.med.upenn.edu/, https://www.nursing.upenn.edu/, https://www.sp2.upenn.edu/, https://www.vet.upenn.edu/, https://www.library.upenn.edu/, https://www.chop.edu/, https://sciencecenter.org/, https://wistar.org/. 
 In total, there are 407 unique “seed” URL links.
+
 2.	Domain Extraction and Filtering
 
 From each URL link, we extracted the domain and saved the domain as a column for future data analysis. For example, https://www.nursing.upenn.edu/innovation/ as one of the links in the total_links.csv, https://www.nursing.upenn.edu is the domain and is saved in the column domains_clickable for manual examination, and nursing.upenn.edu is saved in the column domains_clean for network analysis.
@@ -40,14 +40,17 @@ We observed that websites could contain the content of innovation but not necess
 https://catalog.upenn.edu, https://curf.upenn.edu, https://hub.provost.upenn.edu, https://www.business-services.upenn.edu, https://www.collegehouses.upenn.edu,  https://www.elp.upenn.edu, https://www.hr.upenn.edu, https://www.upenn.edu, 
 https://apps.wharton.upenn.edu, https://ware.house.upenn.edu,  https://undergrad-inside.wharton.upenn.edu, https://global.upenn.edu.
 There are 70 unique domains that we identified as innovation units.
+
 3.	Categorization of domain
 
 We distinguish among five types of innovation nodes that are not mutually exclusive: Research & Development (R&D), Teaching, Organizer of innovation activities, Knowledge repository, and Media, which covers on-campus innovations for the general public.
 The full list of categorization of domain is located in the PennEcosystem/bokeh-app/data/site_domainV2.xlsx domain tab with label of 1.
+
 4.	Network 
 
 From each URL links, we aggregated the embedded links and saved the URL links which belong to the domains we collected in step 2. The output file includes three columns: a source (which is a seed URL link), a target (which is an embedded link on the seed URL), and weight (the number of times that the source point to target).
 The full list of network is located in the PennEcosystem/bokeh-app/data/network.csv on Github.
+
 5.	Visualization
 
 We used python library Networkx for drawing building the network and Bokeh for visualizing the network. We created a dashboard for the users to interactively visualize the network. Features of the interactive dashboard include:

@@ -1,6 +1,6 @@
 # Penn Innovation Ecosystem
 In the terminal, run command line:
-bokeh serve --show network_viz.py //
+bokeh serve --show network_viz.py \\
 (debug)BOKEH_MINIFIED=no bokeh serve --dev --show network_viz.py
 
 Penn Innovation Ecosystem (PIE)
@@ -68,7 +68,7 @@ Next Step:
 For now, the Generate buttom works after reset each time and doesn't allow continuous generation with filters. More investigation is required on the 'callback' functon in network_viz.py.
 For long-term development of the project, we explored the index of upenn.edu domain and recommend scrape the data using the top-to-buttom search instead of google search resutls.
 
-Limitations and Improvement
+Limitations and Improvement:
 Our original idea was to go through each page under upenn.edu domain and download relevant content. But we didn’t find an index to all Penn websites.
 
 Appendix:
